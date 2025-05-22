@@ -45,25 +45,41 @@
     </div>
   </section>
 
+  <!-- Popup Modal -->
+  <div id="popup-modal" class="popup-modal hidden">
+    <div class="popup-content">
+      <p id="popup-message"></p>
+      <button id="popup-close-btn">OK</button>
+    </div>
+  </div>
+
   <script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
   <script>
     emailjs.init('Vl4290dbxvdXfv4wS');
-    
+
+    const popup = document.getElementById("popup-modal");
+    const popupMessage = document.getElementById("popup-message");
+    const popupCloseBtn = document.getElementById("popup-close-btn");
+
     document.getElementById("contact-form").addEventListener("submit", function(e) {
       e.preventDefault();
-      
-      const status = document.getElementById("form-status");
-      
+
       emailjs.sendForm('service_3gyuv6e', 'template_cexv3ua', this)
         .then(function() {
-          status.textContent = "Message sent successfully! Thank you.";
-          status.style.color = "green";
+          popupMessage.textContent = "Message sent successfully! Thank you.";
+          popupMessage.style.color = "green";
+          popup.classList.remove("hidden");
           document.getElementById("contact-form").reset();
         }, function(error) {
-          status.textContent = "Oops! Something went wrong. Please try again.";
-          status.style.color = "red";
+          popupMessage.textContent = "Oops! Something went wrong. Please try again.";
+          popupMessage.style.color = "red";
+          popup.classList.remove("hidden");
           console.error('EmailJS error:', error);
         });
+    });
+
+    popupCloseBtn.addEventListener("click", function() {
+      popup.classList.add("hidden");
     });
   </script>
 </body>
