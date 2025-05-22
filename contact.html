@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Arctyll</title>
+  <link rel="stylesheet" href="css/contact.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img src="arctyll.png" alt="Arctyll Logo" />
+        <span class="logo-text">Arctyll</span>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/Arctyll" class="button">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="card glass">
+        <h1>Contact <span class="highlight">Us</span></h1>
+        <p>Got a question or idea? We’d love to hear from you. Reach out to Arctyll using the form below!</p>
+        <form class="contact-form" id="contact-form">
+          <input id="name" name="name" type="text" placeholder="Your Name" required />
+          <input id="email" name="email" type="email" placeholder="Your Email" required />
+          <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+          <button type="submit" class="primary-btn">Send Message</button>
+          <p id="form-status" class="form-status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
+  <script>
+    emailjs.init('Vl4290dbxvdXfv4wS');
+    
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const status = document.getElementById("form-status");
+      
+      emailjs.sendForm('service_3gyuv6e', 'template_cexv3ua', this)
+        .then(function() {
+          status.textContent = "Message sent successfully! Thank you.";
+          status.style.color = "green";
+          document.getElementById("contact-form").reset();
+        }, function(error) {
+          status.textContent = "Oops! Something went wrong. Please try again.";
+          status.style.color = "red";
+          console.error('EmailJS error:', error);
+        });
+    });
+  </script>
+</body>
+</html>

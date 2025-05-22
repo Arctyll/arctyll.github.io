@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Arctyll</title>
+  <link rel="stylesheet" href="css/about.css" />
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img src="arctyll.png" alt="Arctyll Logo" />
+        <span class="logo-text">Arctyll</span>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/Arctyll" class="button">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="about">
+    <div class="container">
+      <div class="card glass">
+        <h1>About <span class="highlight">Arctyll</span></h1>
+        <p>
+          Arctyll is a collective focused on developing high-quality Minecraft mods and plugins. Founded with a passion for innovation and gameplay enhancement, we aim to push the boundaries of what's possible in the Minecraft community.
+        </p>
+        <p>
+          From advanced moderation tools to visually stunning UI systems, we create both utility and art. Every line of code we write is built on performance, consistency, and creativity.
+        </p>
+        <p>
+          Whether you’re a player, server admin, or developer — Arctyll is here to elevate your Minecraft experience.
+        </p>
+        <a href="projects.html" class="primary-btn">Explore Our Work</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

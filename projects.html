@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arctyll Projects</title>
+  <link rel="stylesheet" href="css/projects.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img src="arctyll.png" alt="Arctyll Logo" />
+        <span class="logo-text">Arctyll</span>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/Arctyll" class="button">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Our Projects</h1>
+      <p>Explore our finest Minecraft creations — mods and plugins built with precision.</p>
+    </section>
+
+    <section class="projects-grid">
+      <div class="project-card">
+        <h2>FatiguePLUS Mod</h2>
+        <p>Fatigue+ is a Minecraft 1.8.9 client-side mod that introduces a sleep deprivation mechanic to singleplayer. Stay awake too long and you'll suffer progressive debuffs, or sometimes death.</p>
+        <div class="card-buttons">
+          <a href="https://modrinth.com/arctyll/fatigueplus" target="_blank">Download</a>
+          <a href="https://github.com/Arctyll/FatiguePLUS" target="_blank">Source Code</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h2>BA-API Plugin</h2>
+        <p>A Spigot plugin for sending bossbar, action bar, titles and subtitles in Minecraft 1.8.8.</p>
+        <div class="card-buttons">
+          <a href="https://github.com/Arctyll/BA-API/releases" target="_blank">Download</a>
+          <a href="https://github.com/Arctyll/BA-API" target="_blank">Source Code</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Arctyll. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arctyll — Changing the World!</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img src="arctyll.png" alt="Arctyll Logo" />
+        <span class="logo-text">Arctyll</span>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/Arctyll" class="button">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="hero">
+    <div class="content">
+      <h1><span class="highlight">Arctyll</span> — Changing the World!</h1>
+      <p>Crafting intelligent tools, shaping Minecraft’s future, pixel by pixel.</p>
+      <a href="projects.html" class="primary-btn">Explore Arctyll</a>
+    </div>
+  </main>
+  
+  <footer>
+    <p>© 2025 Arctyll. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
