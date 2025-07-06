@@ -148,7 +148,13 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
           <div className="text-muted-foreground text-sm text-center md:text-left">
-            <p>&copy; 2025 Arctyll. All rights reserved.</p>
+            <p>
+              &copy; 2025{" "}
+              <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
+                Arctyll
+              </span>
+              . All rights reserved.
+            </p>
           </div>
           <div className="flex items-center text-muted-foreground text-sm">
             <span>Made with</span>
