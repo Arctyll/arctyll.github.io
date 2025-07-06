@@ -1,74 +1,18 @@
 {
   "downloads": [
     {
-      "id": "arctyll-core-1.2.0",
-      "name": "Arctyll Core",
-      "version": "1.2.0",
-      "description": "Core functionality and utilities for all Arctyll mods with enhanced performance and compatibility.",
-      "status": "stable",
-      "mcVersion": "1.20.4",
-      "fileSize": "2.3 MB",
-      "releaseDate": "2025-01-06",
-      "downloadUrl": "https://modrinth.com/mod/arctyll-core/version/1.2.0",
-      "changelogUrl": "#",
-      "category": "mods",
-      "featured": true
-    },
-    {
-      "id": "arctyll-tools-2.0.0",
-      "name": "Arctyll Tools",
-      "version": "2.0.0",
-      "description": "Enhanced tools and utilities with new materials, enchantments, and special abilities.",
-      "status": "stable",
-      "mcVersion": "1.20.4",
-      "fileSize": "4.1 MB",
-      "releaseDate": "2025-01-05",
-      "downloadUrl": "https://modrinth.com/mod/arctyll-tools/version/2.0.0",
-      "changelogUrl": "#",
-      "category": "mods",
-      "featured": true
-    },
-    {
-      "id": "arctyll-machines-1.0.0-beta.3",
-      "name": "Arctyll Machines",
-      "version": "1.0.0-beta.3",
-      "description": "Industrial automation and machinery with energy systems and ore processing.",
+      "id": "fatigue-plus-1.0",
+      "name": "Fatigue+",
+      "version": "1.0",
+      "description": "Fatigue+ is a lightweight, immersive Minecraft mod that simulates sleep deprivation. Designed for Minecraft 1.8.9 (Forge) and built to work client-side only, this mod tracks how long you’ve stayed awake and progressively makes your experience more difficult.",
       "status": "beta",
-      "mcVersion": "1.20.4",
-      "fileSize": "6.7 MB",
-      "releaseDate": "2025-01-04",
-      "downloadUrl": "https://modrinth.com/mod/arctyll-machines/version/1.0.0-beta.3",
+      "mcVersion": "1.8.9",
+      "fileSize": "9.68 Kb",
+      "releaseDate": "2025-21-04",
+      "downloadUrl": "https://cdn.modrinth.com/data/AieTRoxq/versions/hejL2IHN/Fatigue%2B-0.1.jar",
       "changelogUrl": "#",
       "category": "mods",
-      "featured": false
-    },
-    {
-      "id": "arctyll-client-0.8.2",
-      "name": "Arctyll Client",
-      "version": "0.8.2",
-      "description": "Lightweight Minecraft client with performance optimizations and quality-of-life improvements.",
-      "status": "beta",
-      "mcVersion": "1.20.4",
-      "fileSize": "12.4 MB",
-      "releaseDate": "2025-01-03",
-      "downloadUrl": "https://github.com/arctyll/arctyll-client/releases/tag/v0.8.2",
-      "changelogUrl": "#",
-      "category": "clients",
       "featured": true
-    },
-    {
-      "id": "mod-dev-kit-1.4.1",
-      "name": "Mod Development Kit",
-      "version": "1.4.1",
-      "description": "Tools and templates for efficient mod development with standardized framework.",
-      "status": "stable",
-      "mcVersion": "1.20.4",
-      "fileSize": "1.8 MB",
-      "releaseDate": "2025-01-02",
-      "downloadUrl": "https://github.com/arctyll/mod-dev-kit/releases/tag/v1.4.1",
-      "changelogUrl": "#",
-      "category": "tools",
-      "featured": false
     }
   ]
 }

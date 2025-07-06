@@ -8,15 +8,6 @@
       "type": "general",
       "priority": "high",
       "author": "Arctyll Team"
-    },
-    {
-      "id": "2", 
-      "title": "New Mod Release Coming Soon",
-      "content": "We're working on an exciting new mod that will revolutionize how you play Minecraft. Stay tuned for more updates!",
-      "date": "2025-01-05",
-      "type": "release",
-      "priority": "medium",
-      "author": "Development Team"
     }
   ]
 }

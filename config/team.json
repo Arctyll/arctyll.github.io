@@ -1,48 +1,15 @@
 {
   "members": [
     {
-      "id": "alex_dev",
-      "name": "Alex Rodriguez",
+      "id": "classy",
+      "name": "ClassyCoder",
       "role": "Lead Developer",
       "description": "Full-stack developer with 5+ years of Minecraft modding experience. Specializes in core systems and performance optimization.",
-      "githubUrl": "https://github.com/alexdev",
+      "githubUrl": "https://github.com/ClassyCoder1",
       "avatar": "/api/placeholder/150/150",
       "color": "bg-gradient-to-br from-purple-500 to-blue-500",
       "skills": ["Java", "Forge", "Fabric", "Performance"],
-      "contributions": ["Arctyll Core", "Performance optimizations", "API design"]
-    },
-    {
-      "id": "sam_design",
-      "name": "Sam Chen",
-      "role": "UI/UX Designer",
-      "description": "Creative designer focused on user experience and visual design for both mods and web interfaces.",
-      "githubUrl": "https://github.com/samchen",
-      "avatar": "/api/placeholder/150/150",
-      "color": "bg-gradient-to-br from-green-500 to-teal-500",
-      "skills": ["UI Design", "User Experience", "Visual Design", "Prototyping"],
-      "contributions": ["Mod GUIs", "Website design", "User interface systems"]
-    },
-    {
-      "id": "jordan_tech",
-      "name": "Jordan Kim",
-      "role": "DevOps Engineer",
-      "description": "Infrastructure and automation specialist ensuring smooth deployment and continuous integration for all projects.",
-      "githubUrl": "https://github.com/jordankim",
-      "avatar": "/api/placeholder/150/150",
-      "color": "bg-gradient-to-br from-orange-500 to-red-500",
-      "skills": ["DevOps", "CI/CD", "Infrastructure", "Automation"],
-      "contributions": ["Build systems", "Deployment automation", "Infrastructure management"]
-    },
-    {
-      "id": "taylor_community",
-      "name": "Taylor Brooks",
-      "role": "Community Manager",
-      "description": "Passionate about building and maintaining our amazing community. Handles support, events, and community engagement.",
-      "githubUrl": "https://github.com/taylorbrooks",
-      "avatar": "/api/placeholder/150/150",
-      "color": "bg-gradient-to-br from-pink-500 to-purple-500",
-      "skills": ["Community Management", "Support", "Documentation", "Events"],
-      "contributions": ["Community building", "Documentation", "User support"]
+      "contributions": ["Fatigue+", "Veyzen Client", "API design"]
     }
   ]
 }

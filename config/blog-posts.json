@@ -23,18 +23,6 @@
       "tags": ["optimization", "performance", "advanced"],
       "featured": false,
       "gradient": "from-green-500 to-teal-500"
-    },
-    {
-      "id": "community-spotlight",
-      "title": "Community Spotlight: Amazing Creations",
-      "excerpt": "Showcasing incredible projects and mods created by our amazing community members.",
-      "content": "# Community Spotlight\n\nOur community continues to amaze us with incredible creativity and innovation...",
-      "author": "Community Team",
-      "date": "2025-01-04",
-      "readTime": "6 min read",
-      "tags": ["community", "showcase", "features"],
-      "featured": false,
-      "gradient": "from-orange-500 to-red-500"
     }
   ]
 }
