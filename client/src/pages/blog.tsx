@@ -84,7 +84,7 @@ export default function Blog() {
     type: 'announcement'
   }));
 
-  const allPosts = [...blogPosts, ...announcementPosts].sort((a, b) => {
+  const allPosts = [...announcementPosts, ...blogPosts].sort((a, b) => {
     const dateA = new Date(a.date.includes(',') ? a.date : a.date);
     const dateB = new Date(b.date.includes(',') ? b.date : b.date);
     return dateB.getTime() - dateA.getTime();
