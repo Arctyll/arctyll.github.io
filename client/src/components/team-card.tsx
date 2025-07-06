@@ -26,7 +26,7 @@ export default function TeamCard({ member, index }: TeamCardProps) {
       <CardContent className="p-6">
         {/* Minecraft Avatar */}
         <div
-          className={`w-24 h-24 rounded-full mx-auto mb-4 border-4 ${member.color} overflow-hidden`}
+          className={`w-24 h-24 rounded-full mx-auto mb-4 border-4 bg-gradient-to-br from-purple-500 to-blue-500 overflow-hidden`}
         >
           <img
             src={`https://mc-heads.net/avatar/${member.mcIgn}`}
