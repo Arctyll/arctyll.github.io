@@ -29,7 +29,7 @@ export default function Navbar() {
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/team", label: "Team" },
-    { href: "/commitment", label: "Our Commitment" },
+    { href: "/commitment", label: "Commitment" },
     { href: "/downloads", label: "Downloads" },
     { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
