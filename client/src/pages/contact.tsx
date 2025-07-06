@@ -190,12 +190,11 @@ export default function Contact() {
                     Find guides, tutorials, and API documentation
                   </p>
                   <a 
-                    href="https://docs.arctyll.org"
-                    className="text-primary hover:underline"
+                    className="text-"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    docs.arctyll.org
+                    docs.arctyll.com
                   </a>
                 </div>
               </CardContent>

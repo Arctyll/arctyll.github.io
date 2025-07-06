@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Github, User } from "lucide-react";
+import { Github } from "lucide-react";
 
 interface TeamMember {
   name: string;
@@ -8,6 +8,7 @@ interface TeamMember {
   description: string;
   githubUrl: string;
   color: string;
+  mcIgn: string;
 }
 
 interface TeamCardProps {
@@ -17,15 +18,23 @@ interface TeamCardProps {
 
 export default function TeamCard({ member, index }: TeamCardProps) {
   return (
-    <Card 
-      className="card-hover bg-card border-border text-center" 
-      data-aos="fade-up" 
+    <Card
+      className="card-hover bg-card border-border text-center"
+      data-aos="fade-up"
       data-aos-delay={index * 100}
     >
       <CardContent className="p-6">
-        <div className={`w-24 h-24 bg-gradient-to-r ${member.color} rounded-full mx-auto mb-4 flex items-center justify-center`}>
-          <User className="h-8 w-8 text-white" />
+        {/* Minecraft Avatar */}
+        <div
+          className={`w-24 h-24 rounded-full mx-auto mb-4 border-4 ${member.color} overflow-hidden`}
+        >
+          <img
+            src={`https://mc-heads.net/avatar/${member.mcIgn}`}
+            alt={`${member.mcIGN}'s avatar`}
+            className="w-full h-full object-cover"
+          />
         </div>
+
         <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
         <p className="text-primary text-sm mb-3">{member.role}</p>
         <p className="text-muted-foreground text-sm mb-4">{member.description}</p>

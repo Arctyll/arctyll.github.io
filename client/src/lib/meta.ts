@@ -6,16 +6,13 @@ interface MetaData {
 }
 
 export const updatePageMeta = (meta: MetaData) => {
-  // Update title
   document.title = meta.title;
   
-  // Update meta description
   const description = document.querySelector('meta[name="description"]');
   if (description) {
     description.setAttribute('content', meta.description);
   }
   
-  // Update Open Graph meta tags
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) {
     ogTitle.setAttribute('content', meta.title);
@@ -36,7 +33,6 @@ export const updatePageMeta = (meta: MetaData) => {
     ogImage.setAttribute('content', meta.image);
   }
   
-  // Update Twitter meta tags
   const twitterTitle = document.querySelector('meta[property="twitter:title"]');
   if (twitterTitle) {
     twitterTitle.setAttribute('content', meta.title);
