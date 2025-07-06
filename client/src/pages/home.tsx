@@ -5,15 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Rocket, Code } from "lucide-react";
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     updatePageMeta({
       title: "Arctyll - Minecraft Mod Developers",
-      description: "Building the future of Minecraft modding with open-source innovation and community collaboration. Discover our mods, tools, and APIs.",
-      url: "https://arctyll.com/"
+      description:
+        "Building the future of Minecraft modding with open-source innovation and community collaboration. Discover our mods, tools, and APIs.",
+      url: "https://arctyll.com/",
     });
-  
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-gradient">
       <div className="container mx-auto px-4 sm:px-6 text-center z-10">
@@ -26,7 +27,10 @@ export default function Home() {
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto px-4">
             Empowering Minecraft Modding Through Open Source.
             <br className="hidden sm:block" />
-            <span className="block sm:inline">Crafting intelligent tools, shaping Minecraft's future, pixel by pixel.</span>
+            <span className="block sm:inline">
+              Crafting intelligent tools, shaping Minecraft's future, pixel by
+              pixel.
+            </span>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
             <Link href="/team">
