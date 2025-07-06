@@ -234,7 +234,7 @@ export default function Contact() {
                   <p className="text-muted-foreground text-sm mb-2">
                     Find guides, tutorials, and API documentation
                   </p>
-                  <span className="text-secondary">Currently Unavailable</span>
+                  <span className="text-primary-500">Currently Unavailable</span>
                 </div>
               </CardContent>
             </Card>
