@@ -1,80 +1,56 @@
 import { useEffect, useState } from "react";
-import { Link } from "wouter";
 import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
-
-import { updatePageMeta } from "@/lib/meta";
 import { useToast } from "@/hooks/use-toast";
+import { sendEmail } from "@/lib/emailjs";
+import { updatePageMeta } from "@/lib/meta";
 
-import {
-  Card, CardContent, CardDescription, CardHeader, CardTitle
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import {
-  Mail, MessageSquare, Github, Send,
-  Code, Download, Users
-} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Mail, MessageSquare, Github, Send, Code, Download, Users } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Contact() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const { toast } = useToast();
-  const [loading, setLoading] = useState(true);
-
+  const [isLoading, setIsLoading] = useState(false);
+  
   useEffect(() => {
     updatePageMeta({
       title: "Contact Us - Arctyll",
       description: "Get in touch with the Arctyll team. We're here to help with questions, support, and collaboration opportunities.",
       url: "https://arctyll.com/contact"
     });
-
-    const timer = setTimeout(() => setLoading(false), 600);
-    return () => clearTimeout(timer);
   }, []);
-
+  
   const onSubmit = async (data: any) => {
+    setIsLoading(true);
     try {
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID!,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
-        {
-          name: data.name,
-          email: data.email,
-          subject: data.subject,
-          message: data.message
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
-      );
-
+      await sendEmail({
+        name: data.name,
+        email: data.email,
+        message: data.message,
+      });
+      
       toast({
         title: "Message sent!",
         description: "Thank you for reaching out. We'll get back to you soon.",
       });
-
+      
       reset();
     } catch (error) {
-      console.error("Email sending failed", error);
       toast({
         title: "Error",
         description: "There was a problem sending your message. Please try again.",
         variant: "destructive",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <div className="w-12 h-12 border-4 border-t-transparent border-primary rounded-full animate-spin mx-auto" />
-          <p className="text-muted-foreground text-lg animate-pulse">Loading contact form...</p>
-        </div>
-      </div>
-    );
-  }
-
+  
   return (
     <div className="min-h-screen bg-background pt-20">
       <div className="container mx-auto px-4 py-8">
@@ -88,7 +64,7 @@ export default function Contact() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Contact Form */}
+          {/* Form */}
           <Card data-aos="fade-up" data-aos-delay="100">
             <CardHeader>
               <CardTitle className="flex items-center">
@@ -109,9 +85,7 @@ export default function Contact() {
                       placeholder="Your name"
                       {...register("name", { required: "Name is required" })}
                     />
-                    {errors.name && (
-                      <p className="text-sm text-destructive">{errors.name.message as string}</p>
-                    )}
+                    {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
@@ -127,9 +101,7 @@ export default function Contact() {
                         }
                       })}
                     />
-                    {errors.email && (
-                      <p className="text-sm text-destructive">{errors.email.message as string}</p>
-                    )}
+                    {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
                   </div>
                 </div>
 
@@ -140,9 +112,7 @@ export default function Contact() {
                     placeholder="What's this about?"
                     {...register("subject", { required: "Subject is required" })}
                   />
-                  {errors.subject && (
-                    <p className="text-sm text-destructive">{errors.subject.message as string}</p>
-                  )}
+                  {errors.subject && <p className="text-sm text-destructive">{errors.subject.message}</p>}
                 </div>
 
                 <div className="space-y-2">
@@ -153,21 +123,26 @@ export default function Contact() {
                     rows={6}
                     {...register("message", { required: "Message is required" })}
                   />
-                  {errors.message && (
-                    <p className="text-sm text-destructive">{errors.message.message as string}</p>
-                  )}
+                  {errors.message && <p className="text-sm text-destructive">{errors.message.message}</p>}
                 </div>
 
-                <Button type="submit" className="w-full">
-                  <Send className="h-4 w-4 mr-2" />
-                  Send Message
+                <Button type="submit" className="w-full" disabled={isLoading}>
+                  {isLoading ? (
+                    <span className="animate-pulse">Sending your message...</span>
+                  ) : (
+                    <>
+                      <Send className="h-4 w-4 mr-2" />
+                      Send Message
+                    </>
+                  )}
                 </Button>
               </form>
             </CardContent>
           </Card>
 
-          {/* Info Cards */}
+          {/* Info Section */}
           <div className="space-y-6" data-aos="fade-up" data-aos-delay="200">
+            {/* Direct Contact */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
@@ -178,22 +153,20 @@ export default function Contact() {
               <CardContent className="space-y-4">
                 <div>
                   <h4 className="font-medium mb-2">Email</h4>
-                  <a
-                    href="mailto:arctyllofficial@gmail.com"
-                    className="text-primary hover:underline"
-                  >
+                  <a href="mailto:arctyllofficial@gmail.com" className="text-primary hover:underline">
                     arctyllofficial@gmail.com
                   </a>
                 </div>
                 <div>
                   <h4 className="font-medium mb-2">Response Time</h4>
                   <p className="text-muted-foreground text-sm">
-                    We typically respond within 24–48 hours
+                    We typically respond within 24–48 hours.
                   </p>
                 </div>
               </CardContent>
             </Card>
 
+            {/* GitHub & Docs */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center">
@@ -207,10 +180,10 @@ export default function Contact() {
                   <p className="text-muted-foreground text-sm mb-2">
                     Report bugs, request features, or contribute to our projects
                   </p>
-                  <a
-                    href="https://github.com/Arctyll"
+                  <a 
+                    href="https://github.com/Arctyll" 
                     className="text-primary hover:underline"
-                    target="_blank"
+                    target="_blank" 
                     rel="noopener noreferrer"
                   >
                     github.com/Arctyll
@@ -221,57 +194,44 @@ export default function Contact() {
                   <p className="text-muted-foreground text-sm mb-2">
                     Find guides, tutorials, and API documentation
                   </p>
-                  <span className="text-secondary">Currently unavailable</span>
+                  <span className="text-secondary">Currently Unavailable</span>
                 </div>
               </CardContent>
             </Card>
 
+            {/* Quick Links */}
             <Card>
               <CardHeader>
                 <CardTitle>Quick Links</CardTitle>
-                <CardDescription>
-                  Explore different sections of our website
-                </CardDescription>
+                <CardDescription>Explore different sections of our website</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 gap-3">
-                  <Link
-                    href="/projects"
-                    className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group"
-                  >
+                  <Link href="/projects" className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group">
                     <Code className="h-4 w-4 text-primary mr-3" />
                     <div>
-                      <div className="font-medium group-hover:text-primary">View Projects</div>
+                      <div className="font-medium group-hover:text-primary transition-colors">View Projects</div>
                       <div className="text-xs text-muted-foreground">Explore our mods and tools</div>
                     </div>
                   </Link>
-                  <Link
-                    href="/downloads"
-                    className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group"
-                  >
+                  <Link href="/downloads" className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group">
                     <Download className="h-4 w-4 text-primary mr-3" />
                     <div>
-                      <div className="font-medium group-hover:text-primary">Downloads</div>
+                      <div className="font-medium group-hover:text-primary transition-colors">Downloads</div>
                       <div className="text-xs text-muted-foreground">Get the latest releases</div>
                     </div>
                   </Link>
-                  <Link
-                    href="/team"
-                    className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group"
-                  >
+                  <Link href="/team" className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group">
                     <Users className="h-4 w-4 text-primary mr-3" />
                     <div>
-                      <div className="font-medium group-hover:text-primary">Our Team</div>
+                      <div className="font-medium group-hover:text-primary transition-colors">Our Team</div>
                       <div className="text-xs text-muted-foreground">Meet the developers</div>
                     </div>
                   </Link>
-                  <Link
-                    href="/blog"
-                    className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group"
-                  >
+                  <Link href="/blog" className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group">
                     <MessageSquare className="h-4 w-4 text-primary mr-3" />
                     <div>
-                      <div className="font-medium group-hover:text-primary">Blog</div>
+                      <div className="font-medium group-hover:text-primary transition-colors">Blog</div>
                       <div className="text-xs text-muted-foreground">Latest news and updates</div>
                     </div>
                   </Link>
