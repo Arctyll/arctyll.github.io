@@ -80,11 +80,11 @@ export default function Blog() {
     }),
     readTime: announcement.readTime,
     slug: `announcement-${announcement.id}`,
-    gradient: 'from-orange-500 to-red-500',
+    gradient: 'from-green-500 to-teal-500',
     type: 'announcement'
   }));
 
-  const allPosts = [...announcementPosts, ...blogPosts].sort((a, b) => {
+  const allPosts = [...blogPosts, ...announcementPosts].sort((a, b) => {
     const dateA = new Date(a.date.includes(',') ? a.date : a.date);
     const dateB = new Date(b.date.includes(',') ? b.date : b.date);
     return dateB.getTime() - dateA.getTime();
