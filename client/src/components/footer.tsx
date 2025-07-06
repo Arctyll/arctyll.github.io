@@ -150,7 +150,7 @@ export default function Footer() {
           <div className="text-muted-foreground text-sm text-center md:text-left">
             <p>
               &copy; 2025{" "}
-              <span className="text-xl font-bold gradient-text text-transparent bg-clip-text">
+              <span className="font-bold gradient-text text-transparent bg-clip-text">
                 Arctyll
               </span>
               . All rights reserved.
