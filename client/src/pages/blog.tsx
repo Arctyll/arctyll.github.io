@@ -32,10 +32,9 @@ export default function Blog() {
     updatePageMeta({
       title: "Blog & Announcements - Arctyll",
       description: "Stay updated with the latest news, tutorials, and insights from the Arctyll development team and community.",
-      url: "https://arctyll.org/blog"
+      url: "https://arctyll.com/blog"
     });
     
-    // Load both blog posts and announcements
     Promise.all([
       fetch('/config/blog-posts.json').then(res => res.json()),
       fetch('/config/announcements.json').then(res => res.json())
@@ -57,7 +56,6 @@ export default function Blog() {
     );
   }
 
-  // Combine blog posts and announcements
   const blogPosts = blogData.posts.map(post => ({
     title: post.title,
     excerpt: post.excerpt,
@@ -80,7 +78,7 @@ export default function Blog() {
       month: 'long', 
       day: 'numeric' 
     }),
-    readTime: '2 min read',
+    readTime: announcement.readTime,
     slug: `announcement-${announcement.id}`,
     gradient: 'from-orange-500 to-red-500',
     type: 'announcement'
@@ -92,7 +90,6 @@ export default function Blog() {
     return dateB.getTime() - dateA.getTime();
   });
 
-  // If viewing individual blog post
   if (match && params?.slug) {
     const post = allPosts.find(p => p.slug === params.slug);
     

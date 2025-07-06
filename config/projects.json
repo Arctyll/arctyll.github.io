@@ -13,6 +13,20 @@
       "tags": ["qol"],
       "mcVersions": ["1.8.9"],
       "modLoader": ["forge"]
+    },
+    {
+      "id": "veyzen-client",
+      "name": "Veyzen Client",
+      "description": "Veyzen Client is a Minecraft 1.8.9 forge-based client which is built to improve performance. It has a wide variety of mods which can significantly help you in game.",
+      "category": "clients",
+      "status": "not released",
+      "githubUrl": "https://github.com/VeyzenClient/veyzenclient",
+      "downloadUrl": "https://veyzenclient.github.io/download/",
+      "docsUrl": "#",
+      "featured": true,
+      "tags": ["qol", "performance"],
+      "mcVersions": ["1.8.9"],
+      "modLoader": ["forge"]
     }
   ]
 }

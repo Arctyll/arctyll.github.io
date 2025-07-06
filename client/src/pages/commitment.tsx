@@ -9,7 +9,7 @@ export default function Commitment() {
     updatePageMeta({
       title: "Our Commitment - Arctyll",
       description: "Learn about Arctyll's commitment to open-source development, community collaboration, and transparency in Minecraft modding.",
-      url: "https://arctyll.org/commitment"
+      url: "https://arctyll.com/commitment"
     });
   }, []);
 
@@ -86,7 +86,7 @@ export default function Commitment() {
                   </ul>
                   
                   <Button asChild>
-                    <a href="https://github.com/arctyll" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/Arctyll" target="_blank" rel="noopener noreferrer">
                       <Github className="mr-2 h-4 w-4" />
                       View on GitHub
                     </a>

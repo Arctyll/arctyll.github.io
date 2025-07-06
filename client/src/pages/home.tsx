@@ -6,34 +6,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Rocket, Code, ArrowRight, Github, Users, Zap, Calendar, Bell } from "lucide-react";
 
-interface Announcement {
-  id: string;
-  title: string;
-  content: string;
-  date: string;
-  type: string;
-  priority: string;
-  author: string;
-}
-
-interface AnnouncementData {
-  announcements: Announcement[];
-}
-
 export default function Home() {
-  const [announcements, setAnnouncements] = useState<AnnouncementData | null>(null);
 
   useEffect(() => {
     updatePageMeta({
-      title: "Arctyll - Minecraft Modding Platform",
+      title: "Arctyll - Minecraft Mod Developers",
       description: "Building the future of Minecraft modding with open-source innovation and community collaboration. Discover our mods, tools, and APIs.",
-      url: "https://arctyll.org/"
+      url: "https://arctyll.com/"
     });
-
-    fetch('/config/announcements.json')
-      .then(res => res.json())
-      .then((data: AnnouncementData) => setAnnouncements(data))
-      .catch(err => console.error('Failed to load announcements:', err));
   }, []);
 
   return (

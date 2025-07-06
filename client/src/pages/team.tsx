@@ -25,7 +25,7 @@ export default function Team() {
     updatePageMeta({
       title: "Our Team - Arctyll",
       description: "Meet the talented developers and contributors behind Arctyll's innovative Minecraft modding projects.",
-      url: "https://arctyll.org/team"
+      url: "https://arctyll.com/team"
     });
     
     fetch('/config/team.json')
@@ -83,7 +83,7 @@ export default function Team() {
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <a 
-                href="https://github.com/arctyll" 
+                href="https://github.com/Arctyll" 
                 className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
               >
                 View Our Projects

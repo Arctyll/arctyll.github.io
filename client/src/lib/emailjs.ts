@@ -13,13 +13,11 @@ interface EmailData {
 export const sendEmail = async (data: EmailData): Promise<void> => {
   return new Promise((resolve, reject) => {
     if (typeof window === 'undefined' || !window.emailjs) {
-      // For development/demo, simulate success
       console.log('Email simulation:', data);
       setTimeout(() => resolve(), 1000);
       return;
     }
-
-    // Initialize EmailJS with your public key
+    
     const publicKey = process.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
     const serviceId = process.env.VITE_EMAILJS_SERVICE_ID || "service_id";
     const templateId = process.env.VITE_EMAILJS_TEMPLATE_ID || "template_id";

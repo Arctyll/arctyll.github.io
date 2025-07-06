@@ -34,7 +34,7 @@ export default function Downloads() {
     updatePageMeta({
       title: "Downloads - Arctyll",
       description: "Download the latest Arctyll mods, clients, and tools for Minecraft. All projects are open-source and free.",
-      url: "https://arctyll.org/downloads"
+      url: "https://arctyll.com/downloads"
     });
 
     fetch('/config/downloads.json')

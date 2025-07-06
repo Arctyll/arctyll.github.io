@@ -8,7 +8,7 @@ interface Project {
   name: string;
   description: string;
   category: string;
-  status: "alpha" | "beta" | "stable";
+  status: "alpha" | "beta" | "stable" | "not released";
   githubUrl: string;
   downloadUrl?: string;
   docsUrl?: string;
@@ -30,7 +30,7 @@ export default function Projects() {
     updatePageMeta({
       title: "Projects - Arctyll",
       description: "Explore Arctyll's innovative Minecraft mods, clients, and development tools. All projects are open-source and community-driven.",
-      url: "https://arctyll.org/projects"
+      url: "https://arctyll.com/projects"
     });
     
     fetch('/config/projects.json')

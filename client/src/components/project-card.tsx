@@ -7,7 +7,7 @@ import ChangelogModal from "@/components/changelog-modal";
 interface Project {
   name: string;
   description: string;
-  status: "alpha" | "beta" | "stable";
+  status: "alpha" | "beta" | "stable" | "not released";
   githubUrl: string;
   downloadUrl?: string;
   docsUrl?: string;
@@ -19,7 +19,6 @@ interface ProjectCardProps {
   index: number;
 }
 
-// Helper function to convert project name to ID format
 const getModId = (name: string): string => {
   return name.toLowerCase().replace(/\s+/g, '-');
 };
@@ -33,6 +32,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         return "bg-blue-500 hover:bg-blue-600";
       case "alpha":
         return "bg-orange-500 hover:bg-orange-600";
+      case "not released":
+        return "bg-red-500 hover:bg-red-600";
       default:
         return "bg-gray-500 hover:bg-gray-600";
     }

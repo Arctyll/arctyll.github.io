@@ -18,7 +18,7 @@ export default function Contact() {
     updatePageMeta({
       title: "Contact Us - Arctyll",
       description: "Get in touch with the Arctyll team. We're here to help with questions, support, and collaboration opportunities.",
-      url: "https://arctyll.org/contact"
+      url: "https://arctyll.com/contact"
     });
   }, []);
 
