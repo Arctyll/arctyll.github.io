@@ -1,0 +1,22 @@
+{
+  "announcements": [
+    {
+      "id": "1",
+      "title": "Welcome to Arctyll",
+      "content": "We're excited to launch our new website! Arctyll is dedicated to creating innovative Minecraft mods and tools for the community.",
+      "date": "2025-01-06",
+      "type": "general",
+      "priority": "high",
+      "author": "Arctyll Team"
+    },
+    {
+      "id": "2", 
+      "title": "New Mod Release Coming Soon",
+      "content": "We're working on an exciting new mod that will revolutionize how you play Minecraft. Stay tuned for more updates!",
+      "date": "2025-01-05",
+      "type": "release",
+      "priority": "medium",
+      "author": "Development Team"
+    }
+  ]
+}

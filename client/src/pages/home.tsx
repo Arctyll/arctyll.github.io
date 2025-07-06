@@ -1,0 +1,71 @@
+import { useEffect, useState } from "react";
+import { updatePageMeta } from "@/lib/meta";
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Rocket, Code, ArrowRight, Github, Users, Zap, Calendar, Bell } from "lucide-react";
+
+interface Announcement {
+  id: string;
+  title: string;
+  content: string;
+  date: string;
+  type: string;
+  priority: string;
+  author: string;
+}
+
+interface AnnouncementData {
+  announcements: Announcement[];
+}
+
+export default function Home() {
+  const [announcements, setAnnouncements] = useState<AnnouncementData | null>(null);
+
+  useEffect(() => {
+    updatePageMeta({
+      title: "Arctyll - Minecraft Modding Platform",
+      description: "Building the future of Minecraft modding with open-source innovation and community collaboration. Discover our mods, tools, and APIs.",
+      url: "https://arctyll.org/"
+    });
+
+    fetch('/config/announcements.json')
+      .then(res => res.json())
+      .then((data: AnnouncementData) => setAnnouncements(data))
+      .catch(err => console.error('Failed to load announcements:', err));
+  }, []);
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center hero-gradient">
+      <div className="container mx-auto px-4 sm:px-6 text-center z-10">
+        <div data-aos="fade-up" data-aos-duration="1000">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <span className="gradient-text">Arctyll</span> —{" "}
+            <br className="hidden sm:block" />
+            <span>Changing the World!</span>
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto px-4">
+            Empowering Minecraft Modding Through Open Source.
+            <br className="hidden sm:block" />
+            <span className="block sm:inline">Crafting intelligent tools, shaping Minecraft's future, pixel by pixel.</span>
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+            <Link href="/team">
+              <Button size="lg" className="bg-gradient-to-r from-primary to-blue-500 hover:opacity-90">
+                <Rocket className="mr-2 h-5 w-5" />
+                Join Us
+              </Button>
+            </Link>
+            <Link href="/projects">
+              <Button variant="outline" size="lg">
+                <Code className="mr-2 h-5 w-5" />
+                View Projects
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

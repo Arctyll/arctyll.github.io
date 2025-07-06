@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": "getting-started-modding",
+      "title": "Getting Started with Minecraft Modding",
+      "excerpt": "Learn the basics of Minecraft modding and how to set up your development environment.",
+      "content": "# Getting Started with Minecraft Modding\n\nMinecraft modding is an exciting way to extend the game's functionality and create unique experiences. In this guide, we'll walk you through the essential steps to begin your modding journey.\n\n## Setting Up Your Environment\n\nFirst, you'll need to install the necessary tools:\n\n1. **Java Development Kit (JDK)** - Version 17 or higher\n2. **IntelliJ IDEA** or **Eclipse** - Popular IDEs for Java development\n3. **Minecraft Development Kit (MDK)** - Forge or Fabric MDK\n\n## Your First Mod\n\nStart with a simple \"Hello World\" mod to understand the basic structure...",
+      "author": "Arctyll Team",
+      "date": "2025-01-06",
+      "readTime": "8 min read",
+      "tags": ["tutorial", "beginner", "modding"],
+      "featured": true,
+      "gradient": "from-purple-500 to-blue-500"
+    },
+    {
+      "id": "mod-optimization-tips",
+      "title": "Performance Optimization for Minecraft Mods",
+      "excerpt": "Essential tips and techniques to make your Minecraft mods run smoothly and efficiently.",
+      "content": "# Performance Optimization for Minecraft Mods\n\nCreating mods that run efficiently is crucial for a good player experience. Here are some key optimization strategies...",
+      "author": "Performance Team",
+      "date": "2025-01-05",
+      "readTime": "12 min read",
+      "tags": ["optimization", "performance", "advanced"],
+      "featured": false,
+      "gradient": "from-green-500 to-teal-500"
+    },
+    {
+      "id": "community-spotlight",
+      "title": "Community Spotlight: Amazing Creations",
+      "excerpt": "Showcasing incredible projects and mods created by our amazing community members.",
+      "content": "# Community Spotlight\n\nOur community continues to amaze us with incredible creativity and innovation...",
+      "author": "Community Team",
+      "date": "2025-01-04",
+      "readTime": "6 min read",
+      "tags": ["community", "showcase", "features"],
+      "featured": false,
+      "gradient": "from-orange-500 to-red-500"
+    }
+  ]
+}

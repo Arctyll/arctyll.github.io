@@ -1,0 +1,46 @@
+🧱 General Goals:
+Make the site visually modern, professional, and clean.
+Stick to a dark-themed default design with smooth transitions.
+Use a nice Google Font like Outfit or Poppins.
+All content should be mobile-friendly and responsive.
+✅ Features to Add:
+1. Landing Page / Home
+Hero section with background animation or particles.
+A tagline like: "Empowering Minecraft Modding Through Open Source."
+2 call-to-action buttons: Join Us and View Projects.
+2. Projects Page
+Dropdown under Projects in navbar: Mods, Clients, APIs.
+On each subpage or section:
+Project name, description, status badge (Alpha/Beta/Stable).
+GitHub link and download button.
+Screenshots/GIFs carousel if possible.
+3. Team / Contributors Page
+Show team members with avatars, roles, and GitHub profile links.
+Use cards/grid layout for contributors.
+4. Open Source Commitment Page
+A page titled Our Commitment.
+Explain why Arctyll is open-source, with a brief philosophy.
+Mention contribution guidelines and the spirit of collaboration.
+5. Downloads Page
+List of downloadable projects (mods, clients, plugins).
+Support Minecraft version filtering and changelog display.
+Add SHA256 hash line and file sizes (you can hardcode examples).
+6. Announcements / Blog
+Add a blog/announcements page with update cards (hardcoded is fine).
+Each card can have a title, date, and summary.
+7. Contact Page
+Working contact form using EmailJS.
+Include fields: Name, Email, Message.
+Also add Discord and GitHub links as alternate contact options.
+8. Interactive UI Features
+Dark/light mode toggle.
+Smooth scrolling and animations.
+Hover effects on buttons, links, and project cards.
+Sticky and responsive navbar.
+9. Extras
+Animate on scroll (use AOS.js or simple CSS animation).
+Footer with © Arctyll, GitHub link, and social icons.
+
+
+Include a favicon and meta tags for SEO.
+✅ You can modify and structure the project in folders (/pages, /assets, /css, etc.). ✅ Please directly modify the repo structure and files. ✅ Do NOT use any frameworks like React, Next.js, or build tools like Webpack. Keep it GitHub Pages friendly
