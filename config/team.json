@@ -6,7 +6,7 @@
       "role": "Lead Developer",
       "description": "Full-stack developer with 5+ years of Minecraft modding experience. Specializes in core systems and performance optimization.",
       "githubUrl": "https://github.com/ClassyCoder1",
-      "avatar": "/api/placeholder/150/150",
+      "avatar": "https://mc-heads.net/avatar/ClassyCoder",
       "color": "bg-gradient-to-br from-purple-500 to-blue-500",
       "skills": ["Java", "Forge", "Fabric", "Performance"],
       "contributions": ["Fatigue+", "Veyzen Client", "API design"]
