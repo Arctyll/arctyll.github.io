@@ -1,17 +1,33 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { updatePageMeta } from "@/lib/meta";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart, Users, Code, Check, Github } from "lucide-react";
 
 export default function Commitment() {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     updatePageMeta({
       title: "Our Commitment - Arctyll",
       description: "Learn about Arctyll's commitment to open-source development, community collaboration, and transparency in Minecraft modding.",
       url: "https://arctyll.com/commitment"
     });
+
+    const timer = setTimeout(() => setLoading(false), 800);
+    return () => clearTimeout(timer);
   }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="w-12 h-12 border-4 border-t-transparent border-primary rounded-full animate-spin mx-auto" />
+          <p className="text-muted-foreground text-lg animate-pulse">Loading commitment...</p>
+        </div>
+      </div>
+    );
+  }
 
   const principles = [
     {
@@ -53,7 +69,7 @@ export default function Commitment() {
               Why Arctyll embraces open source development
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div data-aos="fade-right">
               <h2 className="text-2xl font-bold mb-6">Open Source Philosophy</h2>
@@ -71,7 +87,7 @@ export default function Commitment() {
                 ))}
               </div>
             </div>
-            
+
             <div data-aos="fade-left">
               <Card className="bg-card border-border">
                 <CardContent className="p-8">
@@ -84,7 +100,7 @@ export default function Commitment() {
                       </li>
                     ))}
                   </ul>
-                  
+
                   <Button asChild>
                     <a href="https://github.com/Arctyll" target="_blank" rel="noopener noreferrer">
                       <Github className="mr-2 h-4 w-4" />

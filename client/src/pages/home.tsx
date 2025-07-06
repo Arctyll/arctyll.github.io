@@ -2,20 +2,37 @@ import { useEffect, useState } from "react";
 import { updatePageMeta } from "@/lib/meta";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Rocket, Code, ArrowRight, Github, Users, Zap, Calendar, Bell } from "lucide-react";
+import { Rocket, Code } from "lucide-react";
 
 export default function Home() {
-
+  const [loading, setLoading] = useState(true);
+  
   useEffect(() => {
     updatePageMeta({
       title: "Arctyll - Minecraft Mod Developers",
       description: "Building the future of Minecraft modding with open-source innovation and community collaboration. Discover our mods, tools, and APIs.",
       url: "https://arctyll.com/"
     });
+    
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    
+    return () => clearTimeout(timeout);
   }, []);
-
+  
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background pt-20">
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center">
+            <div className="animate-pulse text-xl text-muted-foreground">Loading homepage...</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-gradient">
       <div className="container mx-auto px-4 sm:px-6 text-center z-10">

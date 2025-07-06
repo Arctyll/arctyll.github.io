@@ -134,7 +134,7 @@ export default function Navbar() {
                     <span className="text-lg font-medium cursor-pointer">Team</span>
                   </Link>
                   <Link href="/commitment">
-                    <span className="text-lg font-medium cursor-pointer">Our Commitment</span>
+                    <span className="text-lg font-medium cursor-pointer">Commitment</span>
                   </Link>
                   <Link href="/downloads">
                     <span className="text-lg font-medium cursor-pointer">Downloads</span>

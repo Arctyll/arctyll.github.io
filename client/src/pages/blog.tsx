@@ -25,9 +25,9 @@ interface BlogData {
 
 export default function Blog() {
   const [match, params] = useRoute("/blog/:slug");
-  const [blogData, setBlogData] = useState<BlogData | null>(null);
-  const [announcements, setAnnouncements] = useState<any>(null);
-
+  const [blogData, setBlogData] = useState < BlogData | null > (null);
+  const [announcements, setAnnouncements] = useState < any > (null);
+  
   useEffect(() => {
     updatePageMeta({
       title: "Blog & Announcements - Arctyll",
@@ -36,60 +36,54 @@ export default function Blog() {
     });
     
     Promise.all([
-      fetch('/config/blog-posts.json').then(res => res.json()),
-      fetch('/config/announcements.json').then(res => res.json())
-    ]).then(([blogData, announcementData]) => {
-      setBlogData(blogData);
-      setAnnouncements(announcementData);
-    }).catch(err => console.error('Failed to load data:', err));
+        fetch('/config/blog-posts.json').then(res => res.json()),
+        fetch('/config/announcements.json').then(res => res.json())
+      ])
+      .then(([blogData, announcementData]) => {
+        setBlogData(blogData);
+        setAnnouncements(announcementData);
+      })
+      .catch(err => console.error('Failed to load data:', err));
   }, []);
-
+  
   if (!blogData || !announcements) {
     return (
-      <div className="min-h-screen bg-background pt-20">
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center">
-            <div className="animate-pulse">Loading blog posts...</div>
-          </div>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="w-12 h-12 border-4 border-t-transparent border-primary rounded-full animate-spin mx-auto" />
+          <p className="text-muted-foreground text-lg animate-pulse">Loading blog & announcements...</p>
         </div>
       </div>
     );
   }
-
+  
   const blogPosts = blogData.posts.map(post => ({
-    title: post.title,
-    excerpt: post.excerpt,
-    date: new Date(post.date).toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    }),
-    readTime: post.readTime,
+    ...post,
     slug: post.id,
+    type: "blog",
+    rawDate: post.date,
     gradient: "from-green-500 to-teal-500",
-    type: 'blog'
   }));
-
+  
   const announcementPosts = announcements.announcements.map((announcement: any) => ({
     title: announcement.title,
     excerpt: announcement.content,
-    date: new Date(announcement.date).toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    date: new Date(announcement.date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     }),
+    rawDate: announcement.date,
     readTime: announcement.readTime,
     slug: `announcement-${announcement.id}`,
     gradient: 'from-green-500 to-teal-500',
     type: 'announcement'
   }));
-
+  
   const allPosts = [...blogPosts, ...announcementPosts].sort((a, b) => {
-    const dateA = new Date(a.date.includes(',') ? a.date : a.date);
-    const dateB = new Date(b.date.includes(',') ? b.date : b.date);
-    return dateB.getTime() - dateA.getTime();
+    return new Date(b.rawDate).getTime() - new Date(a.rawDate).getTime();
   });
-
+  
   if (match && params?.slug) {
     const post = allPosts.find(p => p.slug === params.slug);
     
@@ -110,7 +104,7 @@ export default function Blog() {
         </div>
       );
     }
-
+    
     return (
       <div className="min-h-screen bg-background pt-20">
         <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -120,9 +114,9 @@ export default function Blog() {
               Back to Blog
             </Button>
           </Link>
-          
+
           <Card>
-            <div className={`h-64 bg-gradient-to-r from-green-500 to-teal-500`} />
+            <div className={`h-64 bg-gradient-to-r ${post.gradient}`} />
             <CardContent className="p-8">
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
                 <div className="flex items-center">
@@ -139,14 +133,14 @@ export default function Blog() {
                   </span>
                 )}
               </div>
-              
+
               <h1 className="text-3xl md:text-4xl font-bold mb-6">{post.title}</h1>
-              
+
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   {post.excerpt}
                 </p>
-                
+
                 {post.type === 'blog' ? (
                   <div className="mt-8 space-y-6">
                     <p>This is a sample blog post content. In a real application, you would store the full content in your configuration and display it here.</p>
@@ -165,7 +159,7 @@ export default function Blog() {
       </div>
     );
   }
-
+  
   return (
     <div className="min-h-screen bg-background pt-20">
       <div className="container mx-auto px-4 py-8">
@@ -194,14 +188,14 @@ export default function Blog() {
               Want to be the first to know about new releases, updates, and community events?
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <a 
-                href="https://github.com/arctyll" 
+              <a
+                href="https://github.com/Arctyll"
                 className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
               >
                 Follow on GitHub
               </a>
-              <a 
-                href="/contact" 
+              <a
+                href="/contact"
                 className="inline-flex items-center px-6 py-3 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/90 transition-colors"
               >
                 Join Our Community
