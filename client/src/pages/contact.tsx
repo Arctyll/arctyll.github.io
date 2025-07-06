@@ -4,41 +4,65 @@ import { useToast } from "@/hooks/use-toast";
 import { sendEmail } from "@/lib/emailjs";
 import { updatePageMeta } from "@/lib/meta";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { Mail, MessageSquare, Github, Send, Code, Download, Users } from "lucide-react";
+import {
+  Mail,
+  MessageSquare,
+  Github,
+  Send,
+  Code,
+  Download,
+  Users,
+} from "lucide-react";
 import { Link } from "wouter";
 
 export default function Contact() {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const { toast } = useToast();
-  const [isLoading, setIsLoading] = useState(false);
-  
+  const [loading, setLoading] = useState(true);
+  const [sending, setSending] = useState(false);
+
   useEffect(() => {
     updatePageMeta({
       title: "Contact Us - Arctyll",
-      description: "Get in touch with the Arctyll team. We're here to help with questions, support, and collaboration opportunities.",
-      url: "https://arctyll.com/contact"
+      description:
+        "Get in touch with the Arctyll team. We're here to help with questions, support, and collaboration opportunities.",
+      url: "https://arctyll.com/contact",
     });
+
+    const timer = setTimeout(() => setLoading(false), 800);
+    return () => clearTimeout(timer);
   }, []);
-  
+
   const onSubmit = async (data: any) => {
-    setIsLoading(true);
     try {
+      setSending(true);
       await sendEmail({
         name: data.name,
         email: data.email,
         message: data.message,
       });
-      
+
       toast({
         title: "Message sent!",
         description: "Thank you for reaching out. We'll get back to you soon.",
       });
-      
+
       reset();
     } catch (error) {
       toast({
@@ -47,10 +71,21 @@ export default function Contact() {
         variant: "destructive",
       });
     } finally {
-      setIsLoading(false);
+      setSending(false);
     }
   };
-  
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="w-12 h-12 border-4 border-t-transparent border-primary rounded-full animate-spin mx-auto" />
+          <p className="text-muted-foreground text-lg animate-pulse">Loading commitment...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background pt-20">
       <div className="container mx-auto px-4 py-8">
@@ -85,7 +120,11 @@ export default function Contact() {
                       placeholder="Your name"
                       {...register("name", { required: "Name is required" })}
                     />
-                    {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
+                    {errors.name && (
+                      <p className="text-sm text-destructive">
+                        {errors.name.message}
+                      </p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
@@ -97,11 +136,15 @@ export default function Contact() {
                         required: "Email is required",
                         pattern: {
                           value: /^\S+@\S+$/i,
-                          message: "Invalid email address"
-                        }
+                          message: "Invalid email address",
+                        },
                       })}
                     />
-                    {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
+                    {errors.email && (
+                      <p className="text-sm text-destructive">
+                        {errors.email.message}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -112,7 +155,11 @@ export default function Contact() {
                     placeholder="What's this about?"
                     {...register("subject", { required: "Subject is required" })}
                   />
-                  {errors.subject && <p className="text-sm text-destructive">{errors.subject.message}</p>}
+                  {errors.subject && (
+                    <p className="text-sm text-destructive">
+                      {errors.subject.message}
+                    </p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -123,11 +170,15 @@ export default function Contact() {
                     rows={6}
                     {...register("message", { required: "Message is required" })}
                   />
-                  {errors.message && <p className="text-sm text-destructive">{errors.message.message}</p>}
+                  {errors.message && (
+                    <p className="text-sm text-destructive">
+                      {errors.message.message}
+                    </p>
+                  )}
                 </div>
 
-                <Button type="submit" className="w-full" disabled={isLoading}>
-                  {isLoading ? (
+                <Button type="submit" className="w-full" disabled={sending}>
+                  {sending ? (
                     <span className="animate-pulse">Sending your message...</span>
                   ) : (
                     <>
@@ -153,7 +204,10 @@ export default function Contact() {
               <CardContent className="space-y-4">
                 <div>
                   <h4 className="font-medium mb-2">Email</h4>
-                  <a href="mailto:arctyllofficial@gmail.com" className="text-primary hover:underline">
+                  <a
+                    href="mailto:arctyllofficial@gmail.com"
+                    className="text-primary hover:underline"
+                  >
                     arctyllofficial@gmail.com
                   </a>
                 </div>
@@ -180,10 +234,10 @@ export default function Contact() {
                   <p className="text-muted-foreground text-sm mb-2">
                     Report bugs, request features, or contribute to our projects
                   </p>
-                  <a 
-                    href="https://github.com/Arctyll" 
+                  <a
+                    href="https://github.com/Arctyll"
                     className="text-primary hover:underline"
-                    target="_blank" 
+                    target="_blank"
                     rel="noopener noreferrer"
                   >
                     github.com/Arctyll
@@ -203,36 +257,66 @@ export default function Contact() {
             <Card>
               <CardHeader>
                 <CardTitle>Quick Links</CardTitle>
-                <CardDescription>Explore different sections of our website</CardDescription>
+                <CardDescription>
+                  Explore different sections of our website
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 gap-3">
-                  <Link href="/projects" className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group">
+                  <Link
+                    href="/projects"
+                    className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group"
+                  >
                     <Code className="h-4 w-4 text-primary mr-3" />
                     <div>
-                      <div className="font-medium group-hover:text-primary transition-colors">View Projects</div>
-                      <div className="text-xs text-muted-foreground">Explore our mods and tools</div>
+                      <div className="font-medium group-hover:text-primary transition-colors">
+                        View Projects
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Explore our mods and tools
+                      </div>
                     </div>
                   </Link>
-                  <Link href="/downloads" className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group">
+                  <Link
+                    href="/downloads"
+                    className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group"
+                  >
                     <Download className="h-4 w-4 text-primary mr-3" />
                     <div>
-                      <div className="font-medium group-hover:text-primary transition-colors">Downloads</div>
-                      <div className="text-xs text-muted-foreground">Get the latest releases</div>
+                      <div className="font-medium group-hover:text-primary transition-colors">
+                        Downloads
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Get the latest releases
+                      </div>
                     </div>
                   </Link>
-                  <Link href="/team" className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group">
+                  <Link
+                    href="/team"
+                    className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group"
+                  >
                     <Users className="h-4 w-4 text-primary mr-3" />
                     <div>
-                      <div className="font-medium group-hover:text-primary transition-colors">Our Team</div>
-                      <div className="text-xs text-muted-foreground">Meet the developers</div>
+                      <div className="font-medium group-hover:text-primary transition-colors">
+                        Our Team
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Meet the developers
+                      </div>
                     </div>
                   </Link>
-                  <Link href="/blog" className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group">
+                  <Link
+                    href="/blog"
+                    className="flex items-center p-3 rounded-lg bg-primary/5 hover:bg-primary/10 transition-colors group"
+                  >
                     <MessageSquare className="h-4 w-4 text-primary mr-3" />
                     <div>
-                      <div className="font-medium group-hover:text-primary transition-colors">Blog</div>
-                      <div className="text-xs text-muted-foreground">Latest news and updates</div>
+                      <div className="font-medium group-hover:text-primary transition-colors">
+                        Blog
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Latest news and updates
+                      </div>
                     </div>
                   </Link>
                 </div>
