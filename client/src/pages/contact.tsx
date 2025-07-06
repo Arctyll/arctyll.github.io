@@ -190,11 +190,11 @@ export default function Contact() {
                     Find guides, tutorials, and API documentation
                   </p>
                   <a 
-                    className="text-"
+                    className="text-secondary"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    docs.arctyll.com
+                    Currently Unavailable
                   </a>
                 </div>
               </CardContent>

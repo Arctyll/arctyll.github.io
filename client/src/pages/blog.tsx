@@ -66,7 +66,7 @@ export default function Blog() {
     }),
     readTime: post.readTime,
     slug: post.id,
-    gradient: post.gradient,
+    gradient: "from-green-500 to-teal-500",
     type: 'blog'
   }));
 
@@ -122,7 +122,7 @@ export default function Blog() {
           </Link>
           
           <Card>
-            <div className={`h-64 bg-gradient-to-r ${post.gradient}`} />
+            <div className={`h-64 bg-gradient-to-r from-green-500 to-teal-500`} />
             <CardContent className="p-8">
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
                 <div className="flex items-center">
