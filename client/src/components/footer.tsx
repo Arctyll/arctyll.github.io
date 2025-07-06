@@ -24,7 +24,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center space-x-4">
               <a 
-                href="https://github.com/arctyll" 
+                href="https://github.com/Arctyll" 
                 className="text-muted-foreground hover:text-primary transition-colors duration-300"
                 aria-label="GitHub"
               >
@@ -111,7 +111,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <a 
-                  href="https://docs.arctyll.org" 
+                  href="#" 
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Documentation
@@ -119,7 +119,7 @@ export default function Footer() {
               </li>
               <li>
                 <a 
-                  href="https://github.com/arctyll" 
+                  href="https://github.com/Arctyll" 
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Source Code
@@ -127,7 +127,7 @@ export default function Footer() {
               </li>
               <li>
                 <a 
-                  href="https://github.com/arctyll/arctyll/issues" 
+                  href="https://github.com/Arctyll" 
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Report Issues
@@ -135,7 +135,7 @@ export default function Footer() {
               </li>
               <li>
                 <a 
-                  href="https://github.com/arctyll/arctyll/blob/main/CONTRIBUTING.md" 
+                  href="https://github.com/Arctyll/.github/blob/main/CONTRIBUTING.md" 
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   Contributing

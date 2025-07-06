@@ -176,12 +176,12 @@ export default function Contact() {
                     Report bugs, request features, or contribute to our projects
                   </p>
                   <a 
-                    href="https://github.com/arctyll"
+                    href="https://github.com/Arctyll"
                     className="text-primary hover:underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    github.com/arctyll
+                    github.com/Arctyll
                   </a>
                 </div>
                 <div>
