@@ -6,7 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import BirthdayCard from "@/components/birthday-card";
-import birthdayData from "@/config/birthday.config.json";
+import birthdayData from "@/config/birthday.json";
 
 export default function HappyBirthday() {
   const { theme } = useTheme();
