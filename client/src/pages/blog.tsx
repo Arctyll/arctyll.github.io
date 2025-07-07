@@ -17,6 +17,7 @@ interface BlogPost {
   tags: string[];
   featured: boolean;
   gradient: string;
+  image?: string;
 }
 
 interface BlogData {
@@ -25,68 +26,71 @@ interface BlogData {
 
 export default function Blog() {
   const [match, params] = useRoute("/blog/:slug");
-  const [blogData, setBlogData] = useState < BlogData | null > (null);
-  const [announcements, setAnnouncements] = useState < any > (null);
-  
+  const [blogData, setBlogData] = useState<BlogData | null>(null);
+  const [announcements, setAnnouncements] = useState<any>(null);
+
   useEffect(() => {
     updatePageMeta({
       title: "Blog & Announcements - Arctyll",
-      description: "Stay updated with the latest news, tutorials, and insights from the Arctyll development team and community.",
-      url: "https://arctyll.com/blog"
+      description:
+        "Stay updated with the latest news, tutorials, and insights from the Arctyll development team and community.",
+      url: "https://arctyll.com/blog",
     });
-    
+
     Promise.all([
-        fetch('/config/blog-posts.json').then(res => res.json()),
-        fetch('/config/announcements.json').then(res => res.json())
-      ])
+      fetch("/config/blog-posts.json").then((res) => res.json()),
+      fetch("/config/announcements.json").then((res) => res.json()),
+    ])
       .then(([blogData, announcementData]) => {
         setBlogData(blogData);
         setAnnouncements(announcementData);
       })
-      .catch(err => console.error('Failed to load data:', err));
+      .catch((err) => console.error("Failed to load data:", err));
   }, []);
-  
+
   if (!blogData || !announcements) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center space-y-4">
           <div className="w-12 h-12 border-4 border-t-transparent border-primary rounded-full animate-spin mx-auto" />
-          <p className="text-muted-foreground text-lg animate-pulse">Loading blog & announcements...</p>
+          <p className="text-muted-foreground text-lg animate-pulse">
+            Loading blog & announcements...
+          </p>
         </div>
       </div>
     );
   }
-  
-  const blogPosts = blogData.posts.map(post => ({
+
+  const blogPosts = blogData.posts.map((post) => ({
     ...post,
     slug: post.id,
     type: "blog",
     rawDate: post.date,
-    gradient: "from-green-500 to-teal-500",
   }));
-  
+
   const announcementPosts = announcements.announcements.map((announcement: any) => ({
     title: announcement.title,
     excerpt: announcement.content,
-    date: new Date(announcement.date).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    date: new Date(announcement.date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     }),
     rawDate: announcement.date,
     readTime: announcement.readTime,
     slug: `announcement-${announcement.id}`,
-    gradient: 'from-green-500 to-teal-500',
-    type: 'announcement'
+    gradient: "from-blue-500 to-purple-500",
+    image: announcement.image || undefined,
+    type: "announcement",
   }));
-  
-  const allPosts = [...blogPosts, ...announcementPosts].sort((a, b) => {
-    return new Date(b.rawDate).getTime() - new Date(a.rawDate).getTime();
-  });
-  
+
+  const allPosts = [...blogPosts, ...announcementPosts].sort(
+    (a, b) => new Date(b.rawDate).getTime() - new Date(a.rawDate).getTime()
+  );
+
   if (match && params?.slug) {
-    const post = allPosts.find(p => p.slug === params.slug);
-    
+    const post = allPosts.find((p) => p.slug === params.slug);
+
     if (!post) {
       return (
         <div className="min-h-screen bg-background pt-20">
@@ -104,7 +108,7 @@ export default function Blog() {
         </div>
       );
     }
-    
+
     return (
       <div className="min-h-screen bg-background pt-20">
         <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -116,7 +120,18 @@ export default function Blog() {
           </Link>
 
           <Card>
-            <div className={`h-64 bg-gradient-to-r ${post.gradient}`} />
+            <div
+              className="h-64 bg-cover bg-center relative"
+              style={{
+                backgroundImage: post.image
+                  ? `linear-gradient(to right, var(--tw-gradient-stops)), url(${post.image})`
+                  : `linear-gradient(to right, var(--tw-gradient-stops))`,
+              }}
+            >
+              <div
+                className={`absolute inset-0 bg-gradient-to-r ${post.gradient} opacity-80`}
+              />
+            </div>
             <CardContent className="p-8">
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
                 <div className="flex items-center">
@@ -141,7 +156,7 @@ export default function Blog() {
                   {post.excerpt}
                 </p>
 
-                {post.type === 'blog' ? (
+                {post.type === "blog" ? (
                   <div className="mt-8 space-y-6">
                     <p>This is a sample blog post content. In a real application, you would store the full content in your configuration and display it here.</p>
                     <p>You can add more detailed content, code examples, images, and other rich media to make your blog posts more engaging.</p>
@@ -159,7 +174,7 @@ export default function Blog() {
       </div>
     );
   }
-  
+
   return (
     <div className="min-h-screen bg-background pt-20">
       <div className="container mx-auto px-4 py-8">

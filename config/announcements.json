@@ -4,11 +4,12 @@
       "id": "1",
       "title": "Welcome to Arctyll",
       "content": "We're excited to launch our new website! Arctyll is dedicated to creating innovative Minecraft mods and tools for the community.",
-      "date": "2025-07-06",
+      "date": "2025-07-07",
       "readTime": "1 min read",
       "type": "general",
       "priority": "high",
-      "author": "Arctyll Team"
+      "author": "Arctyll Team",
+      "image": ""
     }
   ]
 }

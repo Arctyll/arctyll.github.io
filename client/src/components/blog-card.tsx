@@ -10,6 +10,7 @@ interface BlogPost {
   readTime: string;
   slug: string;
   gradient: string;
+  image ? : string;
 }
 
 interface BlogCardProps {
@@ -19,12 +20,22 @@ interface BlogCardProps {
 
 export default function BlogCard({ post, index }: BlogCardProps) {
   return (
-    <Card 
-      className="card-hover bg-card border-border overflow-hidden" 
-      data-aos="fade-up" 
+    <Card
+      className="card-hover bg-card border-border overflow-hidden"
+      data-aos="fade-up"
       data-aos-delay={index * 100}
     >
-      <div className={`h-48 bg-gradient-to-r ${post.gradient}`} />
+      <div
+        className="h-48 bg-cover bg-center relative"
+        style={{
+          backgroundImage: post.image
+            ? `linear-gradient(to right, var(--tw-gradient-stops)), url(${post.image})`
+            : `linear-gradient(to right, var(--tw-gradient-stops))`,
+        }}
+      >
+        <div className={`absolute inset-0 bg-gradient-to-r ${post.gradient} opacity-80`} />
+      </div>
+
       <CardContent className="p-6">
         <div className="flex items-center text-sm text-muted-foreground mb-3">
           <Calendar className="mr-2 h-4 w-4" />
