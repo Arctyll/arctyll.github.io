@@ -17,14 +17,9 @@ export default function HappyBirthday() {
     });
   }, []);
   
-  const backgroundClass =
-    theme === "dark" ?
-    "bg-gradient-to-br from-[#1e1e2f] via-[#2c2c3d] to-[#12121b]" :
-    "bg-gradient-to-br from-[#fdfbfb] via-[#ebedee] to-[#e2e2e2]";
-  
   return (
     <section
-      className={`relative min-h-screen flex items-center justify-center px-6 ${backgroundClass} transition-colors duration-500`}
+      className={`relative min-h-screen flex items-center justify-center hero-gradient`}
     >
       <div className="text-center space-y-6 z-10 max-w-2xl">
         <div className="flex justify-center">
@@ -37,12 +32,12 @@ export default function HappyBirthday() {
           </div>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight">
+        <h1 className="gradient-text font-extrabold leading-tight">
           <span className="text-primary">Happy Birthday, {name}! 🎉</span>
         </h1>
 
         <p className="text-muted-foreground text-lg sm:text-xl">
-          Today we celebrate our amazing teammate, <strong>{ign}</strong>.
+          Today we celebrate the birthday of our amazing teammate, <strong>{ign}</strong>.
           <br />
           Wishing you another year of success, creativity, and fun!
         </p>
