@@ -1,26 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { updatePageMeta } from "@/lib/meta";
 import { useTheme } from "@/components/theme-provider";
 import { Gift, PartyPopper } from "lucide-react";
+import BirthdayCard from "@/components/birthday-card";
+import birthdayData from "@/config/birthday.json";
 
 export default function HappyBirthday() {
   const { theme } = useTheme();
-  const name = "Disburial";
-  const ign = "Disburial";
+  const { name, ign } = birthdayData.birthdayPerson;
   const avatarUrl = `https://mc-heads.net/avatar/${ign}/160`;
   
   useEffect(() => {
     updatePageMeta({
       title: `Happy Birthday ${name}! 🎉`,
       description: `Wishing ${name} a fantastic birthday from the Arctyll team!`,
-      url: "https://arctyll.com/birthday",
+      url: "https://arctyll.com/birthday"
+    });
+  }, []);
+  
+  useEffect(() => {
+    import("aos").then((AOS) => {
+      AOS.init({ once: true, duration: 800 });
     });
   }, []);
   
   return (
-    <section
-      className={`relative min-h-screen flex items-center justify-center hero-gradient`}
-    >
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 hero-gradient">
       <div className="text-center space-y-6 z-10 max-w-2xl">
         <div className="flex justify-center">
           <div className="rounded-full border-4 border-primary shadow-lg p-1 bg-background transition-all duration-500">
@@ -32,8 +37,8 @@ export default function HappyBirthday() {
           </div>
         </div>
 
-        <h1 className="gradient-text font-extrabold leading-tight">
-          <span className="text-primary">Happy Birthday, {name}! 🎉</span>
+        <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight gradient-text">
+          Happy Birthday, {name}! 🎉
         </h1>
 
         <p className="text-muted-foreground text-lg sm:text-xl">
@@ -48,9 +53,16 @@ export default function HappyBirthday() {
         </div>
       </div>
 
-      {/* Optional confetti blob or particle effect */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-        <div className="w-full h-full bg-[url('/confetti.svg')] bg-cover bg-center"></div>
+      {/* Animated Messages */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 z-10">
+        {birthdayData.messages.map((msg, i) => (
+          <BirthdayCard key={i} message={msg} index={i} />
+        ))}
+      </div>
+
+      {/* Animated Confetti */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="w-full h-full animate-confetti bg-[url('/confetti.svg')] bg-repeat opacity-30 mix-blend-overlay"></div>
       </div>
     </section>
   );

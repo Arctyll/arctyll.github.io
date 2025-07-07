@@ -12,7 +12,7 @@ import Commitment from "@/pages/commitment";
 import Downloads from "@/pages/downloads";
 import Blog from "@/pages/blog";
 import Contact from "@/pages/contact";
-import HappyBirthday from "@/pages/disburialbirthday";
+import HappyBirthday from "@/pages/birthday";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Particles from "@/components/particles";

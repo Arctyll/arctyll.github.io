@@ -1,0 +1,24 @@
+{
+  "birthdayPerson": {
+    "name": "Disburial",
+    "ign": "Disburial"
+  },
+  "messages": [
+    {
+      "name": "ClassyCoder",
+      "role": "Founder",
+      "description": "Happy birthday, Disburial! Your code inspires us all!",
+      "githubUrl": "https://github.com/ClassyCoder1",
+      "color": "#8B5CF6",
+      "mcIgn": "ClassyCoder"
+    },
+    {
+      "name": "SigmaCat",
+      "role": "Backend Dev",
+      "description": "Wishing you an amazing day filled with happiness!",
+      "githubUrl": "https://github.com/SigmaCat",
+      "color": "#22D3EE",
+      "mcIgn": "SigmaCat_"
+    }
+  ]
+}
