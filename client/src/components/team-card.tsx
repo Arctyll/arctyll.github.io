@@ -29,8 +29,8 @@ export default function TeamCard({ member, index }: TeamCardProps) {
           className={`w-24 h-24 rounded-full mx-auto mb-4 border-4 bg-gradient-to-br from-purple-500 to-blue-500 overflow-hidden`}
         >
           <img
-            src={`https://mc-heads.net/avatar/${member.mcIgn}`}
-            alt={`${member.mcIGN}'s avatar`}
+            src={`https://mc-heads.net/avatar/${member.mcIgn}/160`}
+            alt={`${member.mcIgn}'s avatar`}
             className="w-full h-full object-cover"
           />
         </div>
