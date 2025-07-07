@@ -12,10 +12,7 @@
       "featured": true,
       "tags": ["qol"],
       "mcVersions": ["1.8.9"],
-      "modLoader": ["forge"],
-      "logo": "/attached_assets/arctyll_logo_1751777151160.png",
-      "features": "Test",
-      "slug": "fatigue-plus"
+      "modLoader": ["forge"]
     },
     {
       "id": "veyzen-client",
@@ -29,10 +26,7 @@
       "featured": true,
       "tags": ["qol", "performance"],
       "mcVersions": ["1.8.9"],
-      "modLoader": ["forge"],
-      "logo": "/attached_assets/arctyll_logo_1751777151160.png",
-      "features": "Test",
-      "slug": "veyzen"
+      "modLoader": ["forge"]
     }
   ]
 }

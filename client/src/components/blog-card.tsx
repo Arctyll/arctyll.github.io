@@ -10,7 +10,6 @@ interface BlogPost {
   readTime: string;
   slug: string;
   gradient: string;
-  image ? : string;
 }
 
 interface BlogCardProps {
@@ -25,17 +24,7 @@ export default function BlogCard({ post, index }: BlogCardProps) {
       data-aos="fade-up"
       data-aos-delay={index * 100}
     >
-      <div
-        className="h-48 bg-cover bg-center relative"
-        style={{
-          backgroundImage: post.image
-            ? `linear-gradient(to right, var(--tw-gradient-stops)), url(${post.image})`
-            : `linear-gradient(to right, var(--tw-gradient-stops))`,
-        }}
-      >
-        <div className={`absolute inset-0 bg-gradient-to-r ${post.gradient} opacity-80`} />
-      </div>
-
+      <div className={`h-48 bg-gradient-to-r ${post.gradient}`} />
       <CardContent className="p-6">
         <div className="flex items-center text-sm text-muted-foreground mb-3">
           <Calendar className="mr-2 h-4 w-4" />
@@ -43,10 +32,15 @@ export default function BlogCard({ post, index }: BlogCardProps) {
           <span className="mx-2">•</span>
           <span>{post.readTime}</span>
         </div>
+
         <h3 className="text-xl font-bold mb-3">{post.title}</h3>
         <p className="text-muted-foreground mb-4">{post.excerpt}</p>
+
         <Link href={`/blog/${post.slug}`}>
-          <Button variant="ghost" className="p-0 h-auto font-medium text-primary hover:text-primary/80">
+          <Button
+            variant="ghost"
+            className="p-0 h-auto font-medium text-primary hover:text-primary/80"
+          >
             Read More <ArrowRight className="ml-1 h-4 w-4" />
           </Button>
         </Link>

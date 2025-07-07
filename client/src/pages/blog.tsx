@@ -17,7 +17,6 @@ interface BlogPost {
   tags: string[];
   featured: boolean;
   gradient: string;
-  image?: string;
 }
 
 interface BlogData {
@@ -66,27 +65,29 @@ export default function Blog() {
     slug: post.id,
     type: "blog",
     rawDate: post.date,
+    gradient: "from-green-500 to-teal-500",
   }));
 
-  const announcementPosts = announcements.announcements.map((announcement: any) => ({
-    title: announcement.title,
-    excerpt: announcement.content,
-    date: new Date(announcement.date).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }),
-    rawDate: announcement.date,
-    readTime: announcement.readTime,
-    slug: `announcement-${announcement.id}`,
-    gradient: "from-blue-500 to-purple-500",
-    image: announcement.image || undefined,
-    type: "announcement",
-  }));
-
-  const allPosts = [...blogPosts, ...announcementPosts].sort(
-    (a, b) => new Date(b.rawDate).getTime() - new Date(a.rawDate).getTime()
+  const announcementPosts = announcements.announcements.map(
+    (announcement: any) => ({
+      title: announcement.title,
+      excerpt: announcement.content,
+      date: new Date(announcement.date).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
+      rawDate: announcement.date,
+      readTime: announcement.readTime,
+      slug: `announcement-${announcement.id}`,
+      gradient: "from-green-500 to-teal-500",
+      type: "announcement",
+    })
   );
+
+  const allPosts = [...blogPosts, ...announcementPosts].sort((a, b) => {
+    return new Date(b.rawDate).getTime() - new Date(a.rawDate).getTime();
+  });
 
   if (match && params?.slug) {
     const post = allPosts.find((p) => p.slug === params.slug);
@@ -120,18 +121,7 @@ export default function Blog() {
           </Link>
 
           <Card>
-            <div
-              className="h-64 bg-cover bg-center relative"
-              style={{
-                backgroundImage: post.image
-                  ? `linear-gradient(to right, var(--tw-gradient-stops)), url(${post.image})`
-                  : `linear-gradient(to right, var(--tw-gradient-stops))`,
-              }}
-            >
-              <div
-                className={`absolute inset-0 bg-gradient-to-r ${post.gradient} opacity-80`}
-              />
-            </div>
+            <div className={`h-64 bg-gradient-to-r ${post.gradient}`} />
             <CardContent className="p-8">
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
                 <div className="flex items-center">
@@ -149,7 +139,9 @@ export default function Blog() {
                 )}
               </div>
 
-              <h1 className="text-3xl md:text-4xl font-bold mb-6">{post.title}</h1>
+              <h1 className="text-3xl md:text-4xl font-bold mb-6">
+                {post.title}
+              </h1>
 
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <p className="text-lg text-muted-foreground leading-relaxed">
@@ -158,12 +150,22 @@ export default function Blog() {
 
                 {post.type === "blog" ? (
                   <div className="mt-8 space-y-6">
-                    <p>This is a sample blog post content. In a real application, you would store the full content in your configuration and display it here.</p>
-                    <p>You can add more detailed content, code examples, images, and other rich media to make your blog posts more engaging.</p>
+                    <p>
+                      This is a sample blog post content. In a real
+                      application, you would store the full content in your
+                      configuration and display it here.
+                    </p>
+                    <p>
+                      You can add more detailed content, code examples, images,
+                      and other rich media to make your blog posts more
+                      engaging.
+                    </p>
                   </div>
                 ) : (
                   <div className="mt-8">
-                    <h3 className="text-xl font-semibold mb-4">Full Announcement</h3>
+                    <h3 className="text-xl font-semibold mb-4">
+                      Full Announcement
+                    </h3>
                     <p>{post.excerpt}</p>
                   </div>
                 )}
@@ -184,7 +186,8 @@ export default function Blog() {
             <span className="gradient-text">Blog & Announcements</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Stay updated with the latest news, tutorials, and insights from the Arctyll development team
+            Stay updated with the latest news, tutorials, and insights from the
+            Arctyll development team
           </p>
         </div>
 
@@ -200,7 +203,8 @@ export default function Blog() {
           <div className="bg-card p-8 rounded-lg border border-border">
             <h3 className="text-2xl font-bold mb-4">Stay in the Loop</h3>
             <p className="text-muted-foreground mb-6">
-              Want to be the first to know about new releases, updates, and community events?
+              Want to be the first to know about new releases, updates, and
+              community events?
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <a
