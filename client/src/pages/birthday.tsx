@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { updatePageMeta } from "@/lib/meta";
 import { useTheme } from "@/components/theme-provider";
 import { Gift, PartyPopper } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import BirthdayCard from "@/components/birthday-card";
-import birthdayData from "@/config/birthday.json";
+import birthdayData from "@/config/birthday.config.json";
 
 export default function HappyBirthday() {
   const { theme } = useTheme();
@@ -16,16 +19,12 @@ export default function HappyBirthday() {
       description: `Wishing ${name} a fantastic birthday from the Arctyll team!`,
       url: "https://arctyll.com/birthday"
     });
-  }, []);
-  
-  useEffect(() => {
-    import("aos").then((AOS) => {
-      AOS.init({ once: true, duration: 800 });
-    });
+    
+    AOS.init({ once: true, duration: 800 });
   }, []);
   
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 hero-gradient">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 hero-gradient overflow-hidden">
       <div className="text-center space-y-6 z-10 max-w-2xl">
         <div className="flex justify-center">
           <div className="rounded-full border-4 border-primary shadow-lg p-1 bg-background transition-all duration-500">
@@ -53,14 +52,14 @@ export default function HappyBirthday() {
         </div>
       </div>
 
-      {/* Animated Messages */}
+      {/* Messages */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 z-10">
         {birthdayData.messages.map((msg, i) => (
           <BirthdayCard key={i} message={msg} index={i} />
         ))}
       </div>
 
-      {/* Animated Confetti */}
+      {/* Confetti Background */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="w-full h-full animate-confetti bg-[url('/confetti.svg')] bg-repeat opacity-30 mix-blend-overlay"></div>
       </div>
