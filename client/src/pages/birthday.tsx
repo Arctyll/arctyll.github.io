@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { updatePageMeta } from "@/lib/meta";
 import { useTheme } from "@/components/theme-provider";
 import { Gift, PartyPopper } from "lucide-react";
@@ -6,22 +6,59 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import BirthdayCard from "@/components/birthday-card";
-import birthdayData from "@/config/birthday.json";
+
+interface Message {
+  name: string;
+  role: string;
+  description: string;
+  githubUrl: string;
+  color: string;
+  mcIgn: string;
+}
+
+interface BirthdayData {
+  birthdayPerson: {
+    name: string;
+    ign: string;
+  };
+  messages: Message[];
+}
 
 export default function HappyBirthday() {
   const { theme } = useTheme();
-  const { name, ign } = birthdayData.birthdayPerson;
-  const avatarUrl = `https://mc-heads.net/avatar/${ign}/160`;
+  const [birthdayData, setBirthdayData] = useState < BirthdayData | null > (null);
   
   useEffect(() => {
     updatePageMeta({
-      title: `Happy Birthday ${name}! 🎉`,
-      description: `Wishing ${name} a fantastic birthday from the Arctyll team!`,
+      title: `Happy Birthday 🎉`,
+      description: `Wishing a fantastic birthday from the Arctyll team!`,
       url: "https://arctyll.com/birthday"
     });
     
     AOS.init({ once: true, duration: 800 });
+    
+    fetch("/config/birthday.json")
+      .then((res) => res.json())
+      .then((data: BirthdayData) => {
+        setBirthdayData(data);
+        updatePageMeta({
+          title: `Happy Birthday ${data.birthdayPerson.name}! 🎉`,
+          description: `Wishing ${data.birthdayPerson.name} a fantastic birthday from the Arctyll team!`
+        });
+      })
+      .catch((err) => console.error("Failed to load birthday data:", err));
   }, []);
+  
+  if (!birthdayData) {
+    return (
+      <section className="min-h-screen flex items-center justify-center bg-background">
+        <p className="animate-pulse text-muted-foreground">Loading birthday celebration...</p>
+      </section>
+    );
+  }
+  
+  const { name, ign } = birthdayData.birthdayPerson;
+  const avatarUrl = `https://mc-heads.net/avatar/${ign}/160`;
   
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 hero-gradient overflow-hidden">
