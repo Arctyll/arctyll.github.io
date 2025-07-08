@@ -8,6 +8,7 @@ interface TeamMember {
   role: string;
   description: string;
   githubUrl: string;
+  mcIgn: string;
   avatar: string;
   color: string;
   skills: string[];
@@ -50,6 +51,7 @@ export default function Team() {
     name: member.name,
     role: member.role,
     description: member.description,
+    mcIgn: member.mcIgn,
     githubUrl: member.githubUrl,
     color: member.color
   }));
