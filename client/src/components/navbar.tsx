@@ -41,9 +41,9 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="container relative mx-auto px-4 sm:px-6 py-3 sm:py-4">
+      <div className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between relative">
         {/* Left: Logo */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center">
+        <div className="flex items-center">
           <Link href="/">
             <div className="flex items-center space-x-2 group cursor-pointer">
               <img
@@ -60,7 +60,7 @@ export default function Navbar() {
         </div>
 
         {/* Center: Nav Items */}
-        <div className="hidden md:flex justify-center">
+        <div className="hidden md:flex justify-center flex-1">
           <div className="flex items-center space-x-8">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
@@ -84,7 +84,7 @@ export default function Navbar() {
         </div>
 
         {/* Right: Theme + Mobile Menu */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center space-x-4">
+        <div className="flex items-center space-x-4">
           <Button
             variant="ghost"
             size="icon"
