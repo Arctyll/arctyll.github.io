@@ -43,7 +43,8 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-x-8">
+          {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-2 group cursor-pointer">
               <img
@@ -58,7 +59,11 @@ export default function Navbar() {
             </div>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-6">
+          {/* Spacer between logo and nav items */}
+          <div className="flex-1 hidden md:block" />
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
                 <span
@@ -79,6 +84,7 @@ export default function Navbar() {
             ))}
           </div>
 
+          {/* Right Icons */}
           <div className="flex items-center space-x-4">
             <Button
               variant="ghost"
@@ -103,8 +109,10 @@ export default function Navbar() {
                   {navItems.map((item) => (
                     <Link key={item.href} href={item.href}>
                       <span
-                        className={`text-lg font-medium cursor-pointer ${
-                          isActive(item.href) ? "text-primary" : ""
+                        className={`text-lg font-medium cursor-pointer transition-colors duration-300 ${
+                          isActive(item.href)
+                            ? "text-primary border-b-2 border-primary pb-1"
+                            : "text-muted-foreground hover:text-primary"
                         }`}
                       >
                         {item.label}
