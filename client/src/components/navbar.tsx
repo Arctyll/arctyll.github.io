@@ -12,23 +12,27 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   
   const navItems = [
     { href: "/", label: "Home" },
+    { href: "/projects", label: "Projects" },
     { href: "/team", label: "Team" },
-    { href: "/projects", label: "Projects" }, // Moved here
     { href: "/commitment", label: "Commitment" },
     { href: "/downloads", label: "Downloads" },
     { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
+    { href: "/contact", label: "Contact" }
   ];
   
-  const isActive = (path: string) =>
-    location === path || (path !== "/" && location.startsWith(path));
+  const isActive = (path: string) => {
+    return location === path || (path !== "/" && location.startsWith(path));
+  };
   
   return (
     <nav
@@ -38,15 +42,14 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 py-4">
+      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-2 group cursor-pointer">
               <img
                 src={arctyllLogo}
                 alt="Arctyll"
-                className="w-8 h-8 object-contain transition-all duration-300 ease-out group-hover:scale-110 group-hover:rotate-12"
+                className="w-8 h-8 object-contain group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 ease-out"
               />
               <span className="text-xl font-bold gradient-text group-hover:scale-105 transition-transform duration-300">
                 Arctyll
@@ -55,38 +58,28 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-6">
-            {navItems.map((item) => {
-              const active = isActive(item.href);
-              return (
-                <Link key={item.href} href={item.href}>
+            {navItems.map((item) => (
+              <Link key={item.href} href={item.href}>
+                <span
+                  className={`relative cursor-pointer transition-all duration-300 group ${
+                    isActive(item.href)
+                      ? "text-primary font-medium"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
+                >
+                  {item.label}
                   <span
-                    className={`relative cursor-pointer px-1 pb-1 transition-all duration-300 group ${
-                      active
-                        ? "text-primary font-semibold"
-                        : "text-muted-foreground hover:text-primary"
+                    className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-blue-500 transition-all duration-300 group-hover:w-full ${
+                      isActive(item.href) ? "w-full" : "w-0"
                     }`}
-                  >
-                    {item.label}
-                    {/* Underline */}
-                    <span
-                      className={`absolute left-0 bottom-0 h-[2px] rounded-full bg-gradient-to-r from-primary to-blue-500 transition-all duration-300 ${
-                        active ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
-                    />
-                    {active && (
-                      <span className="absolute left-0 bottom-[-4px] w-full h-[2px] rounded-full bg-primary/10" />
-                    )}
-                  </span>
-                </Link>
-              );
-            })}
+                  ></span>
+                </span>
+              </Link>
+            ))}
           </div>
 
-          {/* Right Section */}
           <div className="flex items-center space-x-4">
-            {/* Theme Toggle */}
             <Button
               variant="ghost"
               size="icon"
@@ -99,7 +92,6 @@ export default function Navbar() {
               )}
             </Button>
 
-            {/* Mobile Nav */}
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">
@@ -107,14 +99,12 @@ export default function Navbar() {
                 </Button>
               </SheetTrigger>
               <SheetContent>
-                <div className="flex flex-col space-y-4 mt-6">
+                <div className="flex flex-col space-y-6 mt-6">
                   {navItems.map((item) => (
                     <Link key={item.href} href={item.href}>
                       <span
-                        className={`block py-2 text-lg font-medium cursor-pointer border-b border-border transition-colors ${
-                          isActive(item.href)
-                            ? "text-primary"
-                            : "hover:text-primary text-muted-foreground"
+                        className={`text-lg font-medium cursor-pointer ${
+                          isActive(item.href) ? "text-primary" : ""
                         }`}
                       >
                         {item.label}
@@ -127,9 +117,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
-      {/* Bottom Decorative Line */}
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-primary via-blue-500 to-purple-500 opacity-20 pointer-events-none" />
     </nav>
   );
 }
