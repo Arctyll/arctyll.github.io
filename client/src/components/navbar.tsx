@@ -38,50 +38,44 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between absolute-left">
+      <div className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Left: Logo */}
-        <div className="flex items-center space-x-2">
-          <Link href="/">
-            <div className="flex items-center group cursor-pointer">
-              <img
-                src={arctyllLogo}
-                alt="Arctyll"
-                className="w-6 h-6 object-contain group-hover:scale-110 group-hover:rotate-12 transition-all duration-300"
-              />
-              <span className="ml-2 text-lg font-bold bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent leading-none group-hover:scale-105 transition-transform duration-300">
-                Arctyll
-              </span>
-              <Sparkles className="h-4 w-4 mt-[1px] text-primary/70 opacity-0 group-hover:opacity-100 group-hover:rotate-180 transition-all duration-300 ml-1" />
-            </div>
-          </Link>
-        </div>
+        <Link href="/" className="flex items-center group cursor-pointer">
+          <img
+            src={arctyllLogo}
+            alt="Arctyll"
+            className="w-6 h-6 object-contain group-hover:scale-110 group-hover:rotate-12 transition-all duration-300"
+          />
+          <span className="ml-2 text-lg font-bold bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent leading-none group-hover:scale-105 transition-transform duration-300">
+            Arctyll
+          </span>
+          <Sparkles className="h-4 w-4 mt-[1px] text-primary/70 opacity-0 group-hover:opacity-100 group-hover:rotate-180 transition-all duration-300 ml-1" />
+        </Link>
 
-        {/* Center: Nav Links (hidden on mobile) */}
-        <div className="hidden md:flex flex-1 justify-center">
-          <div className="flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
+        {/* Center: Navigation links */}
+        <div className="hidden md:flex items-center space-x-8">
+          {navItems.map((item) => (
+            <Link key={item.href} href={item.href}>
+              <span
+                className={`relative cursor-pointer group font-medium transition-all duration-300 ${
+                  isActive(item.href)
+                    ? "bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent"
+                    : "text-muted-foreground hover:text-primary"
+                }`}
+              >
+                {item.label}
                 <span
-                  className={`relative cursor-pointer group font-medium transition-all duration-300 ${
-                    isActive(item.href)
-                      ? "bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent"
-                      : "text-muted-foreground hover:text-primary"
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-blue-500 transition-all duration-300 ${
+                    isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
                   }`}
-                >
-                  {item.label}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-blue-500 transition-all duration-300 ${
-                      isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                  />
-                </span>
-              </Link>
-            ))}
-          </div>
+                />
+              </span>
+            </Link>
+          ))}
         </div>
 
-        {/* Right: Theme + Mobile Menu */}
-        <div className="flex items-center absolute-right space-x-2">
+        {/* Right: Theme toggle & mobile menu */}
+        <div className="flex items-center space-x-2">
           <Button
             variant="ghost"
             size="icon"
