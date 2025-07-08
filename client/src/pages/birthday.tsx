@@ -61,7 +61,7 @@ export default function HappyBirthday() {
   const avatarUrl = `https://mc-heads.net/avatar/${ign}/160`;
   
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 hero-gradient overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-background overflow-hidden">
       <div className="text-center space-y-6 z-10 max-w-2xl">
         <div className="flex justify-center">
           <div className="rounded-full border-4 border-primary shadow-lg p-1 bg-background transition-all duration-500">
