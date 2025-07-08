@@ -38,8 +38,8 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Left: Logo */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        {/* Logo (Left) */}
         <Link href="/" className="flex items-center group cursor-pointer">
           <img
             src={arctyllLogo}
@@ -52,8 +52,8 @@ export default function Navbar() {
           <Sparkles className="h-4 w-4 mt-[1px] text-primary/70 opacity-0 group-hover:opacity-100 group-hover:rotate-180 transition-all duration-300 ml-1" />
         </Link>
 
-        {/* Center: Navigation links */}
-        <div className="hidden md:flex items-center space-x-8">
+        {/* Center Nav */}
+        <div className="hidden md:flex flex-1 justify-center items-center space-x-8">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href}>
               <span
@@ -74,7 +74,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Right: Theme toggle & mobile menu */}
+        {/* Right: Theme Toggle + Mobile */}
         <div className="flex items-center space-x-2">
           <Button
             variant="ghost"
@@ -88,6 +88,7 @@ export default function Navbar() {
             )}
           </Button>
 
+          {/* Mobile Menu */}
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden">
