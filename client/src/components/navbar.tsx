@@ -49,12 +49,12 @@ export default function Navbar() {
               <img
                 src={arctyllLogo}
                 alt="Arctyll"
-                className="w-8 h-8 object-contain group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 ease-out"
+                className="w-6 h-6 object-contain group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 ease-out"
               />
-              <span className="text-xl font-bold gradient-text group-hover:scale-105 transition-transform duration-300">
+              <span className="text-lg font-bold bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent leading-none group-hover:scale-105 transition-transform duration-300">
                 Arctyll
               </span>
-              <Sparkles className="h-4 w-4 text-primary/60 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:rotate-180" />
+              <Sparkles className="h-4 w-4 mt-[1px] text-primary/70 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:rotate-180" />
             </div>
           </Link>
         </div>
