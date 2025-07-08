@@ -3,19 +3,19 @@
     {
       "id": "classy",
       "name": "ClassyCoder",
-      "role": "Fullstack Developer",
+      "role": "Founder & Fullstack Developer",
       "description": "Full-stack developer with 2+ years of Minecraft modding experience. Specializes in core systems and performance optimization.",
       "githubUrl": "https://github.com/ClassyCoder1",
       "avatar": "https://mc-heads.net/avatar/ClassyCoder",
       "mcIgn": "ClassyCoder",
-      "skills": ["Java", "Forge", "Fabric", "Performance"],
+      "skills": ["Java", "Forge", "Fabric", "Performance", "Spigot/Bukkit"],
       "contributions": ["Fatigue+", "Veyzen Client"]
     },
     {
       "id": "sigmacat",
       "name": "SigmaCat",
-      "role": "Fullstack Developer",
-      "description": "...",
+      "role": "CEO & Fullstack Developer",
+      "description": "CEO, overseeing all the projects.",
       "githubUrl": "https://github.com/SigmaCat",
       "avatar": "https://mc-heads.net/avatar/SigmaCat_",
       "mcIgn": "SigmaCat_",
@@ -47,7 +47,7 @@
     {
       "id": "manglam",
       "name": "Manglam",
-      "role": "Fullstack Developer",
+      "role": "Fullstack Developer & UI/UX Designer",
       "description": "A student who's into UI/UX, web development, and building AI-powered tools.",
       "githubUrl": "https://github.com/Manglam",
       "avatar": "https://mc-heads.net/avatar/Terero_Gamer",
