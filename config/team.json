@@ -10,6 +10,50 @@
       "mcIgn": "ClassyCoder",
       "skills": ["Java", "Forge", "Fabric", "Performance"],
       "contributions": ["Fatigue+", "Veyzen Client"]
+    },
+    {
+      "id": "sigmacat",
+      "name": "SigmaCat",
+      "role": "Fullstack Developer",
+      "description": "...",
+      "githubUrl": "https://github.com/SigmaCat",
+      "avatar": "https://mc-heads.net/avatar/SigmaCat_",
+      "mcIgn": "SigmaCat_",
+      "skills": ["Java", "Forge", "Fabric", "Performance"],
+      "contributions": ["Veyzen Client"]
+    },
+    {
+      "id": "dark",
+      "name": "DarkGladiator26",
+      "role": "Fullstack Developer",
+      "description": "Full-stack developer, learning and understanding the implementation and effects of AI in different fields.",
+      "githubUrl": "https://github.com/DarkGladiator26",
+      "avatar": "https://mc-heads.net/avatar/DarkGladiator_ 26",
+      "mcIgn": "DarkGladiator_26",
+      "skills": ["Java", "Forge", "Fabric", "MEAN Stack", "SpringBoot", "Butkkit/Spigot"],
+      "contributions": ["Veyzen Client"]
+    },
+    {
+      "id": "whispering",
+      "name": "Diyansh",
+      "role": "Fullstack Developer",
+      "description": "Full-stack developer, studying about different languages and technologies.",
+      "githubUrl": "https://github.com/GinaFro1",
+      "avatar": "https://mc-heads.net/avatar/Diyansh",
+      "mcIgn": "Diyansh",
+      "skills": ["Java", "Forge", "Fabric", "Performance", "JavaScript", "Node JS", "Discord JS", "Bukkit/Spigot"],
+      "contributions": ["Veyzen Client"]
+    },
+    {
+      "id": "manglam",
+      "name": "Manglam",
+      "role": "Fullstack Developer",
+      "description": "A student who's into UI/UX, web development, and building AI-powered tools.",
+      "githubUrl": "https://github.com/Manglam",
+      "avatar": "https://mc-heads.net/avatar/Terero_Gamer",
+      "mcIgn": "Terero_Gamer",
+      "skills": ["Java", "Forge", "Fabric", "Performance", "HTML", "CSS", "JavaScript", "React", "Node JS", "Spigot/Bukkit/Paper"],
+      "contributions": ["Veyzen Client"]
     }
   ]
 }
