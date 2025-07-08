@@ -29,7 +29,6 @@ function Router() {
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={Blog} />
       <Route path="/contact" component={Contact} />
-      <Route path="/happybirthday" component={HappyBirthday} />
       <Route component={NotFound} />
     </Switch>
   );
