@@ -65,9 +65,9 @@ export default function Navbar() {
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
                 <span
-                  className={`relative cursor-pointer transition-all duration-300 group ${
+                  className={`relative cursor-pointer transition-all duration-300 group font-medium ${
                     isActive(item.href)
-                      ? "bg-gradient-to-r from-primary to-blue-500 font-medium"
+                      ? "bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent"
                       : "text-muted-foreground hover:text-primary"
                   }`}
                 >
