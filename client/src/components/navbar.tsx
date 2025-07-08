@@ -38,7 +38,7 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 h-16 flex items-center justify-between absolute-left">
         {/* Left: Logo */}
         <div className="flex items-center space-x-2">
           <Link href="/">
@@ -81,7 +81,7 @@ export default function Navbar() {
         </div>
 
         {/* Right: Theme + Mobile Menu */}
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center absolute-right space-x-2">
           <Button
             variant="ghost"
             size="icon"
