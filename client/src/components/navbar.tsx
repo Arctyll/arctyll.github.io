@@ -15,7 +15,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -27,7 +26,7 @@ export default function Navbar() {
     { href: "/commitment", label: "Commitment" },
     { href: "/downloads", label: "Downloads" },
     { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" }
+    { href: "/contact", label: "Contact" },
   ];
   
   const isActive = (path: string) => {
@@ -42,9 +41,9 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
-        <div className="flex items-center justify-between gap-x-8">
-          {/* Logo */}
+      <div className="container relative mx-auto px-4 sm:px-6 py-3 sm:py-4">
+        {/* Left: Logo */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center">
           <Link href="/">
             <div className="flex items-center space-x-2 group cursor-pointer">
               <img
@@ -58,18 +57,17 @@ export default function Navbar() {
               <Sparkles className="h-4 w-4 text-primary/60 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:rotate-180" />
             </div>
           </Link>
+        </div>
 
-          {/* Spacer between logo and nav items */}
-          <div className="flex-1 hidden md:block" />
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
+        {/* Center: Nav Items */}
+        <div className="hidden md:flex justify-center">
+          <div className="flex items-center space-x-8">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
                 <span
                   className={`relative cursor-pointer transition-all duration-300 group ${
                     isActive(item.href)
-                      ? "text-primary font-medium"
+                      ? "bg-gradient-to-r from-primary to-blue-500 font-medium"
                       : "text-muted-foreground hover:text-primary"
                   }`}
                 >
@@ -83,46 +81,46 @@ export default function Navbar() {
               </Link>
             ))}
           </div>
+        </div>
 
-          {/* Right Icons */}
-          <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              {theme === "dark" ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-            </Button>
+        {/* Right: Theme + Mobile Menu */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center space-x-4">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            {theme === "dark" ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
+          </Button>
 
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden">
-                  <Menu className="h-4 w-4" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent>
-                <div className="flex flex-col space-y-6 mt-6">
-                  {navItems.map((item) => (
-                    <Link key={item.href} href={item.href}>
-                      <span
-                        className={`text-lg font-medium cursor-pointer transition-colors duration-300 ${
-                          isActive(item.href)
-                            ? "text-primary border-b-2 border-primary pb-1"
-                            : "text-muted-foreground hover:text-primary"
-                        }`}
-                      >
-                        {item.label}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-4 w-4" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent>
+              <div className="flex flex-col space-y-6 mt-6">
+                {navItems.map((item) => (
+                  <Link key={item.href} href={item.href}>
+                    <span
+                      className={`text-lg font-medium cursor-pointer transition-colors duration-300 ${
+                        isActive(item.href)
+                          ? "text-primary border-b-2 border-primary pb-1"
+                          : "text-muted-foreground hover:text-primary"
+                      }`}
+                    >
+                      {item.label}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </nav>
