@@ -49,11 +49,13 @@ export default function Contact() {
   const onSubmit = async (data: any) => {
     try {
       setSending(true);
+      const currentTime = new Date().toLocaleString();
       await sendEmail({
         name: data.name,
         email: data.email,
         subject: data.subject,
         message: data.message,
+        time: currentTime,
       });
 
       toast({
