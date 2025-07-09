@@ -52,6 +52,7 @@ export default function Contact() {
       await sendEmail({
         name: data.name,
         email: data.email,
+        subject: data.subject,
         message: data.message,
       });
 
@@ -191,10 +192,10 @@ export default function Contact() {
                 <div>
                   <h4 className="font-medium mb-2">Email</h4>
                   <a
-                    href="mailto:arctyllofficial@gmail.com"
+                    href="mailto:team@arctyll.com"
                     className="text-primary hover:underline"
                   >
-                    arctyllofficial@gmail.com
+                    team@arctyll.com
                   </a>
                 </div>
                 <div>
