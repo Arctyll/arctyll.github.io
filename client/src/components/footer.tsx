@@ -166,7 +166,7 @@ export default function Footer() {
                 href="https://www.gnu.org/licenses/agpl-3.0.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="hover:text-primary underline"
+                className="hover:scale-105 font-bold gradient-text bg-clip-text text-transparent transition-transform duration-200"
               >
                 GNU AGPL v3.0
               </a>.
