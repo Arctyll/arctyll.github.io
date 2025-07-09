@@ -109,14 +109,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 </a>
               </Button>
             )}
-            {project.category === "mods" && (
-              <ChangelogModal modId={modId} modName={project.name}>
-                <Button variant="outline">
-                  <History className="mr-2 h-4 w-4" />
+            <ChangelogModal modId={modId} modName={project.name}>
+              <Button variant="outline">
+                <History className="mr-2 h-4 w-4" />
                   Changelog
-                </Button>
-              </ChangelogModal>
-            )}
+              </Button>
+            </ChangelogModal>
           </div>
         </div>
       </CardContent>
