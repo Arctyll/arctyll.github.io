@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Projects from "@/pages/projects";
+import About from "@/pages/about";
 import Team from "@/pages/team";
 import Commitment from "@/pages/commitment";
 import Downloads from "@/pages/downloads";
@@ -23,6 +24,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/projects" component={Projects} />
+      <Route path="/about" component={About} />
       <Route path="/team" component={Team} />
       <Route path="/commitment" component={Commitment} />
       <Route path="/downloads" component={Downloads} />
