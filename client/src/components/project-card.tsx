@@ -56,7 +56,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 {project.status}
               </Badge>
               {project.category && (
-                <Badge variant="outline" className="bg-blue-500/20 text-blue-400 border-blue-500/30 px-3 py-1 text-sm capitalize">
+                <Badge
+                  variant="outline"
+                  className="bg-blue-500/20 text-blue-400 border-blue-500/30 px-3 py-1 text-sm capitalize"
+                >
                   {project.category}
                 </Badge>
               )}
@@ -65,7 +68,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 mt-6 lg:mt-0 lg:ml-6">
+          <div className="flex flex-row flex-wrap items-center justify-start lg:justify-end gap-x-3 gap-y-2 mt-6 lg:mt-0 lg:ml-6">
             {project.downloadUrl && (
               <Button asChild>
                 <a
