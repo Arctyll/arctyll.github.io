@@ -149,13 +149,27 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-          <div className="text-muted-foreground text-sm text-center md:text-left">
+          <div className="text-muted-foreground text-sm text-center md:text-left space-y-1">
             <p>
               &copy; 2025{" "}
               <span className="font-bold gradient-text text-transparent bg-clip-text">
                 Arctyll
               </span>
               . All rights reserved.
+            </p>
+            <p className="text-xs">
+              Not affiliated with Mojang or Microsoft.
+            </p>
+            <p className="text-xs">
+              Licensed under the{" "}
+              <a 
+                href="https://www.gnu.org/licenses/agpl-3.0.html" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-primary underline"
+              >
+                GNU AGPL v3.0
+              </a>.
             </p>
           </div>
           <div className="flex items-center text-muted-foreground text-sm">
