@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Github, Download, Book, FileText } from "lucide-react";
+import { Github, Download, Book, History } from "lucide-react";
 import ChangelogModal from "@/components/changelog-modal";
 
 interface Project {
@@ -23,90 +23,89 @@ const getModId = (name: string): string => {
   return name.toLowerCase().replace(/\s+/g, "-");
 };
 
+const getStatusColor = (status: string) => {
+  switch (status) {
+    case "stable":
+      return "status-stable";
+    case "beta":
+      return "status-beta";
+    case "alpha":
+      return "status-alpha";
+    case "not released":
+      return "bg-red-500 text-white";
+    default:
+      return "bg-gray-500 text-white";
+  }
+};
+
 export default function ProjectCard({ project, index }: ProjectCardProps) {
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "stable":
-        return "bg-green-500 hover:bg-green-600";
-      case "beta":
-        return "bg-blue-500 hover:bg-blue-600";
-      case "alpha":
-        return "bg-orange-500 hover:bg-orange-600";
-      case "not released":
-        return "bg-red-500 hover:bg-red-600";
-      default:
-        return "bg-gray-500 hover:bg-gray-600";
-    }
-  };
-  
   const modId = getModId(project.name);
   
   return (
     <Card
-      className="h-full transition-all duration-300 hover:shadow-lg group"
+      className="card-hover bg-card border-border"
       data-aos="fade-up"
-      data-aos-delay={index * 100}
+      data-aos-delay={index * 100 + 200}
     >
-      <CardContent className="p-6 h-full flex flex-col">
-        <div className="flex items-start justify-between mb-4">
+      <CardContent className="p-4 sm:p-6">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
           <div className="flex-1">
-            <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-              {project.name}
-            </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-              {project.description}
-            </p>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-4 space-y-2 sm:space-y-0">
+              <h3 className="text-lg sm:text-xl font-bold">{project.name}</h3>
+              <Badge className={`${getStatusColor(project.status)} px-3 py-1 text-sm font-medium capitalize`}>
+                {project.status}
+              </Badge>
+              {project.category && (
+                <Badge variant="outline" className="bg-blue-500/20 text-blue-400 border-blue-500/30 px-3 py-1 text-sm capitalize">
+                  {project.category}
+                </Badge>
+              )}
+            </div>
+            <p className="text-muted-foreground mb-4">{project.description}</p>
           </div>
-          <Badge
-            className={`${getStatusColor(project.status)} text-white ml-2 flex-shrink-0`}
-          >
-            {project.status}
-          </Badge>
-        </div>
 
-        <div className="mt-auto">
-          <div className="flex flex-wrap gap-2">
-            <Button variant="outline" size="sm" asChild>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="h-4 w-4 mr-2" />
-                Source
-              </a>
-            </Button>
-
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 mt-6 lg:mt-0 lg:ml-6">
             {project.downloadUrl && (
-              <Button variant="outline" size="sm" asChild>
+              <Button asChild>
                 <a
                   href={project.downloadUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Download className="h-4 w-4 mr-2" />
+                  <Download className="mr-2 h-4 w-4" />
                   Download
                 </a>
               </Button>
             )}
-
             {project.docsUrl && (
-              <Button variant="outline" size="sm" asChild>
+              <Button variant="outline" asChild>
                 <a
                   href={project.docsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Book className="h-4 w-4 mr-2" />
+                  <Book className="mr-2 h-4 w-4" />
                   Docs
                 </a>
               </Button>
             )}
-
+            {project.githubUrl && (
+              <Button variant="outline" asChild>
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Github className="mr-2 h-4 w-4" />
+                  GitHub
+                </a>
+              </Button>
+            )}
             {project.category === "mods" && (
               <ChangelogModal modId={modId} modName={project.name}>
-                <Button variant="outline" size="sm">
-                  <FileText className="h-4 w-4 mr-2" />
+                <Button variant="outline">
+                  <History className="mr-2 h-4 w-4" />
                   Changelog
                 </Button>
               </ChangelogModal>

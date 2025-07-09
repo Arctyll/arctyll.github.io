@@ -12,7 +12,12 @@
       "featured": true,
       "tags": ["qol"],
       "mcVersions": ["1.8.9"],
-      "modLoader": ["forge"]
+      "modLoader": ["forge"],
+      "version": "1.0",
+      "mcVersion": "1.8.9",
+      "fileSize": "9.68 Kb",
+      "releaseDate": "2025-04-21",
+      "changelogUrl": null
     },
     {
       "id": "veyzen-client",
@@ -26,7 +31,12 @@
       "featured": true,
       "tags": ["qol", "performance"],
       "mcVersions": ["1.8.9"],
-      "modLoader": ["forge"]
+      "modLoader": ["forge"],
+      "version": "N/A",
+      "mcVersion": "1.8.9",
+      "fileSize": "N/A",
+      "releaseDate": "TBA",
+      "changelogUrl": null
     }
   ]
 }

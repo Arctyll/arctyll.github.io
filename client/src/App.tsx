@@ -10,7 +10,6 @@ import Projects from "@/pages/projects";
 import About from "@/pages/about";
 import Team from "@/pages/team";
 import Commitment from "@/pages/commitment";
-import Downloads from "@/pages/downloads";
 import Blog from "@/pages/blog";
 import Contact from "@/pages/contact";
 import HappyBirthday from "@/pages/birthday";
@@ -27,7 +26,6 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/team" component={Team} />
       <Route path="/commitment" component={Commitment} />
-      <Route path="/downloads" component={Downloads} />
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={Blog} />
       <Route path="/contact" component={Contact} />

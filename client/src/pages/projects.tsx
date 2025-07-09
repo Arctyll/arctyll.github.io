@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
 import ProjectCard from "@/components/project-card";
 import { updatePageMeta } from "@/lib/meta";
 
@@ -23,20 +26,22 @@ interface ProjectData {
 }
 
 export default function Projects() {
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [projectData, setProjectData] = useState<ProjectData | null>(null);
-  
+
   useEffect(() => {
     updatePageMeta({
       title: "Projects - Arctyll",
-      description: "Explore Arctyll's innovative Minecraft mods, clients, and development tools. All projects are open-source and community-driven.",
-      url: "https://arctyll.com/projects"
+      description:
+        "Explore Arctyll's innovative Minecraft mods, clients, and development tools. All projects are open-source and community-driven.",
+      url: "https://arctyll.com/projects",
     });
-    
-    fetch('/config/projects.json')
-      .then(res => res.json())
+
+    fetch("/config/projects.json")
+      .then((res) => res.json())
       .then((data: ProjectData) => setProjectData(data))
-      .catch(err => console.error('Failed to load projects:', err));
+      .catch((err) => console.error("Failed to load projects:", err));
   }, []);
 
   if (!projectData) {
@@ -52,15 +57,16 @@ export default function Projects() {
   }
 
   const projects = projectData.projects;
-  const categories = ["all", "mods", "clients", "apis"];
-  
-  const filteredProjects = selectedCategory === "all" 
-    ? projects 
-    : projects.filter(project => project.category === selectedCategory);
+  const categories = ["all", ...new Set(projects.map((p) => p.category))];
 
-  const getProjectsByCategory = (category: string) => {
-    return projects.filter(project => project.category === category);
-  };
+  const filteredProjects = projects.filter((project) => {
+    const matchesSearch =
+      project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "all" || project.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div className="min-h-screen bg-background pt-20">
@@ -68,31 +74,45 @@ export default function Projects() {
         {/* Header */}
         <div className="text-center mb-12" data-aos="fade-up">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Our <span className="gradient-text">Projects</span>
+            <span className="gradient-text">Projects</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Innovative tools and mods that enhance the Minecraft experience for players and developers
+            Explore Arctyll's community-driven Minecraft mods and tools.
           </p>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="100">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                selectedCategory === category
-                  ? "bg-primary text-primary-foreground shadow-lg"
-                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-              }`}
-            >
-              {category === "all" ? "All Projects" : category.charAt(0).toUpperCase() + category.slice(1)}
-              <Badge variant="secondary" className="ml-2">
-                {category === "all" ? projects.length : getProjectsByCategory(category).length}
-              </Badge>
-            </button>
-          ))}
+        {/* Search and Filter */}
+        <div
+          className="flex flex-col md:flex-row gap-4 mb-8"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            <Input
+              placeholder="Search projects..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10"
+            />
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                onClick={() => setSelectedCategory(category)}
+                className="capitalize"
+              >
+                {category === "all" ? "All" : category}
+                <Badge variant="secondary" className="ml-2">
+                  {category === "all"
+                    ? projects.length
+                    : projects.filter((p) => p.category === category).length}
+                </Badge>
+              </Button>
+            ))}
+          </div>
         </div>
 
         {/* Projects Grid */}
@@ -102,31 +122,31 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* No projects message */}
+        {/* No results message */}
         {filteredProjects.length === 0 && (
           <div className="text-center py-12" data-aos="fade-up">
             <p className="text-muted-foreground text-lg">
-              No projects found in the {selectedCategory} category.
+              No projects found matching your criteria.
             </p>
           </div>
         )}
 
-        {/* Call to Action */}
+        {/* Contribute CTA */}
         <div className="text-center mt-16" data-aos="fade-up">
           <div className="bg-card p-8 rounded-lg border border-border">
             <h3 className="text-2xl font-bold mb-4">Want to Contribute?</h3>
             <p className="text-muted-foreground mb-6">
-              We're always looking for talented developers to join our open-source community
+              We're always looking for talented developers to join our open-source community.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <a 
-                href="https://github.com/arctyll" 
+              <a
+                href="https://github.com/Arctyll"
                 className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
               >
                 View on GitHub
               </a>
-              <a 
-                href="/contact" 
+              <a
+                href="/contact"
                 className="inline-flex items-center px-6 py-3 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/90 transition-colors"
               >
                 Get in Touch
