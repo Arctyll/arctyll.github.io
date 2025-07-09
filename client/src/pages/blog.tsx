@@ -79,7 +79,7 @@ export default function Blog() {
       }),
       rawDate: announcement.date,
       readTime: announcement.readTime,
-      slug: `announcement-${announcement.id}`,
+      slug: announcement.id,
       gradient: "from-green-500 to-teal-500",
       type: "announcement",
     })
