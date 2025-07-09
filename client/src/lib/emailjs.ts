@@ -1,8 +1,4 @@
-declare global {
-  interface Window {
-    emailjs: any;
-  }
-}
+import emailjs from "@emailjs/browser";
 
 interface EmailData {
   name: string;
@@ -12,26 +8,21 @@ interface EmailData {
 }
 
 export const sendEmail = async (data: EmailData): Promise < void > => {
-  return new Promise((resolve, reject) => {
-    if (typeof window === "undefined" || !window.emailjs) {
-      console.log("Email simulation:", data);
-      setTimeout(() => resolve(), 1000);
-      return;
-    }
+  try {
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY!);
     
-    window.emailjs
-      .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID!,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
-        {
-          from_name: data.name,
-          from_email: data.email,
-          subject: data.subject,
-          message: data.message,
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
-      )
-      .then(() => resolve())
-      .catch((error: any) => reject(error));
-  });
+    await emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID!,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
+      {
+        from_name: data.name,
+        from_email: data.email,
+        subject: data.subject,
+        message: data.message,
+      }
+    );
+  } catch (error) {
+    console.error("EmailJS error:", error);
+    throw error;
+  }
 };
