@@ -16,10 +16,12 @@ export default function Footer() {
                   alt="Arctyll" 
                   className="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300"
                 />
-                <span className="text-lg font-bold group-hover:text-primary transition-colors duration-300">Arctyll</span>
+                <span className="text-lg font-bold group-hover:text-primary transition-colors duration-300">
+                  Arctyll
+                </span>
               </div>
             </Link>
-            <p className="text-muted-foreground text-sm mb-4">
+            <p className="text-muted-foreground text-[0.95rem] leading-relaxed mb-4">
               Building the future of Minecraft modding with open-source innovation and community collaboration.
             </p>
             <div className="flex items-center space-x-4">
@@ -31,7 +33,7 @@ export default function Footer() {
                 <Github className="h-5 w-5" />
               </a>
               <a 
-                href="mailto:arctyllofficial@gmail.com" 
+                href="mailto:team@arctyll.com" 
                 className="text-muted-foreground hover:text-primary transition-colors duration-300"
                 aria-label="Email"
               >
@@ -62,11 +64,6 @@ export default function Footer() {
                   Clients
                 </Link>
               </li>
-              <li>
-                <Link href="/downloads" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                  Downloads
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -77,6 +74,11 @@ export default function Footer() {
               Community
             </h3>
             <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
+                  About Us
+                </Link>
+              </li>
               <li>
                 <Link href="/team">
                   <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
