@@ -158,7 +158,15 @@ export default function Footer() {
               . All rights reserved.
             </p>
             <p className="text-xs">
-              Not affiliated with Mojang or Microsoft.
+              Not affiliated with{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700 transition-transform duration-200 hover:scale-105">
+                Mojang
+              </span>{" "}
+              or{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-green-500 via-blue-500 to-yellow-400 transition-transform duration-200 hover:scale-105">
+                Microsoft
+              </span>
+              .
             </p>
             <p className="text-xs">
               Licensed under the{" "}
@@ -166,7 +174,7 @@ export default function Footer() {
                 href="https://www.gnu.org/licenses/agpl-3.0.html" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="hover:scale-105 font-bold gradient-text bg-clip-text text-transparent transition-transform duration-200"
+                className="hover:scale-105 gradient-text bg-clip-text text-transparent transition-transform duration-200"
               >
                 GNU AGPL v3.0
               </a>.
