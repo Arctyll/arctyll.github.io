@@ -26,11 +26,11 @@ const getModId = (name: string): string => {
 const getStatusColor = (status: string) => {
   switch (status) {
     case "stable":
-      return "status-stable";
+      return "bg-green-500 text-white";
     case "beta":
-      return "status-beta";
+      return "bg-yellow-500 text-white";
     case "alpha":
-      return "status-alpha";
+      return "bg-orange-500 text-white";
     case "not released":
       return "bg-red-500 text-white";
     default:
@@ -52,7 +52,11 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           <div className="flex-1">
             <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-4 space-y-2 sm:space-y-0">
               <h3 className="text-lg sm:text-xl font-bold">{project.name}</h3>
-              <Badge className={`${getStatusColor(project.status)} px-3 py-1 text-sm font-medium capitalize`}>
+              <Badge
+                className={`${getStatusColor(
+                  project.status
+                )} whitespace-nowrap inline-flex items-center px-3 py-1 text-sm font-medium capitalize`}
+              >
                 {project.status}
               </Badge>
               {project.category && (
@@ -67,8 +71,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             <p className="text-muted-foreground mb-4">{project.description}</p>
           </div>
 
-          {/* Buttons */}
-          <div className="flex flex-row flex-wrap items-center justify-start lg:justify-end gap-x-3 gap-y-2 mt-6 lg:mt-0 lg:ml-6">
+          {/* Buttons (stacked vertically always) */}
+          <div className="flex flex-col gap-2 mt-6 lg:mt-0">
             {project.downloadUrl && (
               <Button asChild>
                 <a
