@@ -1,25 +1,44 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { updatePageMeta } from "@/lib/meta";
-import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
 
 export default function About() {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     updatePageMeta({
-      title: "About - Arctyll",
+      title: "About Us - Arctyll",
       description:
         "Learn more about Arctyll – the organization empowering Minecraft developers and creating modern tools for the community.",
       url: "https://arctyll.com/about",
     });
+
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
   }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="w-12 h-12 border-4 border-t-transparent border-primary rounded-full animate-spin mx-auto" />
+          <p className="text-muted-foreground text-lg animate-pulse">
+            Loading about page...
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background pt-20">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
-        {/* Hero Header */}
+        {/* Header */}
         <div className="text-center mb-12" data-aos="fade-up">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">About Arctyll</span>
+            About <span className="gradient-text">Arctyll</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Learn who we are, what we stand for, and why Arctyll exists.
@@ -27,60 +46,58 @@ export default function About() {
         </div>
 
         {/* Content */}
-        <div className="prose prose-lg dark:prose-invert max-w-none space-y-8 text-center md:text-left" data-aos="fade-up">
+        <div
+          className="prose prose-lg dark:prose-invert max-w-none space-y-8 text-center md:text-left"
+          data-aos="fade-up"
+        >
           <p>
-            <strong>Arctyll</strong> is an independent organization focused on empowering Minecraft developers through modern tooling, clean UI systems, and collaborative development practices.
+            <strong>Arctyll</strong> is an independent organization dedicated to
+            improving the Minecraft modding experience. We focus on making
+            development tools and systems more modern, efficient, and enjoyable to use.
           </p>
 
           <p>
-            We’re building an ecosystem for modders, creators, and community staff who still love and support Minecraft <code>1.8.9</code> — combining cutting-edge design with stability and performance.
-          </p>
-
-          <p>
-            From the ground up, everything at Arctyll is designed to help developers create better mods, faster — with less boilerplate and more polish.
+            We believe that modding should be accessible and powerful. Our goal is
+            to provide clean, well-designed foundations that help developers build
+            better mods, faster — with a focus on quality and user experience.
           </p>
 
           <h2 className="text-2xl font-bold">Our Mission</h2>
           <p>
-            To reshape the Minecraft modding experience by providing intuitive,
-            customizable, and performance-oriented systems — with a design-first mindset.
+            To improve Minecraft modding through modern tooling, clean design
+            principles, and an open, community-driven approach.
           </p>
 
           <h2 className="text-2xl font-bold">Our Values</h2>
           <ul className="list-disc pl-6 space-y-2 text-left">
-            <li><strong>Open collaboration</strong> – Anyone can contribute, suggest, or build.</li>
-            <li><strong>Polished design</strong> – Modern UI/UX is our foundation.</li>
-            <li><strong>Efficiency</strong> – No bloat, just clean performant code.</li>
-            <li><strong>Community-driven</strong> – Your feedback shapes our direction.</li>
+            <li><strong>Clarity</strong> – Simple, focused, and purposeful systems.</li>
+            <li><strong>Collaboration</strong> – Built by and for the community.</li>
+            <li><strong>Consistency</strong> – Good code and good design, always.</li>
+            <li><strong>Transparency</strong> – Everything out in the open.</li>
           </ul>
 
-          <h2 className="text-2xl font-bold">Who’s Behind Arctyll?</h2>
+          <h2 className="text-2xl font-bold">Who We Are</h2>
           <p>
-            Arctyll is made up of modders, developers, designers, and community staff with a shared passion for Minecraft. Whether it’s Forge development, HUD customization, or chat UX — we build with care and purpose.
+            Arctyll is made up of developers, contributors, and community members
+            who are passionate about Minecraft. We come together to build tools that
+            are clean, intuitive, and enjoyable to use — for ourselves and for
+            others.
           </p>
 
-          <h2 className="text-2xl font-bold">What We're Working On</h2>
+          <h2 className="text-2xl font-bold">Get Involved</h2>
           <p>
-            We’re currently focused on:
-          </p>
-          <ul className="list-disc pl-6 space-y-2 text-left">
-            <li><strong>Veyzen Client</strong> – A modular modding base for 1.8.9</li>
-            <li><strong>Configura</strong> – A OneConfig-style configuration system</li>
-            <li><strong>Modern UI frameworks</strong> for HUDs, chat, and utilities</li>
-          </ul>
-
-          <h2 className="text-2xl font-bold">Join the Movement</h2>
-          <p>
-            Whether you're a new developer or a seasoned modder, Arctyll is a home for innovation and creativity in the Minecraft modding world.
+            We welcome contributors, feedback, and ideas from anyone interested in
+            the future of Minecraft development. Whether you want to help out or just
+            follow along, you’re always welcome.
           </p>
         </div>
 
-        {/* CTA */}
+        {/* Call to Action */}
         <div className="text-center mt-16" data-aos="fade-up">
           <div className="bg-card p-8 rounded-lg border border-border">
             <h3 className="text-2xl font-bold mb-4">Get Involved with Arctyll</h3>
             <p className="text-muted-foreground mb-6">
-              Want to build with us or just follow our progress?
+              Interested in contributing or staying in the loop?
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <a
@@ -97,13 +114,6 @@ export default function About() {
               </a>
             </div>
           </div>
-        </div>
-
-        {/* Back Button */}
-        <div className="text-center mt-10">
-          <Link href="/">
-            <Button variant="ghost">← Back to Home</Button>
-          </Link>
         </div>
       </div>
     </div>
