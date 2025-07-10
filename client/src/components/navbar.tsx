@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTheme } from "@/components/theme-provider";
 import { Menu, Moon, Sun, Sparkles } from "lucide-react";
-import arctyllLogo from "@assets/arctyll_logo_1751777151160.png";
+import arctyllLogo from "@assets/arctyll.png";
 
 export default function Navbar() {
   const [location] = useLocation();

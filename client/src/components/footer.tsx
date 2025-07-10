@@ -1,6 +1,6 @@
 import { Github, Mail, Heart, Code, Users, Book } from "lucide-react";
 import { Link } from "wouter";
-import arctyllLogo from "@assets/arctyll_logo_1751777151160.png";
+import arctyllLogo from "@assets/arctyll.png";
 
 export default function Footer() {
   return (
