@@ -13,7 +13,7 @@ export default function Navbar() {
   
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   
@@ -28,7 +28,9 @@ export default function Navbar() {
   ];
   
   const isActive = (path: string) =>
-    location === path || (path !== "/" && location.startsWith(path));
+    location === path ||
+    location.startsWith(path + "/") ||
+    location.startsWith(path + "?");
   
   return (
     <nav
@@ -39,7 +41,7 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Logo (Left) */}
+        {/* Logo */}
         <Link href="/" className="flex items-center group cursor-pointer">
           <img
             src={arctyllLogo}
@@ -52,33 +54,37 @@ export default function Navbar() {
           <Sparkles className="h-4 w-4 mt-[1px] text-primary/70 opacity-0 group-hover:opacity-100 group-hover:rotate-180 transition-all duration-300 ml-1" />
         </Link>
 
-        {/* Center Nav */}
-        <div className="hidden md:flex flex-1 justify-center items-center space-x-8">
+        {/* Center Navigation */}
+        <ul className="hidden md:flex flex-1 justify-center items-center space-x-8">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href}>
-              <span
-                className={`relative cursor-pointer group font-medium transition-all duration-300 ${
-                  isActive(item.href)
-                    ? "bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent"
-                    : "text-muted-foreground hover:text-primary"
-                }`}
-              >
-                {item.label}
+            <li key={item.href}>
+              <Link href={item.href}>
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-blue-500 transition-all duration-300 ${
-                    isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
+                  className={`relative cursor-pointer group font-medium transition-all duration-300 ${
+                    isActive(item.href)
+                      ? "bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent"
+                      : "text-muted-foreground hover:text-primary"
                   }`}
-                />
-              </span>
-            </Link>
+                >
+                  {item.label}
+                  <span
+                    className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-blue-500 transition-all duration-300 ${
+                      isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </span>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        {/* Right: Theme Toggle + Mobile */}
+        {/* Right: Theme toggle + Mobile menu */}
         <div className="flex items-center space-x-2">
+          {/* Theme Toggle */}
           <Button
             variant="ghost"
             size="icon"
+            aria-label="Toggle theme"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           >
             {theme === "dark" ? (
@@ -91,7 +97,12 @@ export default function Navbar() {
           {/* Mobile Menu */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden"
+                aria-label="Open mobile menu"
+              >
                 <Menu className="h-4 w-4" />
               </Button>
             </SheetTrigger>
@@ -99,20 +110,24 @@ export default function Navbar() {
               <div className="flex flex-col space-y-6 mt-6">
                 {navItems.map((item) => (
                   <Link key={item.href} href={item.href}>
-                    <span
-                      className={`relative text-lg font-medium cursor-pointer transition-all duration-300 ${
-                        isActive(item.href)
-                          ? "bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent"
-                          : "text-muted-foreground hover:text-primary"
-                      }`}
-                    >
-                      {item.label}
+                    <div className="group relative cursor-pointer text-lg font-medium transition-all duration-300">
+                      <span
+                        className={`${
+                          isActive(item.href)
+                            ? "bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent"
+                            : "text-muted-foreground group-hover:text-primary"
+                        }`}
+                      >
+                        {item.label}
+                      </span>
                       <span
                         className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-blue-500 transition-all duration-300 ${
-                          isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
+                          isActive(item.href)
+                            ? "w-full"
+                            : "w-0 group-hover:w-full"
                         }`}
                       />
-                    </span>
+                    </div>
                   </Link>
                 ))}
               </div>
