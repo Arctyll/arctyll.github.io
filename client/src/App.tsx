@@ -16,6 +16,8 @@ import HappyBirthday from "@/pages/birthday";
 import Terms from "@/pages/terms";
 import Privacy from "@/pages/privacy";
 import JoinUs from "@/pages/join";
+import Conduct from "@/pages/conduct";
+import Handbook from "@/pages/handbook";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Particles from "@/components/particles";
@@ -26,6 +28,8 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/join" component={JoinUs} />
+      <Route path="/conduct" component={Conduct} />
+      <Route path="/handbook" component={Jandbook} />
       <Route path="/projects" component={Projects} />
       <Route path="/about" component={About} />
       <Route path="/team" component={Team} />

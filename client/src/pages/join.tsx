@@ -11,6 +11,10 @@ import {
   Lightbulb,
   Star,
   Sparkles,
+  Info,
+  BookOpenCheck,
+  MessageSquare,
+  ShieldCheck,
 } from "lucide-react";
 
 export default function JoinUs() {
@@ -63,23 +67,23 @@ export default function JoinUs() {
           <div className="grid sm:grid-cols-2 gap-6 text-muted-foreground">
             <div className="flex gap-3">
               <Code2 className="w-5 h-5 mt-1 text-foreground" />
-              <p><strong>Development</strong><br />Improve our open-source tooling for Minecraft modding.</p>
+              <p><strong>Development</strong><br />Help build modern libraries and tools for Minecraft modding.</p>
             </div>
             <div className="flex gap-3">
               <Paintbrush2 className="w-5 h-5 mt-1 text-foreground" />
-              <p><strong>Design</strong><br />Help create intuitive and elegant UI/UX across projects.</p>
+              <p><strong>Design</strong><br />Craft intuitive UIs and mockups. Improve user experience across our platforms.</p>
             </div>
             <div className="flex gap-3">
               <FileText className="w-5 h-5 mt-1 text-foreground" />
-              <p><strong>Documentation</strong><br />Write helpful guides, tutorials, and project docs.</p>
+              <p><strong>Documentation</strong><br />Write setup guides, developer docs, and usage tutorials to help others.</p>
             </div>
             <div className="flex gap-3">
               <Bug className="w-5 h-5 mt-1 text-foreground" />
-              <p><strong>Testing</strong><br />Report bugs and provide structured feedback.</p>
+              <p><strong>Testing</strong><br />Test mods, report bugs, suggest fixes, and improve overall stability.</p>
             </div>
             <div className="flex gap-3 sm:col-span-2">
               <Users className="w-5 h-5 mt-1 text-foreground" />
-              <p><strong>Community</strong><br />Support users, share tools, and spread the word.</p>
+              <p><strong>Community</strong><br />Support others, help in discussions, and spread awareness about our projects.</p>
             </div>
           </div>
         </section>
@@ -91,57 +95,105 @@ export default function JoinUs() {
             <h2 className="text-2xl font-bold">How to Get Started</h2>
           </div>
           <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
-            <li>Visit our <a href="https://github.com/Arctyll" className="text-primary font-medium underline">GitHub organization</a>.</li>
-            <li>Pick a repository that interests you.</li>
-            <li>Check for <code className="bg-muted px-2 py-0.5 rounded text-sm">good first issue</code> labels.</li>
-            <li>Fork it, make your changes, and open a pull request.</li>
-            <li>Talk to us or ask for guidance – we're here to help!</li>
+            <li>Visit the <a href="https://github.com/Arctyll" className="text-primary font-medium underline">Arctyll GitHub</a> and browse available repositories.</li>
+            <li>Look for issues tagged <code className="bg-muted px-2 py-0.5 rounded text-sm">good first issue</code> or <code className="bg-muted px-2 py-0.5 rounded text-sm">help wanted</code>.</li>
+            <li>Read the README, CONTRIBUTING, and CODEOWNERS files.</li>
+            <li>Fork the repository, commit your changes, and open a PR.</li>
+            <li>Check out the <a href="/handbook" className="underline text-primary">Contributor Handbook</a> for detailed guidelines.</li>
           </ol>
         </section>
 
-        {/* What We Look For */}
+        {/* Contributor Roles */}
         <section className="space-y-6" data-aos="fade-up">
           <div className="flex items-center gap-3">
-            <Users className="w-6 h-6 text-indigo-500" />
-            <h2 className="text-2xl font-bold">What We Look For</h2>
+            <BookOpenCheck className="w-6 h-6 text-green-500" />
+            <h2 className="text-2xl font-bold">Contributor Roles</h2>
           </div>
-          <p className="text-muted-foreground">
-            You don’t need to be an expert. We care more about curiosity, communication, and clean contributions. Everyone brings something valuable — even if it’s just asking great questions.
-          </p>
-        </section>
-
-        {/* Perks */}
-        <section className="space-y-6" data-aos="fade-up">
-          <div className="flex items-center gap-3">
-            <Star className="w-6 h-6 text-amber-400" />
-            <h2 className="text-2xl font-bold">Why Join?</h2>
-          </div>
-          <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-            <li>Early access to unreleased tools and prototypes.</li>
-            <li>Be credited publicly in projects and releases.</li>
-            <li>Direct feedback and mentorship from core devs.</li>
-            <li>Priority feature requests and voting access.</li>
-            <li>Fun, open, and friendly creative environment.</li>
+          <ul className="list-disc pl-6 text-muted-foreground space-y-2">
+            <li><strong>Core Maintainers</strong> – Lead and review active development.</li>
+            <li><strong>Module Developers</strong> – Build and maintain features/modules.</li>
+            <li><strong>Writers & Editors</strong> – Improve docs, release notes, changelogs.</li>
+            <li><strong>Designers</strong> – Contribute branding, UI, and UX improvements.</li>
+            <li><strong>Testers</strong> – Identify bugs and provide quality feedback.</li>
           </ul>
         </section>
 
-        {/* Idea Submission */}
+        {/* Tools We Use */}
+        <section className="space-y-6" data-aos="fade-up">
+          <div className="flex items-center gap-3">
+            <MessageSquare className="w-6 h-6 text-sky-400" />
+            <h2 className="text-2xl font-bold">Tools We Use</h2>
+          </div>
+          <ul className="list-disc pl-6 text-muted-foreground space-y-2">
+            <li><strong>GitHub</strong> – Code, Issues, Pull Requests, Discussions.</li>
+            <li><strong>IntellIJ IDEA</strong> – Our primary code editor.</li>
+            <li><strong>Figma</strong> – UI/UX and design collaboration.</li>
+            <li><strong>Discord</strong> (coming soon) – Community chats & support.</li>
+          </ul>
+        </section>
+
+        {/* Code of Conduct */}
+        <section className="space-y-6" data-aos="fade-up">
+          <div className="flex items-center gap-3">
+            <ShieldCheck className="w-6 h-6 text-red-400" />
+            <h2 className="text-2xl font-bold">Code of Conduct</h2>
+          </div>
+          <p className="text-muted-foreground">
+            We follow a strict zero-tolerance policy against harassment, hate speech, or toxic behavior.
+            Arctyll is a welcoming space for everyone — respect and kindness are non-negotiable.{" "}
+            <a
+              href="/conduct"
+              className="text-primary underline underline-offset-2 hover:text-primary/80 transition"
+            >
+              Read our full Code of Conduct
+            </a>
+            .
+          </p>
+        </section>
+
+        {/* Have an Idea */}
         <section className="space-y-6" data-aos="fade-up">
           <div className="flex items-center gap-3">
             <Sparkles className="w-6 h-6 text-pink-400" />
             <h2 className="text-2xl font-bold">Have an Idea?</h2>
           </div>
           <p className="text-muted-foreground">
-            If you have a tool or mod idea that aligns with our mission — pitch it! We're always open to cool concepts and potential collaborators.
+            We're always open to new concepts. Submit your ideas via GitHub Discussions or email, and if it fits Arctyll’s mission, we may turn it into a full project with you.
           </p>
         </section>
 
-        {/* CTA */}
+        {/* FAQs */}
+        <section className="space-y-6" data-aos="fade-up">
+          <div className="flex items-center gap-3">
+            <Info className="w-6 h-6 text-cyan-400" />
+            <h2 className="text-2xl font-bold">FAQs</h2>
+          </div>
+          <div className="space-y-4 text-muted-foreground">
+            <div>
+              <strong>Do I need prior experience?</strong>
+              <p>No! We welcome everyone — beginners, learners, and pros alike.</p>
+            </div>
+            <div>
+              <strong>Are contributions paid?</strong>
+              <p>No, Arctyll is a passion project. However, top contributors may be featured or rewarded in the future.</p>
+            </div>
+            <div>
+              <strong>Is this for Minecraft 1.8.9 only?</strong>
+              <p>Currently, yes. Our tools are tailored for Minecraft Forge 1.8.9 modding. Support for newer versions may come later.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Final CTA */}
         <section className="text-center mt-20" data-aos="fade-up">
           <div className="bg-card p-8 rounded-lg border border-border space-y-6">
-            <h3 className="text-2xl font-bold">Start Contributing</h3>
-            <p className="text-muted-foreground">
-              Explore the code. Open a PR. Or just say hi.
+            <h3 className="text-2xl font-bold">Start Contributing Today</h3>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Explore our open-source projects, read the{" "}
+              <a href="/handbook" className="underline text-primary">
+                Contributor Handbook
+              </a>
+              , and make your first pull request.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
@@ -156,7 +208,7 @@ export default function JoinUs() {
                 className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/90 transition-colors"
               >
                 <Mail className="w-4 h-4" />
-                Contact Us
+                Contact the Team
               </a>
             </div>
           </div>
