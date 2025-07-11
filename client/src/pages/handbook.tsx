@@ -39,7 +39,7 @@ export default function Handbook() {
             <li>Fork the repository on GitHub.</li>
             <li>
               Clone your fork locally:
-              <code style="white-space: pre-wrap; word-break: break-word;">
+              <code style="white-space: wrap; word-break: break-word;">
                 git clone https://github.com/Arctyll/repo.git
               </code>
             </li>
