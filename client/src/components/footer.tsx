@@ -6,9 +6,9 @@ export default function Footer() {
   return (
     <footer className="bg-card border-t border-border mt-20">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 gap-y-12">
           {/* Brand Section */}
-          <div className="md:col-span-1">
+          <div>
             <Link href="/">
               <div className="flex items-center space-x-2 mb-4 group cursor-pointer">
                 <img 
@@ -49,21 +49,9 @@ export default function Footer() {
               Projects
             </h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/projects" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                  All Projects
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                  Mods
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                  Clients
-                </Link>
-              </li>
+              <li><Link href="/projects" className="text-muted-foreground hover:text-primary transition-colors">All Projects</Link></li>
+              <li><Link href="/projects" className="text-muted-foreground hover:text-primary transition-colors">Mods</Link></li>
+              <li><Link href="/projects" className="text-muted-foreground hover:text-primary transition-colors">Clients</Link></li>
             </ul>
           </div>
 
@@ -74,33 +62,11 @@ export default function Footer() {
               Community
             </h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/team">
-                  <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                    Our Team
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/commitment" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                  Our Commitment
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-                  Contact Us
-                </Link>
-              </li>
+              <li><Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link href="/team" className="text-muted-foreground hover:text-primary transition-colors">Our Team</Link></li>
+              <li><Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">Blog</Link></li>
+              <li><Link href="/commitment" className="text-muted-foreground hover:text-primary transition-colors">Our Commitment</Link></li>
+              <li><Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -111,95 +77,50 @@ export default function Footer() {
               Resources
             </h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <a 
-                  href="#" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Documentation
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://github.com/Arctyll" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Source Code
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://github.com/Arctyll" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Report Issues
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://github.com/Arctyll/.github/blob/main/CONTRIBUTING.md" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Contributing
-                </a>
-              </li>
+              <li><a href="#" className="text-muted-foreground hover:text-primary transition-colors">Documentation</a></li>
+              <li><a href="https://github.com/Arctyll" className="text-muted-foreground hover:text-primary transition-colors">Source Code</a></li>
+              <li><a href="https://github.com/Arctyll" className="text-muted-foreground hover:text-primary transition-colors">Report Issues</a></li>
+              <li><a href="https://github.com/Arctyll/.github/blob/main/CONTRIBUTING.md" className="text-muted-foreground hover:text-primary transition-colors">Contributing</a></li>
             </ul>
           </div>
-          
-          { /* Legal Section */ }
+
+          {/* Legal Section */}
           <div>
             <h3 className="font-semibold mb-4 flex items-center">
               <FileText className="h-4 w-4 mr-2" />
               Legal
             </h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <a 
-                  href="/legal/terms" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Terms of service
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="/legal/privacy" 
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Privacy policy
-                </a>
-              </li>
+              <li><a href="/legal/terms" className="text-muted-foreground hover:text-primary transition-colors">Terms of Service</a></li>
+              <li><a href="/legal/privacy" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a></li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-          <div className="text-muted-foreground text-sm text-center md:text-left space-y-1">
+        <div className="border-t border-border mt-10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="text-muted-foreground text-sm text-center md:text-left space-y-1 max-w-md">
             <p>
               &copy; 2025{" "}
               <span className="font-bold gradient-text text-transparent bg-clip-text">
                 Arctyll
-              </span>
-              . All rights reserved.
+              </span>. All rights reserved.
             </p>
-            <p className="text-xs">
+            <p className="text-xs break-words">
               Not affiliated with{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700 transition-transform duration-200 hover:scale-105">
                 Mojang
-              </span>{" "}
-              or{" "}
+              </span> or{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-green-500 via-blue-500 to-yellow-400 transition-transform duration-200 hover:scale-105">
                 Microsoft
-              </span>
-              .
+              </span>.
             </p>
             <p className="text-xs">
               Licensed under the{" "}
-              <a 
-                href="https://www.gnu.org/licenses/agpl-3.0.html" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://www.gnu.org/licenses/agpl-3.0.html"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:scale-105 gradient-text bg-clip-text text-transparent transition-transform duration-200"
               >
                 GNU AGPL v3.0

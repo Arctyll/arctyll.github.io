@@ -50,23 +50,25 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <CardContent className="p-4 sm:p-6">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
           <div className="flex-1">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-4 space-y-2 sm:space-y-0">
+            <div className="flex flex-col space-y-2 mb-4">
               <h3 className="text-lg sm:text-xl font-bold">{project.name}</h3>
-              <Badge
-                className={`${getStatusColor(
-                  project.status
-                )} whitespace-nowrap inline-flex items-center px-3 py-1 text-sm font-medium capitalize`}
-              >
-                {project.status}
-              </Badge>
-              {project.category && (
+              <div className="flex flex-wrap gap-2">
                 <Badge
-                  variant="outline"
-                  className="bg-blue-500/20 text-blue-400 border-blue-500/30 px-3 py-1 text-sm capitalize"
+                  className={`${getStatusColor(
+                    project.status
+                  )} whitespace-nowrap inline-flex items-center px-3 py-1 text-sm font-medium capitalize`}
                 >
-                  {project.category}
+                  {project.status}
                 </Badge>
-              )}
+                {project.category && (
+                  <Badge
+                    variant="outline"
+                    className="bg-blue-500/20 text-blue-400 border-blue-500/30 px-3 py-1 text-sm capitalize"
+                  >
+                    {project.category}
+                  </Badge>
+                )}
+              </div>
             </div>
             <p className="text-muted-foreground mb-4">{project.description}</p>
           </div>
@@ -112,7 +114,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             <ChangelogModal modId={modId} modName={project.name}>
               <Button variant="outline">
                 <History className="mr-2 h-4 w-4" />
-                  Changelog
+                Changelog
               </Button>
             </ChangelogModal>
           </div>
