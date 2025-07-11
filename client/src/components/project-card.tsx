@@ -50,25 +50,23 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <CardContent className="p-4 sm:p-6">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
           <div className="flex-1">
-            <div className="flex flex-col space-y-2 mb-4">
-              <h3 className="text-lg sm:text-xl font-bold">{project.name}</h3>
-              <div className="flex flex-wrap gap-2">
+            <h3 className="text-lg sm:text-xl font-bold mb-2">{project.name}</h3>
+            <div className="flex flex-wrap gap-2 mb-4">
+              <Badge
+                className={`${getStatusColor(
+                  project.status
+                )} whitespace-nowrap inline-flex items-center px-3 py-1 text-sm font-medium capitalize`}
+              >
+                {project.status}
+              </Badge>
+              {project.category && (
                 <Badge
-                  className={`${getStatusColor(
-                    project.status
-                  )} whitespace-nowrap inline-flex items-center px-3 py-1 text-sm font-medium capitalize`}
+                  variant="outline"
+                  className="bg-blue-500/20 text-blue-400 border-blue-500/30 px-3 py-1 text-sm capitalize"
                 >
-                  {project.status}
+                  {project.category}
                 </Badge>
-                {project.category && (
-                  <Badge
-                    variant="outline"
-                    className="bg-blue-500/20 text-blue-400 border-blue-500/30 px-3 py-1 text-sm capitalize"
-                  >
-                    {project.category}
-                  </Badge>
-                )}
-              </div>
+              )}
             </div>
             <p className="text-muted-foreground mb-4">{project.description}</p>
           </div>
