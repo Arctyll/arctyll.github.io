@@ -1,4 +1,4 @@
-import { Github, Mail, Heart, Code, Users, Book } from "lucide-react";
+import { Github, Mail, Heart, Code, Users, Book, FileText } from "lucide-react";
 import { Link } from "wouter";
 import arctyllLogo from "@assets/arctyll.png";
 
@@ -55,12 +55,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/projects#mods" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
+                <Link href="/projects" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                   Mods
                 </Link>
               </li>
               <li>
-                <Link href="/projects#clients" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
+                <Link href="/projects" className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                   Clients
                 </Link>
               </li>
@@ -149,7 +149,7 @@ export default function Footer() {
           { /* Legal Section */ }
           <div>
             <h3 className="font-semibold mb-4 flex items-center">
-              <Book className="h-4 w-4 mr-2" />
+              <FileText className="h-4 w-4 mr-2" />
               Legal
             </h3>
             <ul className="space-y-2 text-sm">

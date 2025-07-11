@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
@@ -9,7 +9,7 @@ export default function Privacy() {
       <Card className="w-full max-w-md shadow-2xl border-0 rounded-2xl transition-all duration-300 bg-white dark:bg-zinc-900">
         <CardContent className="pt-8 pb-10 text-center">
           <div className="flex justify-center mb-4">
-            <AlertCircle className="h-10 w-10 text-red-500" />
+            <ShieldCheck className="h-10 w-10 text-primary" />
           </div>
 
           <h1 className="text-3xl font-bold text-black dark:text-white">
