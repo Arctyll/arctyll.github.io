@@ -33,6 +33,7 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/legal/terms" component={Terms} />
       <Route path="/legal/privacy" component={Privacy} />
+      <Route path="/happybirthday" component={HappyBirthday} />
       <Route component={NotFound} />
     </Switch>
   );
