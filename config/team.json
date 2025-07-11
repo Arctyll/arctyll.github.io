@@ -45,15 +45,37 @@
       "contributions": ["Veyzen Client"]
     },
     {
-      "id": "manglam",
-      "name": "Manglam",
-      "role": "Fullstack Developer & UI/UX Designer",
-      "description": "A student who's into UI/UX, web development, and building AI-powered tools.",
-      "githubUrl": "https://github.com/uxxiii",
-      "avatar": "https://mc-heads.net/avatar/Terero_Gamer",
-      "mcIgn": "Terero_Gamer",
-      "skills": ["Java", "Forge", "Fabric", "Performance", "HTML", "CSS", "JavaScript", "React", "Node JS", "Spigot/Bukkit/Paper"],
-      "contributions": ["Veyzen Client"]
-    }
+      "id": "disburial",
+      "name": "Disburial",
+      "role": "Web Developer",
+      "description": "A web developer. Very passionate about his work.",
+      "githubUrl": "",
+    "avatar": "https://mc-heads.net/avatar/Disburial",
+    "mcIgn": "Disburial",
+    "skills": ["HTML", "CSS", "JavaScript", "React", "Node JS"],
+    "contributions": []
+  },
+  {
+    "id": "plszymongaming",
+    "name": "PLSzymonGaming",
+    "role": "Backend Developer",
+    "description": "A developer who is passionate about coding and automation.",
+    "githubUrl": "",
+    "avatar": "https://mc-heads.net/avatar/PLSzymonGaming",
+    "mcIgn": "PLSzymonGaming",
+    "skills": ["Skript", "Python", "Java"],
+    "contributions": []
+  },
+  {
+    "id": "4fa",
+    "name": "4fa_",
+    "role": "Quality Assurance (QA)",
+    "description": "Loves Hypixel Murder Mystery. Also enjoys finding bugs and building in Minecraft.",
+    "githubUrl": "",
+    "avatar": "https://mc-heads.net/avatar/4fa_",
+    "mcIgn": "4fa_",
+    "skills": ["Minecraft Building", "Bug Finding"],
+    "contributions": []
+  }
   ]
 }
