@@ -13,6 +13,8 @@ import Commitment from "@/pages/commitment";
 import Blog from "@/pages/blog";
 import Contact from "@/pages/contact";
 import HappyBirthday from "@/pages/birthday";
+import Terms from "@/pages/terms";
+import Privacy from "@/pages/privacy";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Particles from "@/components/particles";
@@ -29,6 +31,8 @@ function Router() {
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={Blog} />
       <Route path="/contact" component={Contact} />
+      <Route path="/legal/terms" component={Terms} />
+      <Route path="/legal//contact" component={Privacy} />
       <Route component={NotFound} />
     </Switch>
   );

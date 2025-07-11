@@ -145,6 +145,32 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+          
+          { /* Legal Section */ }
+          <div>
+            <h3 className="font-semibold mb-4 flex items-center">
+              <Book className="h-4 w-4 mr-2" />
+              Legal
+            </h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a 
+                  href="/legal/terms" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Terms of service
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="/legal/privacy" 
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Privacy policy
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Bottom Section */}
