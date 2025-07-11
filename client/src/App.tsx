@@ -25,7 +25,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      <Route path="/join" component={} />
+      <Route path="/join" component={JoinUs} />
       <Route path="/projects" component={Projects} />
       <Route path="/about" component={About} />
       <Route path="/team" component={Team} />
