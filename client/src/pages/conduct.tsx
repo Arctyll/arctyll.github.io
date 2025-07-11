@@ -16,7 +16,7 @@ export default function Conduct() {
     <div className="min-h-screen bg-background pt-20 pb-16">
       <div className="container mx-auto px-4 max-w-3xl space-y-10 prose prose-lg dark:prose-invert">
           <h1 className="text-4xl md:text-5xl font-bold">
-            Contributor <span className="gradient-text">Handbook</span>
+            Code of <span className="gradient-text">Conduct</span>
           </h1>
 
         <section className="flex items-center gap-3">
