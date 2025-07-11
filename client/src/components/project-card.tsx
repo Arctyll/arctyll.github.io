@@ -50,8 +50,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <CardContent className="p-4 sm:p-6">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
           <div className="flex-1">
-            <h3 className="text-lg sm:text-xl font-bold mb-2">{project.name}</h3>
-            <div className="flex flex-wrap gap-2 mb-4">
+            <div className="flex flex-col space-y-2 mb-4">
+              <h3 className="text-lg sm:text-xl font-bold">{project.name}</h3>
               <Badge
                 className={`${getStatusColor(
                   project.status
