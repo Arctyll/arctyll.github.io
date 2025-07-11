@@ -33,7 +33,7 @@ export default function Home() {
             </span>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
-            <Link href="/team">
+            <Link href="/join">
               <Button size="lg" className="bg-gradient-to-r from-primary to-blue-500 hover:opacity-90">
                 <Rocket className="mr-2 h-5 w-5" />
                 Join Us

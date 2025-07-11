@@ -15,6 +15,7 @@ import Contact from "@/pages/contact";
 import HappyBirthday from "@/pages/birthday";
 import Terms from "@/pages/terms";
 import Privacy from "@/pages/privacy";
+import JoinUs from "@/pages/join";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Particles from "@/components/particles";
@@ -24,6 +25,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/join" component={} />
       <Route path="/projects" component={Projects} />
       <Route path="/about" component={About} />
       <Route path="/team" component={Team} />
