@@ -15,9 +15,9 @@ export default function Handbook() {
   return (
     <div className="min-h-screen bg-background pt-20 pb-16">
       <div className="container mx-auto px-4 max-w-3xl space-y-10 prose prose-lg dark:prose-invert">
-        <h1 className="text-center text-4xl font-bold gradient-text mb-8">
-          Contributor Handbook
-        </h1>
+          <h1 className="text-4xl md:text-5xl font-bold">
+            Contributor <span className="gradient-text">Handbook</span>
+          </h1>
 
         {/* Introduction */}
         <section>
@@ -37,7 +37,12 @@ export default function Handbook() {
           </h2>
           <ol className="list-decimal pl-6 space-y-2">
             <li>Fork the repository on GitHub.</li>
-            <li>Clone your fork locally: <code>git clone https://github.com/yourusername/repo.git</code></li>
+            <li>
+              Clone your fork locally:
+              <code style="white-space: pre-wrap; word-break: break-word;">
+                git clone https://github.com/Arctyll/repo.git
+              </code>
+            </li>
             <li>Create a new branch for your feature or fix: <code>git checkout -b feature-name</code></li>
             <li>Make your changes and commit with clear messages.</li>
             <li>Push your branch: <code>git push origin feature-name</code></li>
@@ -83,7 +88,7 @@ export default function Handbook() {
             Communication & Support
           </h2>
           <p>
-            Join our <a href="/community" className="text-primary underline">community channels</a> to discuss ideas, ask questions, and get help.
+            Join our <a href="https://github.com/Arctyll" className="text-primary underline">community channels</a> to discuss ideas, ask questions, and get help.
           </p>
           <p>
             Be respectful and constructive when giving and receiving feedback.
