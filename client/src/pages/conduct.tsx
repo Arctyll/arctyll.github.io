@@ -19,17 +19,19 @@ export default function Conduct() {
           Code of Conduct
         </h1>
 
-        <section className="flex items-center gap-3">
-          <ShieldCheck className="w-8 h-8 text-red-600" />
-          <h2 className="text-2xl font-bold">Our Commitment</h2>
+        {/* Our Commitment */}
+        <section className="flex items-center gap-4">
+          <ShieldCheck className="w-10 h-10 text-red-600 shrink-0" />
+          <h2 className="text-3xl font-bold">Our Commitment</h2>
         </section>
         <p>
           Arctyll is dedicated to providing a harassment-free experience for everyone. We do not tolerate harassment, discrimination, or exclusionary behavior in any form.
         </p>
 
-        <section className="flex items-center gap-3">
-          <Users className="w-8 h-8 text-indigo-600" />
-          <h2 className="text-2xl font-bold">Expected Behavior</h2>
+        {/* Expected Behavior */}
+        <section className="flex items-center gap-4">
+          <Users className="w-10 h-10 text-indigo-600 shrink-0" />
+          <h2 className="text-3xl font-bold">Expected Behavior</h2>
         </section>
         <ul className="list-disc pl-6 space-y-2">
           <li>Be respectful, inclusive, and welcoming to all.</li>
@@ -39,9 +41,10 @@ export default function Conduct() {
           <li>Focus on what is best for the community.</li>
         </ul>
 
-        <section className="flex items-center gap-3">
-          <Heart className="w-8 h-8 text-pink-500" />
-          <h2 className="text-2xl font-bold">Unacceptable Behavior</h2>
+        {/* Unacceptable Behavior */}
+        <section className="flex items-center gap-4">
+          <Heart className="w-10 h-10 text-pink-500 shrink-0" />
+          <h2 className="text-3xl font-bold">Unacceptable Behavior</h2>
         </section>
         <ul className="list-disc pl-6 space-y-2">
           <li>Harassment, bullying, or intimidation of any kind.</li>
@@ -51,22 +54,25 @@ export default function Conduct() {
           <li>Other conduct which could reasonably offend or harm others.</li>
         </ul>
 
-        <section className="flex items-center gap-3">
-          <ShieldCheck className="w-8 h-8 text-red-600" />
-          <h2 className="text-2xl font-bold">Enforcement</h2>
+        {/* Enforcement */}
+        <section className="flex items-center gap-4">
+          <ShieldCheck className="w-10 h-10 text-red-600 shrink-0" />
+          <h2 className="text-3xl font-bold">Enforcement</h2>
         </section>
         <p>
           Violations of this Code of Conduct may result in warnings, temporary bans, or permanent removal from the community. We reserve the right to take action at our discretion to maintain a safe environment.
         </p>
 
-        <section className="flex items-center gap-3">
-          <Users className="w-8 h-8 text-indigo-600" />
-          <h2 className="text-2xl font-bold">Reporting</h2>
+        {/* Reporting */}
+        <section className="flex items-center gap-4">
+          <Users className="w-10 h-10 text-indigo-600 shrink-0" />
+          <h2 className="text-3xl font-bold">Reporting</h2>
         </section>
         <p>
           If you experience or witness any behavior that violates this Code of Conduct, please report it to <a href="/contact" className="text-primary underline">the Arctyll team</a> immediately.
         </p>
 
+        {/* Closing */}
         <section className="text-center mt-12">
           <p className="text-lg italic">
             Together, let's make Arctyll a welcoming, supportive, and inclusive community for all.
