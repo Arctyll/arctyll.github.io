@@ -5,17 +5,10 @@ import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { createHtmlPlugin } from "vite-plugin-html";
 
 export default defineConfig(async () => {
-  const { assets } = await import("./client/src/assets.ts");
-  
   return {
     plugins: [
       react(),
       runtimeErrorOverlay(),
-      createHtmlPlugin({
-        inject: {
-          data: assets,
-        },
-      }),
       ...(process.env.NODE_ENV !== "production" &&
         process.env.REPL_ID !== undefined ?
         [
@@ -29,7 +22,7 @@ export default defineConfig(async () => {
       alias: {
         "@": path.resolve(import.meta.dirname, "client", "src"),
         "@shared": path.resolve(import.meta.dirname, "shared"),
-        "@assets": path.resolve(import.meta.dirname, "client", "assets"),
+        "@assets": path.resolve(import.meta.dirname, "assets"),
       },
     },
     root: path.resolve(import.meta.dirname, "client"),
