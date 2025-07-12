@@ -45,6 +45,17 @@
       "contributions": ["Veyzen Client"]
     },
     {
+      "id": "manglam",
+      "name": "Manglam",
+      "role": "Fullstack Developer & UI/UX Designer",
+      "description": "A student who's into UI/UX, web development, and building AI-powered tools.",
+      "githubUrl": "https://github.com/uxxiii",
+      "avatar": "https://mc-heads.net/avatar/Terero_Gamer",
+      "mcIgn": "Terero_Gamer",
+      "skills": ["Java", "Forge", "Fabric", "Performance", "HTML", "CSS", "JavaScript", "React", "Node JS", "Spigot/Bukkit/Paper"],
+      "contributions": ["Veyzen Client"]
+    },
+    {
       "id": "disburial",
       "name": "Disburial",
       "role": "Web Developer",
