@@ -13,16 +13,14 @@ export default defineConfig(async () => {
       runtimeErrorOverlay(),
       createHtmlPlugin({
         inject: {
-          data: {
-            ...assets,
-          },
+          data: assets,
         },
       }),
       ...(process.env.NODE_ENV !== "production" &&
         process.env.REPL_ID !== undefined ?
         [
           await import("@replit/vite-plugin-cartographer").then((m) =>
-            m.cartographer(),
+            m.cartographer()
           ),
         ] :
         []),
@@ -31,7 +29,7 @@ export default defineConfig(async () => {
       alias: {
         "@": path.resolve(import.meta.dirname, "client", "src"),
         "@shared": path.resolve(import.meta.dirname, "shared"),
-        "@assets": path.resolve(import.meta.dirname, "assets"),
+        "@assets": path.resolve(import.meta.dirname, "client", "assets"),
       },
     },
     root: path.resolve(import.meta.dirname, "client"),
