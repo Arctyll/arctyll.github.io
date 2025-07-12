@@ -3,19 +3,19 @@
   "short_name": "Arctyll",
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
+      "src": "/attached_assets/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/web-app-manifest-512x512.png",
+      "src": "/attached_assets/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#ad17b6",
+  "background_color": "#375ae8",
   "display": "standalone"
 }
