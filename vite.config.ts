@@ -5,7 +5,7 @@ import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { createHtmlPlugin } from "vite-plugin-html";
 
 export default defineConfig(async () => {
-  const assets = (await import("./client/src/assets.ts")).assets;
+  const { assets } = await import("./client/src/assets.ts");
   
   return {
     plugins: [
