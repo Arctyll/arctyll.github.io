@@ -46,7 +46,7 @@ export default function Navbar() {
           <img
             src={arctyllLogo}
             alt="Arctyll"
-            className="w-6 h-6 object-contain group-hover:scale-110 group-hover:rotate-12 transition-all duration-300"
+            className="w-6 h-6 object-contain group-hover:scale-110 group-hover:rotate-[360deg] transition-all duration-300"
           />
           <span className="ml-2 text-lg font-bold bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent leading-none group-hover:scale-105 transition-transform duration-300">
             Arctyll
