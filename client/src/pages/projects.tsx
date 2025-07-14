@@ -46,11 +46,9 @@ export default function Projects() {
 
   if (!projectData) {
     return (
-      <div className="min-h-screen bg-background pt-20">
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center">
-            <div className="animate-pulse">Loading projects...</div>
-          </div>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="w-12 h-12 border-4 border-t-transparent border-primary rounded-full animate-spin mx-auto" />
         </div>
       </div>
     );

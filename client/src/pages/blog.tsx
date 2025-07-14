@@ -52,9 +52,6 @@ export default function Blog() {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center space-y-4">
           <div className="w-12 h-12 border-4 border-t-transparent border-primary rounded-full animate-spin mx-auto" />
-          <p className="text-muted-foreground text-lg animate-pulse">
-            Loading blog & announcements...
-          </p>
         </div>
       </div>
     );

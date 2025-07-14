@@ -51,9 +51,11 @@ export default function HappyBirthday() {
   
   if (!birthdayData) {
     return (
-      <section className="min-h-screen flex items-center justify-center bg-background">
-        <p className="animate-pulse text-muted-foreground">Loading birthday celebration...</p>
-      </section>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="w-12 h-12 border-4 border-t-transparent border-primary rounded-full animate-spin mx-auto" />
+        </div>
+      </div>
     );
   }
   
