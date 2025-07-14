@@ -23,12 +23,6 @@ export default function Team() {
   const [teamData, setTeamData] = useState<TeamData | null>(null);
 
   useEffect(() => {
-    updatePageMeta({
-      title: "Our Team - Arctyll",
-      description: "Meet the talented developers and contributors behind Arctyll's innovative Minecraft modding projects.",
-      url: "https://arctyll.com/team"
-    });
-    
     fetch('/config/team.json')
       .then(res => res.json())
       .then((data: TeamData) => setTeamData(data))

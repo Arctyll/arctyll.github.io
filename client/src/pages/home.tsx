@@ -6,15 +6,6 @@ import { Rocket, Code } from "lucide-react";
 
 export default function Home() {
   
-  useEffect(() => {
-    updatePageMeta({
-      title: "Arctyll - Minecraft Mod Developers",
-      description:
-        "Building the future of Minecraft modding with open-source innovation and community collaboration. Discover our mods, tools, and APIs.",
-      url: "https://arctyll.com/",
-    });
-  }, []);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-gradient">
       <div className="container mx-auto px-4 sm:px-6 text-center z-10">

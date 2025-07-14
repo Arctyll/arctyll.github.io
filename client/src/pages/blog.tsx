@@ -29,13 +29,6 @@ export default function Blog() {
   const [announcements, setAnnouncements] = useState<any>(null);
 
   useEffect(() => {
-    updatePageMeta({
-      title: "Blog & Announcements - Arctyll",
-      description:
-        "Stay updated with the latest news, tutorials, and insights from the Arctyll development team and community.",
-      url: "https://arctyll.com/blog",
-    });
-
     Promise.all([
       fetch("/config/blog-posts.json").then((res) => res.json()),
       fetch("/config/announcements.json").then((res) => res.json()),

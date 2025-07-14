@@ -38,14 +38,19 @@ export default function Contact() {
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
-    updatePageMeta({
-      title: "Contact Us - Arctyll",
-      description:
-        "Get in touch with the Arctyll team. We're here to help with questions, support, and collaboration opportunities.",
-      url: "https://arctyll.com/contact",
-    });
+    const timer = setTimeout(() => setLoading(false), 800);
+    return () => clearTimeout(timer);
   }, []);
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="w-12 h-12 border-4 border-t-transparent border-primary rounded-full animate-spin mx-auto" />
+        </div>
+      </div>
+    );
+  }
   const onSubmit = async (data: any) => {
     try {
       setSending(true);

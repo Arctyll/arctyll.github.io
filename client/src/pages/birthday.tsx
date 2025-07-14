@@ -29,12 +29,6 @@ export default function HappyBirthday() {
   const [birthdayData, setBirthdayData] = useState < BirthdayData | null > (null);
   
   useEffect(() => {
-    updatePageMeta({
-      title: `Happy Birthday 🎉`,
-      description: `Wishing a fantastic birthday from the Arctyll team!`,
-      url: "https://arctyll.com/birthday"
-    });
-    
     AOS.init({ once: true, duration: 800 });
     
     fetch("/config/birthday.json")

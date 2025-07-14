@@ -5,13 +5,6 @@ export default function About() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    updatePageMeta({
-      title: "About Us - Arctyll",
-      description:
-        "Learn more about Arctyll – the organization empowering Minecraft developers and creating modern tools for the community.",
-      url: "https://arctyll.com/about",
-    });
-
     const timeout = setTimeout(() => {
       setLoading(false);
     }, 1000);

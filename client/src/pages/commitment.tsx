@@ -8,12 +8,6 @@ export default function Commitment() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    updatePageMeta({
-      title: "Our Commitment - Arctyll",
-      description: "Learn about Arctyll's commitment to open-source development, community collaboration, and transparency in Minecraft modding.",
-      url: "https://arctyll.com/commitment"
-    });
-
     const timer = setTimeout(() => setLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);

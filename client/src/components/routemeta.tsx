@@ -1,22 +1,22 @@
 import { Helmet } from "react-helmet-async";
-import { createRoot } from "react-dom/client";
+import { useLocation } from "wouter";
+import { metaMap, MetaData } from "@/lib/meta";
 
-export interface MetaData {
-  title: string;
-  description: string;
-  image ? : string;
-  url ? : string;
+function findMeta(path: string): MetaData {
+  if (metaMap[path]) return metaMap[path];
+  
+  const matched = Object.keys(metaMap)
+    .filter((key) => path.startsWith(key))
+    .sort((a, b) => b.length - a.length)[0];
+  
+  return metaMap[matched] || metaMap["/"];
 }
 
-let helmetRoot: HTMLDivElement | null = null;
-
-export const updatePageMeta = (meta: MetaData) => {
-  if (!helmetRoot) {
-    helmetRoot = document.createElement("div");
-    document.head.appendChild(helmetRoot);
-  }
+export default function RouteMeta() {
+  const [location] = useLocation();
+  const meta = findMeta(location);
   
-  createRoot(helmetRoot).render(
+  return (
     <Helmet>
       <title>{meta.title}</title>
       <meta name="description" content={meta.description} />
@@ -30,4 +30,4 @@ export const updatePageMeta = (meta: MetaData) => {
       <meta name="twitter:image" content={meta.image || ""} />
     </Helmet>
   );
-};
+}

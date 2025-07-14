@@ -31,13 +31,6 @@ export default function Projects() {
   const [projectData, setProjectData] = useState<ProjectData | null>(null);
 
   useEffect(() => {
-    updatePageMeta({
-      title: "Projects - Arctyll",
-      description:
-        "Explore Arctyll's innovative Minecraft mods, clients, and development tools. All projects are open-source and community-driven.",
-      url: "https://arctyll.com/projects",
-    });
-
     fetch("/config/projects.json")
       .then((res) => res.json())
       .then((data: ProjectData) => setProjectData(data))
