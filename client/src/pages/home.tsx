@@ -48,17 +48,14 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Who We Are & Our Commitment Sections */}
-      <div className="bg-background border-t border-border py-20 space-y-24">
-        {/* Who We Are - text left */}
-        <div
-          className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10"
-          data-aos="fade-right"
-        >
-          <div className="md:w-1/2">
+      {/* Info Sections */}
+      <div className="hero-gradient border-t border-border py-20 space-y-24">
+        {/* Who We Are — Always Left Aligned */}
+        <div className="container mx-auto px-6" data-aos="fade-right">
+          <div className="flex flex-col items-start text-left">
             <h2 className="text-3xl font-bold mb-3">Who We Are</h2>
-            <p className="text-muted-foreground text-base mb-6">
-              We’re a small, passionate team of modders working to shape the future of Minecraft.
+            <p className="text-muted-foreground text-base mb-6 max-w-2xl">
+              We’re a passionate team of open-source Minecraft modders shaping the game's future with powerful tools and ideas.
             </p>
             <Link href="/about">
               <Button size="lg">
@@ -67,19 +64,14 @@ export default function Home() {
               </Button>
             </Link>
           </div>
-          <div className="md:w-1/2" />
         </div>
 
-        {/* Our Commitment - text right */}
-        <div
-          className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10"
-          data-aos="fade-left"
-        >
-          <div className="md:w-1/2 hidden md:block" />
-          <div className="md:w-1/2 text-left md:text-right">
+        {/* Our Commitment — Always Right Aligned */}
+        <div className="container mx-auto px-6" data-aos="fade-left">
+          <div className="flex flex-col items-end text-right">
             <h2 className="text-3xl font-bold mb-3">Our Commitment</h2>
-            <p className="text-muted-foreground text-base mb-6">
-              We stand by open-source principles to build freely, collaboratively, and transparently.
+            <p className="text-muted-foreground text-base mb-6 max-w-2xl">
+              We believe open-source is the future of modding — built for the community, by the community.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 md:justify-end">
               <Link href="/commitment">
