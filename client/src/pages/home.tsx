@@ -4,7 +4,7 @@ import "aos/dist/aos.css";
 
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Rocket, Code, Github, Info, LightBulb } from "lucide-react";
+import { Rocket, Code, Github, Info, Lightbulb } from "lucide-react";
 
 export default function Home() {
   useEffect(() => {
@@ -84,7 +84,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 md:justify-end">
               <Link href="/commitment">
                 <Button variant="outline" size="lg">
-                  <LightBulb className="mr-2 h-5 w-5" />
+                  <Lightbulb className="mr-2 h-5 w-5" />
                   Why Open Source?
                 </Button>
               </Link>
