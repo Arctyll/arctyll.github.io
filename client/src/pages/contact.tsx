@@ -34,7 +34,7 @@ export default function Contact() {
     formState: { errors },
   } = useForm();
   const { toast } = useToast();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [sending, setSending] = useState(false);
 
   useEffect(() => {

@@ -17,13 +17,13 @@ export default function RouteMeta() {
   const meta = findMeta(location);
   
   return (
-    <Helmet>
+    <Helmet key={location}>
       <title>{meta.title}</title>
       <meta name="description" content={meta.description} />
       <meta property="og:title" content={meta.title} />
       <meta property="og:description" content={meta.description} />
       <meta property="og:image" content={meta.image || ""} />
-      <meta property="og:url" content={meta.url || window.location.href} />
+      <meta property="og:url" content={meta.url || (typeof window !== "undefined" ? window.location.href : "")} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />

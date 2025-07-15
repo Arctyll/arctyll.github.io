@@ -22,22 +22,25 @@ import { useEffect } from "react";
 
 function Router() {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/projects" component={Projects} />
-      <Route path="/about" component={About} />
-      <Route path="/team" component={Team} />
-      <Route path="/commitment" component={Commitment} />
-      <Route path="/blog" component={Blog} />
-      <Route path="/blog/:slug" component={Blog} />
-      <Route path="/contact" component={Contact} />
-      <Route path="/legal/terms" component={Terms} />
+    <>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/projects" component={Projects} />
+        <Route path="/about" component={About} />
+        <Route path="/team" component={Team} />
+        <Route path="/commitment" component={Commitment} />
+        <Route path="/blog" component={Blog} />
+        <Route path="/blog/:slug" component={Blog} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/legal/terms" component={Terms} />
       <Route path="/legal/privacy" component={Privacy} />
       {/*
       <Route path="/happybirthday" component={HappyBirthday} />
       */}
       <Route component={NotFound} />
-    </Switch>
+      </Switch>
+      <RouteMeta />
+    </>
   );
 }
 
