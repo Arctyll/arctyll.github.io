@@ -79,5 +79,3 @@ export const pageMetaMap: Record<string, PageMetaData> = {
     image: sharedImage,
   },
 };
-
-export default pageMetaMap;
