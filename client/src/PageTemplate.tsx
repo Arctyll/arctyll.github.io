@@ -1,0 +1,88 @@
+import React from "react";
+import type { PageMetaData } from "./lib/pageMetaMap";
+
+const PageTemplate: React.FC < PageMetaData > = ({
+  title,
+  description,
+  image,
+  url,
+}) => (
+  <html lang="en">
+    <head>
+      <meta charSet="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      
+      {/* Dynamic meta tags */}
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      {image && <meta property="og:image" content={image} />}
+      <meta property="og:url" content={url} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      {image && <meta name="twitter:image" content={image} />}
+
+      {/* Google Fonts */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+      />
+
+      {/* AOS CSS */}
+      <link
+        href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+        rel="stylesheet"
+      />
+
+      {/* Favicons */}
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="96x96"
+        href="https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/favicon-96x96.png"
+      />
+      <link
+        rel="icon"
+        type="image/svg+xml"
+        href="https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/favicon.svg"
+      />
+      <link
+        rel="shortcut icon"
+        href="https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/favicon.ico"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/apple-touch-icon.png"
+      />
+      <link
+        rel="manifest"
+        href="https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/site.webmanifest"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="192x192"
+        href="https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/web-app-manifest-192x192.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="512x512"
+        href="https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/web-app-manifest-512x512.png"
+      />
+    </head>
+    <body>
+      <div id="root"></div>
+      <script type="module" src="/src/main.tsx"></script>
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script src="https://cdn.emailjs.com/dist/email.min.js" defer></script>
+    </body>
+  </html>
+);
+
+export default PageTemplate;

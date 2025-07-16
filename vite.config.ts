@@ -2,11 +2,16 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+import metaMapPlugin from "vite-plugin-react-meta-map";
 
 export default defineConfig(async () => {
   return {
     plugins: [
       react(),
+      metaMapPlugin({
+        pageMetaMapFilePath: "./client/src/lib/meta.ts",
+        pageTemplateFilePath: "./client/src/PageTemplate.tsx",
+      }),
       runtimeErrorOverlay(),
       ...(process.env.NODE_ENV !== "production" &&
         process.env.REPL_ID !== undefined ?

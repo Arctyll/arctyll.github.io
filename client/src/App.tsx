@@ -4,7 +4,6 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
-import RouteMeta from "@/components/routemeta";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import Projects from "@/pages/projects";
@@ -13,7 +12,6 @@ import Team from "@/pages/team";
 import Commitment from "@/pages/commitment";
 import Blog from "@/pages/blog";
 import Contact from "@/pages/contact";
-import HappyBirthday from "@/pages/birthday";
 import Terms from "@/pages/terms";
 import Privacy from "@/pages/privacy";
 import Navbar from "@/components/navbar";
@@ -23,25 +21,19 @@ import { useEffect } from "react";
 
 function Router() {
   return (
-    <>
-      <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/projects" component={Projects} />
-        <Route path="/about" component={About} />
-        <Route path="/team" component={Team} />
-        <Route path="/commitment" component={Commitment} />
-        <Route path="/blog" component={Blog} />
-        <Route path="/blog/:slug" component={Blog} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/legal/terms" component={Terms} />
+    <Switch>
+      <Route path="/" component={Home} />
+      <Route path="/projects" component={Projects} />
+      <Route path="/about" component={About} />
+      <Route path="/team" component={Team} />
+      <Route path="/commitment" component={Commitment} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={Blog} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/legal/terms" component={Terms} />
       <Route path="/legal/privacy" component={Privacy} />
-      {/*
-      <Route path="/happybirthday" component={HappyBirthday} />
-      */}
       <Route component={NotFound} />
-      </Switch>
-      <RouteMeta />
-    </>
+    </Switch>
   );
 }
 
@@ -51,18 +43,18 @@ declare global {
   }
 }
 
-function App() {
+export default function App() {
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.AOS) {
+    if (typeof window !== "undefined" && window.AOS) {
       window.AOS.init({
         duration: 800,
-        easing: 'ease-in-out',
+        easing: "ease-in-out",
         once: true,
-        offset: 100
+        offset: 100,
       });
     }
   }, []);
-
+  
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark" storageKey="arctyll-ui-theme">
@@ -81,5 +73,3 @@ function App() {
     </QueryClientProvider>
   );
 }
-
-export default App;
