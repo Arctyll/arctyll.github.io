@@ -9,7 +9,6 @@ export default defineConfig(async () => {
     plugins: [
       react(),
       Pages({
-        extensions: ['tsx'],
         dirs: 'client/src/pages',
         extendRoute(route) {
           if (route.path === '/not-found') {
