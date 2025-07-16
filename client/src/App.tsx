@@ -27,7 +27,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark" storageKey="arctyll-ui-theme">
         <TooltipProvider>
-          <BrowserRouter>
             <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
               <Particles />
               <Navbar />
@@ -38,7 +37,6 @@ function App() {
               <Footer />
               <Toaster />
             </div>
-          </BrowserRouter>
         </TooltipProvider>
       </ThemeProvider>
     </QueryClientProvider>

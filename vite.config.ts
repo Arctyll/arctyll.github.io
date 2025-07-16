@@ -11,6 +11,15 @@ export default defineConfig(async () => {
       Pages({
         extensions: ['tsx'],
         dirs: 'client/src/pages',
+        extendRoute(route) {
+          if (route.path === '/not-found') {
+            return {
+              ...route,
+              path: '/:pathMatch(.*)*',
+            };
+          }
+          return route;
+        },
       }),
       runtimeErrorOverlay(),
       ...(process.env.NODE_ENV !== "production" &&
