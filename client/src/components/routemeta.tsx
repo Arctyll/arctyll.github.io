@@ -1,33 +1,29 @@
+// src/components/RouteMeta.tsx
 import { Helmet } from "react-helmet-async";
-import { useLocation } from "wouter";
-import { metaMap, MetaData } from "@/lib/meta";
-
-function findMeta(path: string): MetaData {
-  if (metaMap[path]) return metaMap[path];
-  
-  const matched = Object.keys(metaMap)
-    .filter((key) => path.startsWith(key))
-    .sort((a, b) => b.length - a.length)[0];
-  
-  return metaMap[matched] || metaMap["/"];
-}
+import { useLocation } from "react-router-dom";
+import { metaMap } from "@/lib/meta";
 
 export default function RouteMeta() {
-  const [location] = useLocation();
-  const meta = findMeta(location);
+  const { pathname } = useLocation();
+  const meta = metaMap[pathname] || metaMap["/"];
   
   return (
-    <Helmet key={location}>
+    <Helmet>
       <title>{meta.title}</title>
       <meta name="description" content={meta.description} />
+
+      {/* Open Graph */}
       <meta property="og:title" content={meta.title} />
       <meta property="og:description" content={meta.description} />
-      <meta property="og:image" content={meta.image || ""} />
-      <meta property="og:url" content={meta.url || (typeof window !== "undefined" ? window.location.href : "")} />
+      {meta.image && <meta property="og:image" content={meta.image} />}
+      {meta.url && <meta property="og:url" content={meta.url} />}
+      <meta property="og:type" content="website" />
+
+      {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={meta.title} />
       <meta name="twitter:description" content={meta.description} />
-      <meta name="twitter:image" content={meta.image || ""} />
+      {meta.image && <meta name="twitter:image" content={meta.image} />}
     </Helmet>
   );
 }
