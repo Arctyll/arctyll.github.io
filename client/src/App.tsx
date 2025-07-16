@@ -8,7 +8,7 @@ import RouteMeta from "@/components/routemeta";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Particles from "@/components/particles";
-import Router from "./router";
+import Router from "@/router";
 import { useEffect } from "react";
 
 function App() {
