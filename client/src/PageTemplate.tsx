@@ -1,17 +1,22 @@
 import React from "react";
 import type { PageMetaData } from "./lib/pageMetaMap";
 
-const PageTemplate: React.FC < PageMetaData > = ({
+interface PageTemplateProps extends PageMetaData {
+  children ? : React.ReactNode;
+}
+
+const PageTemplate: React.FC < PageTemplateProps > = ({
   title,
   description,
   image,
   url,
+  children,
 }) => (
   <html lang="en">
     <head>
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      
+
       {/* Dynamic meta tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
@@ -24,21 +29,14 @@ const PageTemplate: React.FC < PageMetaData > = ({
       <meta name="twitter:description" content={description} />
       {image && <meta name="twitter:image" content={image} />}
 
-      {/* Google Fonts */}
+      {/* Fonts and Favicons */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet"
       />
-
-      {/* AOS CSS */}
-      <link
-        href="https://unpkg.com/aos@2.3.1/dist/aos.css"
-        rel="stylesheet"
-      />
-
-      {/* Favicons */}
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
       <link
         rel="icon"
         type="image/png"
@@ -77,7 +75,7 @@ const PageTemplate: React.FC < PageMetaData > = ({
       />
     </head>
     <body>
-      <div id="root"></div>
+      <div id="root">{children}</div>
       <script type="module" src="/src/main.tsx"></script>
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       <script src="https://cdn.emailjs.com/dist/email.min.js" defer></script>
