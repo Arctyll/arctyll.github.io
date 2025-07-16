@@ -1,93 +1,78 @@
-// client/src/lib/pageMetaMap.ts
-export interface PageMetaData {
-  url: string; // output HTML file name
-  bundleEntryPoint: string; // entry point file (relative to root)
+export interface MetaData {
   title: string;
   description: string;
   image?: string;
+  url?: string;
 }
 
-const sharedImage =
-  "https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png";
-
-export const pageMetaMap: PageMetaData[] = [
-  {
-    url: "index.html",
-    bundleEntryPoint: "/src/main.tsx",
+export const metaMap: Record<string, MetaData> = {
+  "/": {
     title: "Arctyll - Minecraft Mod Developers",
     description:
       "Building the future of Minecraft modding with open-source innovation and community collaboration. Discover our mods, tools, and APIs.",
-    image: sharedImage,
+    url: "https://arctyll.com/",
+    image: "https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png",
   },
-  {
-    url: "about.html",
-    bundleEntryPoint: "/src/main.tsx",
+  "/about": {
     title: "About Us - Arctyll",
     description:
       "Learn more about Arctyll – the organization empowering Minecraft developers and creating modern tools for the community.",
-    image: sharedImage,
+    url: "https://arctyll.com/about",
+    image: "https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png",
   },
-  {
-    url: "contact.html",
-    bundleEntryPoint: "/src/main.tsx",
+  "/contact": {
     title: "Contact Us - Arctyll",
     description:
       "Get in touch with the Arctyll team. We're here to help with questions, support, and collaboration opportunities.",
-    image: sharedImage,
+    url: "https://arctyll.com/contact",
+    image: "https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png",
   },
-  {
-    url: "commitment.html",
-    bundleEntryPoint: "/src/main.tsx",
+  "/commitment": {
     title: "Our Commitment - Arctyll",
     description:
       "Learn about Arctyll's commitment to open-source development, community collaboration, and transparency in Minecraft modding.",
-    image: sharedImage,
+    url: "https://arctyll.com/commitment",
+    image: "https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png",
   },
-  {
-    url: "blog.html",
-    bundleEntryPoint: "/src/main.tsx",
+  "/blog": {
     title: "Blog & Announcements - Arctyll",
     description:
       "Stay updated with the latest news, tutorials, and insights from the Arctyll development team and community.",
-    image: sharedImage,
+    url: "https://arctyll.com/blog",
+    image: "https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png",
   },
-  {
-    url: "birthday.html",
-    bundleEntryPoint: "/src/main.tsx",
+  "/birthday": {
     title: "Happy Birthday 🎉",
     description: "Wishing a fantastic birthday from the Arctyll team!",
-    image: sharedImage,
+    url: "https://arctyll.com/birthday",
+    image: "https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png",
   },
-  {
-    url: "projects.html",
-    bundleEntryPoint: "/src/main.tsx",
+  "/projects": {
     title: "Projects - Arctyll",
     description:
       "Explore Arctyll's innovative Minecraft mods, clients, and development tools. All projects are open-source and community-driven.",
-    image: sharedImage,
+    url: "https://arctyll.com/projects",
+    image: "https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png",
   },
-  {
-    url: "team.html",
-    bundleEntryPoint: "/src/main.tsx",
+  "/team": {
     title: "Our Team - Arctyll",
     description:
       "Meet the talented developers and contributors behind Arctyll's innovative Minecraft modding projects.",
-    image: sharedImage,
+    url: "https://arctyll.com/team",
+    image: "https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png",
   },
-  {
-    url: "privacy.html",
-    bundleEntryPoint: "/src/main.tsx",
+  "/privacy": {
     title: "Privacy Policy - Arctyll",
     description:
       "Understand how Arctyll handles your data, privacy, and security when you use our services and tools.",
-    image: sharedImage,
+    url: "https://arctyll.com/privacy",
+    image: "https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png",
   },
-  {
-    url: "terms.html",
-    bundleEntryPoint: "/src/main.tsx",
+  "/terms": {
     title: "Terms of Service - Arctyll",
     description:
       "Review the terms and conditions that govern your use of Arctyll's services, tools, and open-source projects.",
-    image: sharedImage,
+    url: "https://arctyll.com/terms",
+    image: "https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png",
   },
-];
+};
