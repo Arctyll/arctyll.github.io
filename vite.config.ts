@@ -9,7 +9,7 @@ export default defineConfig(async () => {
     plugins: [
       react(),
       metaMapPlugin({
-        pageMetaMapFilePath: "./client/src/lib/meta.ts",
+        pageMetaMapFilePath: "./client/src/lib/pageMetaMap.ts",
         pageTemplateFilePath: "./client/src/PageTemplate.tsx",
       }),
       runtimeErrorOverlay(),
