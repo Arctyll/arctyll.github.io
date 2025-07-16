@@ -9,8 +9,11 @@ export default defineConfig(async () => {
     plugins: [
       react(),
       metaMapPlugin({
-        pageMetaMapFilePath: "./client/src/lib/pageMetaMap.ts",
-        pageTemplateFilePath: "./client/src/PageTemplate.tsx",
+        pageMetaMapPath: path.resolve(__dirname, "client/src/lib/pageMetaMap.ts"),
+        template: path.resolve(__dirname, "client/src/PageTemplate.tsx"),
+        onBeforeGenerate: (metaMap) => {
+          console.log("Meta Map Loaded:", metaMap);
+        },
       }),
       runtimeErrorOverlay(),
       ...(process.env.NODE_ENV !== "production" &&
