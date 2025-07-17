@@ -1,28 +1,17 @@
-import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+import { useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Rocket, Code, Github, Info, Lightbulb } from "lucide-react";
 
 export default function Home() {
-  const [index, setIndex] = useState(0);
-  const phrases = [
-    "Changing the World!",
-    "Empowering Modders!",
-    "Crafting Tools, Pixel by Pixel!",
-  ];
-  
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
-    
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % phrases.length);
-    }, 3000);
-    
-    return () => clearInterval(interval);
   }, []);
+  
+  const phrase = "Changing the World!";
   
   return (
     <section className="flex flex-col min-h-screen w-full">
@@ -34,21 +23,13 @@ export default function Home() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tight">
-            <span className="gradient-text bg-clip-text text-transparent">
+            <span className="gradient-text bg-gradient-to-r from-primary to-blue-500 dark:from-pink-500 dark:to-purple-500 bg-clip-text text-transparent">
               Arctyll
             </span>
             <br className="hidden sm:block" />
             <span className="text-white opacity-90 text-balance">
               {" — "}
-              <span className="relative">
-                <span
-                  key={phrases[index]}
-                  className="typewriter inline-block transition-opacity duration-500"
-                >
-                  {phrases[index]}
-                </span>
-                <span className="blinking-cursor ml-1">|</span>
-              </span>
+              {phrase}
             </span>
           </h1>
 
@@ -122,34 +103,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* Typewriter Styles */}
-      <style jsx>{`
-        .typewriter {
-          white-space: nowrap;
-          overflow: hidden;
-          animation: typing 1.2s steps(30, end);
-        }
-
-        @keyframes typing {
-          from {
-            width: 0;
-          }
-          to {
-            width: 100%;
-          }
-        }
-
-        .blinking-cursor {
-          animation: blink 1s step-start infinite;
-        }
-
-        @keyframes blink {
-          50% {
-            opacity: 0;
-          }
-        }
-      `}</style>
     </section>
   );
 }
