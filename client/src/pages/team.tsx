@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Github } from "lucide-react";
+import { Github, Sparkle, Code, Database, Rocket, Palette, Wrench, PenTool, Terminal, Cpu, LayoutDashboard } from "lucide-react";
 import TeamCard from "@/components/team-card";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Badge } from "@/components/ui/badge";
 
 interface TeamMember {
   id: string;
@@ -20,6 +21,22 @@ interface TeamMember {
 interface TeamData {
   members: TeamMember[];
 }
+
+const skillIcons: Record < string, any > = {
+  JavaScript: Code,
+  TypeScript: Code,
+  React: Rocket,
+  TailwindCSS: Palette,
+  Figma: Palette,
+  UI: PenTool,
+  UX: PenTool,
+  DevOps: Wrench,
+  Backend: Database,
+  Frontend: Rocket,
+  NodeJS: Terminal,
+  Python: Cpu,
+  "Fullstack Developer": LayoutDashboard,
+};
 
 export default function Team({ params }: { params ? : { id ? : string } }) {
   const [teamData, setTeamData] = useState < TeamData | null > (null);
@@ -93,14 +110,18 @@ export default function Team({ params }: { params ? : { id ? : string } }) {
             >
               <h2 className="text-2xl font-semibold mb-4">Skills</h2>
               <div className="flex flex-wrap gap-3">
-                {member.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium"
-                  >
-                    {skill}
-                  </span>
-                ))}
+                {member.skills.map((skill, i) => {
+                  const Icon = skillIcons[skill] || Sparkle;
+                  return (
+                    <Badge
+                      key={skill}
+                      className="flex items-center gap-1 animate-pulse hover:brightness-110 transition"
+                    >
+                      <Icon className="w-4 h-4" />
+                      {skill}
+                    </Badge>
+                  );
+                })}
               </div>
             </section>
           )}
@@ -140,7 +161,7 @@ export default function Team({ params }: { params ? : { id ? : string } }) {
       </div>
     );
   }
-
+  
   return (
     <div className="min-h-screen bg-background pt-20">
       <div className="container mx-auto px-4 py-8">
