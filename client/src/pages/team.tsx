@@ -27,9 +27,6 @@ export default function Team() {
   const [loading, setLoading] = useState(true);
   const [location] = useLocation();
   
-  const slug = location.split("/").pop();
-  const isMemberPage = location.startsWith("/team/") && slug && slug !== "team";
-  
   useEffect(() => {
     AOS.init({ duration: 600 });
     fetch("/config/team.json")
@@ -53,7 +50,7 @@ export default function Team() {
   }
 
   if (isMemberPage) {
-    const member = teamData.members.find((m) => m.id === slug);
+    const member = teamData.members.find((m) => m.id === id);
     
     if (!member) {
       return (
@@ -145,6 +142,7 @@ export default function Team() {
   }
 
   const teamMembers = teamData.members.map((member) => ({
+    id: member.id,
     name: member.name,
     role: member.role,
     description: member.description,
