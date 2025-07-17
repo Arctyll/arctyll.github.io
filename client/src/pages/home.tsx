@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -7,33 +7,52 @@ import { Button } from "@/components/ui/button";
 import { Rocket, Code, Github, Info, Lightbulb } from "lucide-react";
 
 export default function Home() {
+  const [index, setIndex] = useState(0);
+  const phrases = [
+    "Changing the World!",
+    "Empowering Modders!",
+    "Crafting Tools, Pixel by Pixel!",
+  ];
+  
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      once: true,
-    });
+    AOS.init({ duration: 800, once: true });
+    
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % phrases.length);
+    }, 3000);
+    
+    return () => clearInterval(interval);
   }, []);
   
   return (
     <section className="flex flex-col min-h-screen w-full">
       {/* Hero Section */}
-      <div className="flex-1 flex items-center justify-center py-24 hero-gradient text-center">
-        <div className="container px-4 sm:px-6 z-10" data-aos="fade-up">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="gradient-text">Arctyll</span> —{" "}
+      <div className="flex-1 flex items-center justify-center py-24 hero-gradient text-center px-6 sm:px-8 relative overflow-hidden">
+        <div className="container z-10" data-aos="fade-up">
+          <div className="inline-block mb-4 px-4 py-1 text-sm font-semibold text-white bg-primary rounded-full shadow-lg">
+            Open Source • Minecraft • Community
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tight">
+            <span className="gradient-text">Arctyll</span>
             <br className="hidden sm:block" />
-            <span>Changing the World!</span>
+            <span className="text-white opacity-90">{phrases[index]}</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto px-4">
+
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto">
             Empowering Minecraft Modding Through Open Source.
             <br className="hidden sm:block" />
             <span className="block sm:inline">
               Crafting intelligent tools, shaping Minecraft’s future, pixel by pixel.
             </span>
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="https://github.com/Arctyll">
-              <Button size="lg" className="bg-gradient-to-r from-primary to-blue-500 hover:opacity-90">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-primary to-blue-500 hover:opacity-90"
+              >
                 <Rocket className="mr-2 h-5 w-5" />
                 Join Us
               </Button>
