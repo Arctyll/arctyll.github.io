@@ -28,7 +28,7 @@ export default function Home() {
             </span>
             <br className="hidden sm:block" />
             <span className="text-white opacity-90 text-balance">
-              {" — "}
+              {" - "}
               {phrase}
             </span>
           </h1>
