@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import TeamCard from "@/components/team-card";
-import { updatePageMeta } from "@/lib/meta";
 import { Github } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -63,11 +62,6 @@ export default function Team() {
         </div>
       );
     }
-    
-    updatePageMeta({
-      title: `${member.name} | Arctyll`,
-      description: `${member.name} - ${member.role} at Arctyll`,
-    });
     
     return (
       <div className="min-h-screen bg-background pt-20 px-4">
