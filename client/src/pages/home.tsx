@@ -11,8 +11,6 @@ export default function Home() {
     AOS.init({ duration: 800, once: true });
   }, []);
   
-  const phrase = "Changing the World!";
-  
   return (
     <section className="flex flex-col min-h-screen w-full">
       {/* Hero Section */}
@@ -22,15 +20,10 @@ export default function Home() {
             Open Source • Minecraft • Community
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tight">
-            <span className="gradient-text bg-gradient-to-r from-primary to-blue-500 dark:from-pink-500 dark:to-purple-500 bg-clip-text text-transparent">
-              Arctyll
-            </span>
-            <br className="hidden sm:block" />
-            <span className="text-white opacity-90 text-balance">
-              {" - "}
-              {phrase}
-            </span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">  
+            <span className="gradient-text">Arctyll</span> —{" "}  
+            <br className="hidden sm:block" />  
+            <span>Changing the World!</span>  
           </h1>
 
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto">
