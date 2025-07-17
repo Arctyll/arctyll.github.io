@@ -29,14 +29,27 @@ export default function Home() {
       {/* Hero Section */}
       <div className="flex-1 flex items-center justify-center py-24 hero-gradient text-center px-6 sm:px-8 relative overflow-hidden">
         <div className="container z-10" data-aos="fade-up">
-          <div className="inline-block mb-4 px-4 py-1 text-sm font-semibold text-white bg-primary rounded-full shadow-lg">
+          <div className="inline-block mb-4 px-4 py-1 text-xs font-medium text-muted-foreground bg-muted rounded-full border border-border">
             Open Source • Minecraft • Community
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tight">
-            <span className="gradient-text">Arctyll</span>
+            <span className="gradient-text bg-clip-text text-transparent">
+              Arctyll
+            </span>
             <br className="hidden sm:block" />
-            <span className="text-white opacity-90">{phrases[index]}</span>
+            <span className="text-white opacity-90 text-balance">
+              {" — "}
+              <span className="relative">
+                <span
+                  key={phrases[index]}
+                  className="typewriter inline-block transition-opacity duration-500"
+                >
+                  {phrases[index]}
+                </span>
+                <span className="blinking-cursor ml-1">|</span>
+              </span>
+            </span>
           </h1>
 
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto">
@@ -69,7 +82,7 @@ export default function Home() {
 
       {/* Info Sections */}
       <div className="hero-gradient border-t border-border py-20 space-y-24">
-        {/* Who We Are — Always Left Aligned */}
+        {/* Who We Are — Left */}
         <div className="container mx-auto px-6" data-aos="fade-right">
           <div className="flex flex-col items-start text-left">
             <h2 className="text-3xl font-bold mb-3">Who We Are</h2>
@@ -85,7 +98,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Our Commitment — Always Right Aligned */}
+        {/* Our Commitment — Right */}
         <div className="container mx-auto px-6" data-aos="fade-left">
           <div className="flex flex-col items-end text-right">
             <h2 className="text-3xl font-bold mb-3">Our Commitment</h2>
@@ -109,6 +122,34 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Typewriter Styles */}
+      <style jsx>{`
+        .typewriter {
+          white-space: nowrap;
+          overflow: hidden;
+          animation: typing 1.2s steps(30, end);
+        }
+
+        @keyframes typing {
+          from {
+            width: 0;
+          }
+          to {
+            width: 100%;
+          }
+        }
+
+        .blinking-cursor {
+          animation: blink 1s step-start infinite;
+        }
+
+        @keyframes blink {
+          50% {
+            opacity: 0;
+          }
+        }
+      `}</style>
     </section>
   );
 }
