@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "wouter";
-import TeamCard from "@/components/team-card";
 import { Github } from "lucide-react";
+import TeamCard from "@/components/team-card";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -22,13 +21,14 @@ interface TeamData {
   members: TeamMember[];
 }
 
-export default function Team() {
+export default function Team({ params }: { params ? : { id ? : string } }) {
   const [teamData, setTeamData] = useState < TeamData | null > (null);
   const [loading, setLoading] = useState(true);
-  const [location] = useLocation();
+  const id = params?.id;
   
   useEffect(() => {
     AOS.init({ duration: 600 });
+    
     fetch("/config/team.json")
       .then((res) => res.json())
       .then((data: TeamData) => {
@@ -48,8 +48,8 @@ export default function Team() {
       </div>
     );
   }
-
-  if (isMemberPage) {
+  
+  if (id) {
     const member = teamData.members.find((m) => m.id === id);
     
     if (!member) {
@@ -141,16 +141,6 @@ export default function Team() {
     );
   }
 
-  const teamMembers = teamData.members.map((member) => ({
-    id: member.id,
-    name: member.name,
-    role: member.role,
-    description: member.description,
-    mcIgn: member.mcIgn,
-    githubUrl: member.githubUrl,
-    color: member.color,
-  }));
-  
   return (
     <div className="min-h-screen bg-background pt-20">
       <div className="container mx-auto px-4 py-8">
