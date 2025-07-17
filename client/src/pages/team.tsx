@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "wouter";
 import TeamCard from "@/components/team-card";
 import { updatePageMeta } from "@/lib/meta";
+import { Github } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 interface TeamMember {
   id: string;
@@ -20,34 +24,141 @@ interface TeamData {
 }
 
 export default function Team() {
-  const [teamData, setTeamData] = useState<TeamData | null>(null);
-
+  const [teamData, setTeamData] = useState < TeamData | null > (null);
+  const [loading, setLoading] = useState(true);
+  const [location] = useLocation();
+  
+  const slug = location.split("/").pop();
+  const isMemberPage = location.startsWith("/team/") && slug && slug !== "team";
+  
   useEffect(() => {
-    fetch('/config/team.json')
-      .then(res => res.json())
-      .then((data: TeamData) => setTeamData(data))
-      .catch(err => console.error('Failed to load team data:', err));
+    AOS.init({ duration: 600 });
+    fetch("/config/team.json")
+      .then((res) => res.json())
+      .then((data: TeamData) => {
+        setTeamData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load team data:", err);
+        setLoading(false);
+      });
   }, []);
-
-  if (!teamData) {
+  
+  if (loading || !teamData) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <div className="w-12 h-12 border-4 border-t-transparent border-primary rounded-full animate-spin mx-auto" />
+        <div className="w-12 h-12 border-4 border-t-transparent border-primary rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (isMemberPage) {
+    const member = teamData.members.find((m) => m.id === slug);
+    
+    if (!member) {
+      return (
+        <div className="min-h-screen flex items-center justify-center bg-background">
+          <p className="text-muted-foreground">Team member not found.</p>
+        </div>
+      );
+    }
+    
+    updatePageMeta({
+      title: `${member.name} | Arctyll`,
+      description: `${member.name} - ${member.role} at Arctyll`,
+    });
+    
+    return (
+      <div className="min-h-screen bg-background pt-20 px-4">
+        <div className="max-w-4xl mx-auto space-y-12">
+          {/* Hero */}
+          <div className="text-center" data-aos="fade-up">
+            <img
+              src={member.avatar}
+              alt={member.name}
+              className="w-28 h-28 mx-auto rounded-full border-4 border-primary shadow-lg"
+            />
+            <h1 className="text-4xl font-bold mt-4">{member.name}</h1>
+            <p className="text-muted-foreground text-lg">{member.role}</p>
+          </div>
+
+          {/* About */}
+          <section
+            className="bg-card p-6 rounded-xl border border-border"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <h2 className="text-2xl font-semibold mb-2">About</h2>
+            <p className="text-muted-foreground">{member.description}</p>
+          </section>
+
+          {/* Skills */}
+          {member.skills.length > 0 && (
+            <section
+              className="bg-card p-6 rounded-xl border border-border"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <h2 className="text-2xl font-semibold mb-4">Skills</h2>
+              <div className="flex flex-wrap gap-3">
+                {member.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Contributions */}
+          {member.contributions.length > 0 && (
+            <section
+              className="bg-card p-6 rounded-xl border border-border"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <h2 className="text-2xl font-semibold mb-4">Contributions</h2>
+              <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
+                {member.contributions.map((c, i) => (
+                  <li key={i}>{c}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {/* Footer */}
+          <div className="text-center" data-aos="fade-up" data-aos-delay="400">
+            <p className="mb-2">
+              Minecraft IGN:{" "}
+              <span className="font-mono text-primary">{member.mcIgn}</span>
+            </p>
+            <a
+              href={member.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition mt-4"
+            >
+              <Github className="mr-2" size={18} /> GitHub Profile
+            </a>
+          </div>
         </div>
       </div>
     );
   }
 
-  const teamMembers = teamData.members.map(member => ({
+  const teamMembers = teamData.members.map((member) => ({
     name: member.name,
     role: member.role,
     description: member.description,
     mcIgn: member.mcIgn,
     githubUrl: member.githubUrl,
-    color: member.color
+    color: member.color,
   }));
-
+  
   return (
     <div className="min-h-screen bg-background pt-20">
       <div className="container mx-auto px-4 py-8">
@@ -63,8 +174,8 @@ export default function Team() {
 
         {/* Team Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {teamMembers.map((member, index) => (
-            <TeamCard key={member.name} member={member} index={index} />
+          {teamData.members.map((member, index) => (
+            <TeamCard key={member.id} member={member} index={index} />
           ))}
         </div>
 
@@ -76,14 +187,14 @@ export default function Team() {
               We're always looking for talented individuals to join our open-source community
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <a 
-                href="https://github.com/Arctyll" 
+              <a
+                href="https://github.com/Arctyll"
                 className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
               >
                 View Our Projects
               </a>
-              <a 
-                href="/contact" 
+              <a
+                href="/contact"
                 className="inline-flex items-center px-6 py-3 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/90 transition-colors"
               >
                 Get in Touch
