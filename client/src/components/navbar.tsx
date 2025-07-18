@@ -101,36 +101,6 @@ export default function Navbar() {
             {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </Button>
 
-          {/* Socials (desktop only) */}
-          <div className="hidden md:flex items-center space-x-2">
-            <a
-              href="https://github.com/Arctyll"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="outline" size="sm" className="gap-1 h-8">
-                <Github className="h-4 w-4" />
-                GitHub
-              </Button>
-            </a>
-            <a
-              href="https://youtube.com/@Arctyll"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="YouTube"
-            >
-              <Youtube className="h-5 w-5 hover:text-primary transition-colors" />
-            </a>
-            <a
-              href="https://twitter.com/Arctyll"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter / X"
-            >
-              <Twitter className="h-5 w-5 hover:text-primary transition-colors" />
-            </a>
-          </div>
-
           {/* Mobile Menu */}
           <Sheet>
             <SheetTrigger asChild>
@@ -167,34 +137,6 @@ export default function Navbar() {
                     </div>
                   </Link>
                 ))}
-
-                {/* Socials (mobile) */}
-                <div className="pt-4 border-t border-border/50 flex flex-col space-y-4">
-                  <a href="https://github.com/Arctyll" target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" className="w-full justify-start gap-2">
-                      <Github className="h-4 w-4" />
-                      GitHub
-                    </Button>
-                  </a>
-                  <div className="flex space-x-4 pl-1">
-                    <a
-                      href="https://youtube.com/@Arctyll"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="YouTube"
-                    >
-                      <Youtube className="h-5 w-5 hover:text-primary transition-colors" />
-                    </a>
-                    <a
-                      href="https://twitter.com/Arctyll"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Twitter / X"
-                    >
-                      <Twitter className="h-5 w-5 hover:text-primary transition-colors" />
-                    </a>
-                  </div>
-                </div>
               </div>
             </SheetContent>
           </Sheet>
