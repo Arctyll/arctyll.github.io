@@ -1,9 +1,29 @@
 import { useEffect, useState } from "react";
-import { Github, Sparkle, Code, Database, Rocket, Palette, Wrench, PenTool, Terminal, Cpu, LayoutDashboard } from "lucide-react";
+import { Github, Sparkle } from "lucide-react";
 import TeamCard from "@/components/team-card";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Badge } from "@/components/ui/badge";
+
+import {
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiTailwindcss,
+  SiFigma,
+  SiPython,
+  SiMongodb,
+  SiPostgresql,
+  SiMysql,
+  SiNodedotjs,
+  SiHtml5,
+  SiCss3,
+  SiDocker,
+  SiGit,
+  SiNextdotjs,
+  SiVite,
+  SiVisualstudiocode,
+} from "react-icons/si";
 
 interface TeamMember {
   id: string;
@@ -23,19 +43,45 @@ interface TeamData {
 }
 
 const skillIcons: Record < string, any > = {
-  JavaScript: Code,
-  TypeScript: Code,
-  React: Rocket,
-  TailwindCSS: Palette,
-  Figma: Palette,
-  UI: PenTool,
-  UX: PenTool,
-  DevOps: Wrench,
-  Backend: Database,
-  Frontend: Rocket,
-  NodeJS: Terminal,
-  Python: Cpu,
-  "Fullstack Developer": LayoutDashboard,
+  JavaScript: SiJavascript,
+  TypeScript: SiTypescript,
+  React: SiReact,
+  TailwindCSS: SiTailwindcss,
+  Figma: SiFigma,
+  Python: SiPython,
+  MongoDB: SiMongodb,
+  PostgreSQL: SiPostgresql,
+  MySQL: SiMysql,
+  NodeJS: SiNodedotjs,
+  HTML: SiHtml5,
+  CSS: SiCss3,
+  Docker: SiDocker,
+  Git: SiGit,
+  NextJS: SiNextdotjs,
+  Vite: SiVite,
+  VSCode: SiVisualstudiocode,
+  "Full Stack": Sparkle,
+};
+
+const skillColors: Record < string, string > = {
+  JavaScript: "bg-yellow-400 text-black",
+  TypeScript: "bg-blue-500 text-white",
+  React: "bg-cyan-500 text-white",
+  TailwindCSS: "bg-teal-400 text-white",
+  Figma: "bg-pink-500 text-white",
+  Python: "bg-yellow-300 text-black",
+  MongoDB: "bg-green-600 text-white",
+  PostgreSQL: "bg-blue-800 text-white",
+  MySQL: "bg-blue-400 text-white",
+  NodeJS: "bg-green-700 text-white",
+  HTML: "bg-orange-500 text-white",
+  CSS: "bg-blue-600 text-white",
+  Docker: "bg-blue-500 text-white",
+  Git: "bg-orange-600 text-white",
+  NextJS: "bg-gray-900 text-white",
+  Vite: "bg-purple-500 text-white",
+  VSCode: "bg-blue-700 text-white",
+  "Fullstack Developer": "bg-zinc-600 text-white",
 };
 
 export default function Team({ params }: { params ? : { id ? : string } }) {
@@ -109,13 +155,16 @@ export default function Team({ params }: { params ? : { id ? : string } }) {
               data-aos-delay="200"
             >
               <h2 className="text-2xl font-semibold mb-4">Skills</h2>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col gap-2">
                 {member.skills.map((skill, i) => {
                   const Icon = skillIcons[skill] || Sparkle;
+                  const color = skillColors[skill] || "bg-muted text-foreground";
                   return (
                     <Badge
                       key={skill}
-                      className="flex items-center gap-1 animate-pulse hover:brightness-110 transition"
+                      className={`flex items-center gap-2 text-sm font-medium w-fit ${color}`}
+                      data-aos="fade-up"
+                      data-aos-delay={i * 60}
                     >
                       <Icon className="w-4 h-4" />
                       {skill}
