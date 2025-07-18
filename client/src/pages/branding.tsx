@@ -1,42 +1,25 @@
 import { useEffect, useState } from "react";
-import { Download, Slash, Sparkles, Layout, MoveDiagonal, EyeOff } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-const guidelines = [
-  {
-    icon: <Sparkles className="w-5 h-5 text-primary shrink-0" />,
-    text: "Use the logo only to represent Arctyll — not in unrelated contexts.",
-  },
-  {
-    icon: <Layout className="w-5 h-5 text-primary shrink-0" />,
-    text: "Maintain enough clear space around the logo at all times.",
-  },
-  {
-    icon: <MoveDiagonal className="w-5 h-5 text-primary shrink-0" />,
-    text: "Do not stretch, rotate, or warp the logo.",
-  },
-  {
-    icon: <EyeOff className="w-5 h-5 text-primary shrink-0" />,
-    text: "Never apply shadows, glows, filters, or distortions.",
-  },
-  {
-    icon: <Slash className="w-5 h-5 text-primary shrink-0" />,
-    text: "Avoid placing the logo over noisy backgrounds or low-contrast colors.",
-  },
-  {
-    icon: <Download className="w-5 h-5 text-primary shrink-0" />,
-    text: "Always use the most up-to-date official assets.",
-  },
-];
+import {
+  Sparkles,
+  Layout,
+  MoveDiagonal,
+  EyeOff,
+  Slash,
+  Download,
+} from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 
 export default function Branding() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-    return () => clearTimeout(timeout);
+    AOS.init({ duration: 700, once: true });
+    const timer = setTimeout(() => setLoading(false), 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
@@ -46,6 +29,51 @@ export default function Branding() {
       </div>
     );
   }
+
+  const guidelines = [
+    {
+      icon: Sparkles,
+      title: "Use Appropriately",
+      description:
+        "Only use the logo to represent Arctyll — never in unrelated projects or forks.",
+      color: "bg-primary",
+    },
+    {
+      icon: Layout,
+      title: "Respect Spacing",
+      description:
+        "Maintain enough clear space around the logo to preserve its visual integrity.",
+      color: "bg-blue-500",
+    },
+    {
+      icon: MoveDiagonal,
+      title: "Do Not Distort",
+      description:
+        "Avoid stretching, warping, rotating, or skewing the logo.",
+      color: "bg-red-500",
+    },
+    {
+      icon: EyeOff,
+      title: "No Effects",
+      description:
+        "Do not apply shadows, glows, overlays, or other visual filters to the logo.",
+      color: "bg-gray-600",
+    },
+    {
+      icon: Slash,
+      title: "Avoid Bad Backgrounds",
+      description:
+        "Place the logo on solid, high-contrast backgrounds only — not busy or low-contrast ones.",
+      color: "bg-yellow-500",
+    },
+    {
+      icon: Download,
+      title: "Use Official Assets",
+      description:
+        "Only use logos provided by the Arctyll team to ensure quality and consistency.",
+      color: "bg-green-600",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-background pt-20">
@@ -86,27 +114,33 @@ export default function Branding() {
           </div>
         </div>
 
-        {/* Guidelines */}
-        <div className="mt-12" data-aos="fade-up">
+        {/* Usage Guidelines */}
+        <div className="mt-16" data-aos="fade-up">
           <div className="bg-card border border-border rounded-lg p-6 md:p-8 max-w-3xl mx-auto shadow-sm">
-            <h2 className="text-2xl font-bold mb-6 text-center">Usage Guidelines</h2>
-            <div className="space-y-5">
-              {guidelines.map((guideline, index) => (
-              <div key={index} className="flex items-start gap-4">
-                <div className="flex-shrink-0">
-                  {guideline.icon}
+            <h2 className="text-2xl font-bold mb-8 text-center">Usage Guidelines</h2>
+            <div className="space-y-6">
+              {guidelines.map((item, index) => (
+                <div key={index} className="flex items-start space-x-4">
+                  <div
+                    className={`w-8 h-8 ${item.color} rounded-lg flex items-center justify-center flex-shrink-0 mt-1`}
+                  >
+                    <item.icon className="h-4 w-4 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-1">{item.title}</h3>
+                    <p className="text-muted-foreground">{item.description}</p>
+                  </div>
                 </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  {guideline.text}
-                </p>
-              </div>
               ))}
             </div>
           </div>
         </div>
 
         {/* Legal */}
-        <div className="mt-12 border-t pt-6 text-sm text-muted-foreground text-center">
+        <div
+          className="mt-16 border-t pt-6 text-sm text-muted-foreground text-center"
+          data-aos="fade-up"
+        >
           <p>
             All rights to the Arctyll name and logo are © {new Date().getFullYear()} Arctyll.
             Use is permitted under the above guidelines. Not affiliated with Mojang or Microsoft.
