@@ -75,4 +75,11 @@ export const metaMap: Record<string, MetaData> = {
     url: "https://arctyll.com/terms",
     image: "https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png",
   },
+  "/branding": {
+    title: "Branding - Arctyll",
+    description:
+      "Official logo and branding guidelines for Arctyll.",
+    url: "https://arctyll.com/branding",
+    image: "https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png",
+  },
 };
