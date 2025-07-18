@@ -5,6 +5,7 @@ interface EmailData {
   email: string;
   subject: string;
   message: string;
+  time: string;
 }
 
 export const sendEmail = async (data: EmailData): Promise < void > => {
@@ -19,6 +20,7 @@ export const sendEmail = async (data: EmailData): Promise < void > => {
         from_email: data.email,
         subject: data.subject,
         message: data.message,
+        time: data.time,
       }
     );
   } catch (error) {
