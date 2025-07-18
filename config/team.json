@@ -23,7 +23,7 @@
       "contributions": ["Veyzen Client"]
     },
     {
-      "id": "darkgladiator",
+      "id": "dark",
       "name": "DarkGladiator26",
       "role": "Fullstack Developer",
       "description": "Full-stack developer, learning and understanding the implementation and effects of AI in different fields.",
@@ -41,7 +41,7 @@
       "githubUrl": "https://github.com/GinaFro1",
       "avatar": "https://mc-heads.net/avatar/Diyansh",
       "mcIgn": "Diyansh",
-      "skills": ["Java", "Forge", "Fabric", "Performance", "JavaScript", "NodeJS", "DiscordJS", "Bukkit/Spigot"],
+      "skills": ["Java", "Forge", "Fabric", "Performance", "JavaScript", "Node JS", "Discord JS", "Bukkit/Spigot"],
       "contributions": ["Veyzen Client"]
     },
     {
@@ -52,7 +52,7 @@
       "githubUrl": "https://github.com/uxxiii",
       "avatar": "https://mc-heads.net/avatar/Terero_Gamer",
       "mcIgn": "Terero_Gamer",
-      "skills": ["Java", "Forge", "Fabric", "Performance", "HTML", "CSS", "JavaScript", "React", "NodeJS", "Spigot/Bukkit/Paper"],
+      "skills": ["Java", "Forge", "Fabric", "Performance", "HTML", "CSS", "JavaScript", "React", "Node JS", "Spigot/Bukkit/Paper"],
       "contributions": ["Veyzen Client"]
     },
     {

@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Github, ArrowRight } from "lucide-react";
-import { Link } from "wouter";
+import { Github } from "lucide-react";
 
 interface TeamMember {
-  id: string;
   name: string;
   role: string;
   description: string;
@@ -77,15 +75,6 @@ export default function TeamCard({ member, index }: TeamCardProps) {
             <span className="font-medium">{followers}</span> follower{followers !== 1 && "s"}
           </p>
         )}
-
-        {/* More Info button */}
-        <div className="mt-4">
-          <Button variant="outline" className="w-full justify-center" asChild>
-            <Link href={`/team/${member.id}`}>
-              More Info <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
       </CardContent>
     </Card>
   );
