@@ -88,14 +88,20 @@ export default function Branding() {
 
         {/* Guidelines */}
         <div className="mt-12" data-aos="fade-up">
-          <h2 className="text-2xl font-bold mb-6 text-center">Usage Guidelines</h2>
-          <div className="space-y-4 max-w-2xl mx-auto">
-            {guidelines.map((guideline, index) => (
-              <div key={index} className="flex items-start gap-3">
-                {guideline.icon}
-                <p className="text-muted-foreground">{guideline.text}</p>
+          <div className="bg-card border border-border rounded-lg p-6 md:p-8 max-w-3xl mx-auto shadow-sm">
+            <h2 className="text-2xl font-bold mb-6 text-center">Usage Guidelines</h2>
+            <div className="space-y-5">
+              {guidelines.map((guideline, index) => (
+              <div key={index} className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  {guideline.icon}
+                </div>
+                <p className="text-muted-foreground leading-relaxed">
+                  {guideline.text}
+                </p>
               </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
