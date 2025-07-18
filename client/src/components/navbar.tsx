@@ -3,7 +3,15 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTheme } from "@/components/theme-provider";
-import { Menu, Moon, Sun, Sparkles } from "lucide-react";
+import {
+  Menu,
+  Moon,
+  Sun,
+  Sparkles,
+  Github,
+  Youtube,
+  Twitter,
+} from "lucide-react";
 import arctyllLogo from "@assets/arctyll.png";
 
 export default function Navbar() {
@@ -21,7 +29,7 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/projects", label: "Projects" },
     { href: "/about", label: "About" },
-    { href: "/branding", label: "Branding"},
+    { href: "/branding", label: "Branding" },
     { href: "/team", label: "Team" },
     { href: "/commitment", label: "Commitment" },
     { href: "/blog", label: "Blog" },
@@ -70,7 +78,9 @@ export default function Navbar() {
                   {item.label}
                   <span
                     className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-blue-500 transition-all duration-300 ${
-                      isActive(item.href) ? "w-full" : "w-0 group-hover:w-full"
+                      isActive(item.href)
+                        ? "w-full"
+                        : "w-0 group-hover:w-full"
                     }`}
                   />
                 </span>
@@ -79,7 +89,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Right: Theme toggle + Mobile menu */}
+        {/* Right: Theme toggle + Social Icons + Mobile Menu */}
         <div className="flex items-center space-x-2">
           {/* Theme Toggle */}
           <Button
@@ -94,6 +104,34 @@ export default function Navbar() {
               <Moon className="h-4 w-4" />
             )}
           </Button>
+
+          {/* Social Icons (desktop only) */}
+          <div className="hidden md:flex items-center space-x-2">
+            <a
+              href="https://github.com/Arctyll"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <Github className="h-4 w-4 hover:text-primary transition-colors" />
+            </a>
+            <a
+              href="https://youtube.com/@Arctyll"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
+              <Youtube className="h-4 w-4 hover:text-primary transition-colors" />
+            </a>
+            <a
+              href="https://twitter.com/Arctyll"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter / X"
+            >
+              <Twitter className="h-4 w-4 hover:text-primary transition-colors" />
+            </a>
+          </div>
 
           {/* Mobile Menu */}
           <Sheet>
@@ -131,6 +169,34 @@ export default function Navbar() {
                     </div>
                   </Link>
                 ))}
+
+                {/* Social Icons (mobile only) */}
+                <div className="flex items-center space-x-4 pt-4 border-t border-border/50">
+                  <a
+                    href="https://github.com/Arctyll"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                  >
+                    <Github className="h-5 w-5 hover:text-primary transition-colors" />
+                  </a>
+                  <a
+                    href="https://youtube.com/@Arctyll"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="YouTube"
+                  >
+                    <Youtube className="h-5 w-5 hover:text-primary transition-colors" />
+                  </a>
+                  <a
+                    href="https://twitter.com/Arctyll"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter / X"
+                  >
+                    <Twitter className="h-5 w-5 hover:text-primary transition-colors" />
+                  </a>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
