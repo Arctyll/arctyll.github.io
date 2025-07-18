@@ -108,10 +108,11 @@ export default function Footer() {
             </p>
             <p className="text-xs break-words">
               Not affiliated with{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700 transition-transform duration-200 hover:scale-105">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#db1f29] to-[#b0171f] transition-transform duration-200 hover:scale-105">
                 Mojang
-              </span> or{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-green-500 via-blue-500 to-yellow-400 transition-transform duration-200 hover:scale-105">
+              </span>{" "}
+              or{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f25022] via-[#7fba00] via-[#00a4ef] to-[#ffb900] transition-transform duration-200 hover:scale-105">
                 Microsoft
               </span>.
             </p>
