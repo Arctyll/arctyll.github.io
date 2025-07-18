@@ -38,13 +38,13 @@ export default function Branding() {
           <h2 className="text-2xl font-semibold mb-4">Official Logo</h2>
           <div className="bg-black rounded-lg py-8 px-4 flex justify-center items-center">
             <img
-              src="/assets/arctyll.png"
+              src="https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png"
               alt="Arctyll Logo"
               className="max-h-32 object-contain"
             />
           </div>
           <div className="mt-6 flex justify-center gap-4 flex-wrap">
-            <a href="/assets/arctyll.png" download>
+            <a href="https://raw.githubusercontent.com/Arctyll/arctyll.github.io/main/assets/arctyll.png" download>
               <Button variant="outline">
                 <Download className="w-4 h-4 mr-2" />
                 Download PNG
